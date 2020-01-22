@@ -1002,7 +1002,7 @@ body {
   }
 
 .article-entry .highlight, .article-entry pre {
-  background: #E6E6E6;
+  background: #EEEEEE;
   margin: 10px 0;
   padding: 10px;
   overflow: auto;
@@ -1012,7 +1012,7 @@ body {
 }
 
   .article-entry .gist .gist-file .gist-data .line-numbers, .article-entry .highlight .gutter pre, .article-entry .highlight .gutter pre .line {
-    color: #fc0000
+    color: #BBBBBB
   }
 
 .article-entry code, .article-entry pre {
