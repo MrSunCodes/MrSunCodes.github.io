@@ -6,30 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: PAT | MrSun Blog</title>
+  <title>单向链表和双向链表基本操作的实现（数据结构 C语言实现版) | MrSun Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrSun Blog">
-<meta property="og:url" content="http://yoursite.com/categories/PAT/index.html">
+  <meta name="description" content="大家吼我又来了，今天我给大家带来的是单向链表和双向链表的基本操作（基本上挺全的。。。）    数据结构这门课程是学计算机的学生们感觉很重要很困难的学科。而链表也基本上算是数据结构刚入门时所写的了吧。    我把自己学习数据结构的历程分享到自己的博客里，供大家学习也供我自己查阅自己的学习历程。若是感觉还不错或者有任何问题的话，欢迎加我的qq：790567648来跟我进一步的交流。hhh    话不多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单向链表和双向链表基本操作的实现（数据结构 C语言实现版)">
+<meta property="og:url" content="http://yoursite.com/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="大家吼我又来了，今天我给大家带来的是单向链表和双向链表的基本操作（基本上挺全的。。。）    数据结构这门课程是学计算机的学生们感觉很重要很困难的学科。而链表也基本上算是数据结构刚入门时所写的了吧。    我把自己学习数据结构的历程分享到自己的博客里，供大家学习也供我自己查阅自己的学习历程。若是感觉还不错或者有任何问题的话，欢迎加我的qq：790567648来跟我进一步的交流。hhh    话不多">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-22T08:43:39.000Z">
+<meta property="article:modified_time" content="2020-01-22T08:45:43.894Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="DeepLearning">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="css">
-<meta property="article:tag" content="开发者">
-<meta property="article:tag" content="程序猿">
-<meta property="article:tag" content="极客">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="IT网站">
-<meta property="article:tag" content="用户体验">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="MrSun Blog" type="application/atom+xml">
@@ -164,75 +154,217 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-单向链表和双向链表基本操作的实现（数据结构-C语言实现版" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/21/2019%E5%B9%B4%E5%86%AC%E5%AD%A3PAT%E8%80%83%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-01-21T08:24:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/21/2019%E5%B9%B4%E5%86%AC%E5%AD%A3PAT%E8%80%83%E8%AF%95/">2019年冬季PAT考试</a>
+    <h1 class="article-title" itemprop="name">
+      单向链表和双向链表基本操作的实现（数据结构 C语言实现版)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大家吼我又来了，今天我给大家带来的是单向链表和双向链表的基本操作（基本上挺全的。。。）<br>    <strong>数据结构</strong>这门课程是学计算机的学生们感觉很重要很困难的学科。而链表也基本上算是数据结构刚入门时所写的了吧。<br>    我把自己学习数据结构的历程分享到自己的博客里，供大家学习也供我自己查阅自己的学习历程。若是感觉还不错或者有任何问题的话，欢迎加我的qq：790567648来跟我进一步的交流。hhh<br>    话不多说，我先上代码为敬，（基本上操作内我都写上注释了，再有什么看不懂的地方可以私信我聊）</p>
+<a id="more"></a>
+<p><strong>单向链表的基本操作实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">-------老规矩，头文件，宏定义以及ADT和基本数据操作的声明</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef int ElemType;</span><br><span class="line"></span><br><span class="line">typedef struct Node</span><br><span class="line">&#123;</span><br><span class="line">	ElemType data;</span><br><span class="line">	struct Node *next;</span><br><span class="line">&#125;Node, *List;</span><br><span class="line"></span><br><span class="line">List InitList();&#x2F;&#x2F;带头结点的链表的建立</span><br><span class="line">int Listlength(List L);&#x2F;&#x2F;求链表的长度</span><br><span class="line">void ListInsert(List L, int i, ElemType e);&#x2F;&#x2F;在L中第i个位置之后插入一个结点的数值为e</span><br><span class="line">void ListDelete(List L, int i);&#x2F;&#x2F;链表第i个结点的删除</span><br><span class="line">int GetElemtype(List L, int i);&#x2F;&#x2F; 返回L中第i个位置的数据元素的值</span><br><span class="line">void GetElem(List L, ElemType e);&#x2F;&#x2F;查找在链表中是否有e这个元素，有的话返回它在链表中的位置，没有的话显示无</span><br><span class="line">void ListCleaner(List L);&#x2F;&#x2F;链表的清除</span><br><span class="line">void print(List L);&#x2F;&#x2F;链表的输出</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">List InitList()&#x2F;&#x2F;带头结点的链表的建立（需要参数和不需要参数同理）</span><br><span class="line">&#123;</span><br><span class="line">	Node *last;&#x2F;&#x2F;p为插入结点，last始终指向末节点;</span><br><span class="line">	List L;</span><br><span class="line">	L &#x3D; (Node *)malloc(sizeof(Node));</span><br><span class="line">	L-&gt;next &#x3D;&#x3D; NULL;</span><br><span class="line">	last &#x3D; L;</span><br><span class="line">	ElemType elem;</span><br><span class="line">	printf(&quot;已为您创建链表，请输入每个元素的值（以空格隔开并且以-1为结尾且不计入链表之中）\n&quot;);</span><br><span class="line">	while (scanf(&quot;%d&quot;, &amp;elem) &amp;&amp; elem !&#x3D; -1)</span><br><span class="line">	&#123;</span><br><span class="line">		Node *p;</span><br><span class="line">		p &#x3D; (Node *)malloc(sizeof(Node));</span><br><span class="line">		p-&gt;data &#x3D; elem;</span><br><span class="line">		last-&gt;next &#x3D; p;</span><br><span class="line">		last &#x3D; p;</span><br><span class="line">	&#125;</span><br><span class="line">	last-&gt;next &#x3D; NULL;</span><br><span class="line">	printf(&quot;链表以创建成功！\n&quot;);</span><br><span class="line">	return L;</span><br><span class="line">&#125;</span><br><span class="line">int Listlength(L)&#x2F;&#x2F;求链表的长度</span><br><span class="line">&#123;</span><br><span class="line">	Node *p;</span><br><span class="line">	p &#x3D; L;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	while (p-&gt;next !&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		temp++;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br><span class="line">void ListInsert(List L, int i, ElemType e)&#x2F;&#x2F;在L中第i个位置之后插入一个结点的数值为e</span><br><span class="line">&#123;</span><br><span class="line">	int j &#x3D; 0;</span><br><span class="line">	Node *p, *temp;</span><br><span class="line">	p &#x3D; L;</span><br><span class="line">	while (j&lt;i)</span><br><span class="line">	&#123;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	temp &#x3D; (Node *)malloc(sizeof(Node));&#x2F;&#x2F;新建一个结点</span><br><span class="line">	temp-&gt;data &#x3D; e;</span><br><span class="line">	temp-&gt;next &#x3D; p-&gt;next;</span><br><span class="line">	p-&gt;next &#x3D; temp;</span><br><span class="line">&#125;</span><br><span class="line">void print(List L)&#x2F;&#x2F;链表的输出</span><br><span class="line">&#123;</span><br><span class="line">	List tempList;</span><br><span class="line">	tempList &#x3D; L-&gt;next;</span><br><span class="line">	while (tempList)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;, tempList-&gt;data);</span><br><span class="line">		tempList &#x3D; tempList-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void ListDelete(List L, int i)&#x2F;&#x2F;链表第i个结点的删除</span><br><span class="line">&#123;</span><br><span class="line">	if (i&lt;1 || i&gt;Listlength(L) + 1)</span><br><span class="line">	&#123;</span><br><span class="line">		exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	int j &#x3D; 0;</span><br><span class="line">	Node *p;</span><br><span class="line">	p &#x3D; L;</span><br><span class="line">	while (p&amp;&amp;j &lt; i - 1)&#x2F;&#x2F;找到第i个位置前的结点</span><br><span class="line">	&#123;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;next &#x3D; p-&gt;next-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line">int GetElemtype(List L, int Position)&#x2F;&#x2F; 返回L中第i个数据元素的值</span><br><span class="line">&#123;</span><br><span class="line">	Node *p;</span><br><span class="line">	p &#x3D; L;</span><br><span class="line">	for (int j &#x3D; 0; j &lt; Position; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	return p-&gt;data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListCleaner(List L)&#x2F;&#x2F;链表的清除</span><br><span class="line">&#123;</span><br><span class="line">	List p &#x3D; NULL, q &#x3D; NULL;&#x2F;&#x2F;让p指向当前要删除的结点，q指向p之后的结点，等p释放空间后再重复上述操作</span><br><span class="line">	p &#x3D; L-&gt;next;</span><br><span class="line">	while (p)</span><br><span class="line">	&#123;</span><br><span class="line">		q &#x3D; p-&gt;next;</span><br><span class="line">		free(p);</span><br><span class="line">		p &#x3D; q;</span><br><span class="line">	&#125;</span><br><span class="line">	L-&gt;next &#x3D; NULL;</span><br><span class="line">	printf(&quot;链表已经清除！\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line">void GetElem(List L, ElemType e)&#x2F;&#x2F;查找在链表中是否有e这个元素，有的话返回它在链表中的位置</span><br><span class="line">&#123;</span><br><span class="line">	Node *p;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	p &#x3D; L-&gt;next;</span><br><span class="line">	while (p)</span><br><span class="line">	&#123;</span><br><span class="line">		temp++;</span><br><span class="line">		if (p-&gt;data &#x3D;&#x3D; e)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;结果：该元素在第%d个位置\n&quot;, temp);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;结果：未找到相关元素！\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>自己写的main函数，大家看看就好，，，，不必当真（QAQ我知道看到这里大佬要开始吐槽我了，手下留情）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	int n, i, e;</span><br><span class="line">	List L;</span><br><span class="line">	L &#x3D; InitList();</span><br><span class="line">	printf(&quot;链表的长度为：%d\n&quot;, Listlength(L));</span><br><span class="line">	printf(&quot;此时，链表的元素为：&quot;);</span><br><span class="line">	print(L);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line"></span><br><span class="line">	printf(&quot;请输入需要插入的位置以及元素：&quot;);</span><br><span class="line">	scanf(&quot;%d %d&quot;, &amp;i, &amp;e);</span><br><span class="line">	ListInsert(L, i, e);</span><br><span class="line">	printf(&quot;此时，链表的元素为：&quot;);</span><br><span class="line">	print(L);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;此时链表的长度为：%d\n&quot;, Listlength(L));</span><br><span class="line"></span><br><span class="line">	int deletenum;</span><br><span class="line">	printf(&quot;请输入要删除的元素的位置为：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;deletenum);</span><br><span class="line">	ListDelete(L, deletenum);</span><br><span class="line">	printf(&quot;此时，链表的元素为：&quot;);</span><br><span class="line">	print(L);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;此时，链表的长度为：%d\n&quot;, Listlength(L));</span><br><span class="line"></span><br><span class="line">	int test;</span><br><span class="line">	printf(&quot;请输入要查询第几个位置的元素：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;test);</span><br><span class="line">	printf(&quot;该位置的元素为：%d\n&quot;, GetElemtype(L, test));</span><br><span class="line"></span><br><span class="line">	int temp;</span><br><span class="line">	printf(&quot;请输入此元素来查询该链表中是否有该元素：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;temp);</span><br><span class="line">	GetElem(L, temp);</span><br><span class="line"></span><br><span class="line">	printf(&quot;正在进行清空操作，请稍候。。。\n&quot;);</span><br><span class="line">	ListCleaner(L);</span><br><span class="line">	printf(&quot;此时，链表的长度为：%d\n&quot;, Listlength(L));</span><br><span class="line">	</span><br><span class="line">	printf(&quot;恭喜您以完成全部操作！\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>双向链表的基本操作实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">typedef int ElemType;</span><br><span class="line"></span><br><span class="line">typedef struct DuLNode &#123;</span><br><span class="line">	ElemType data;</span><br><span class="line">	struct DuLNode *prior;</span><br><span class="line">	struct DuLNode *next;</span><br><span class="line">&#125;DuLNode,*DuLinkList;</span><br><span class="line"></span><br><span class="line">DuLinkList InitList();&#x2F;&#x2F;带头结点的链表的建立</span><br><span class="line">int Listlength(DuLinkList L);&#x2F;&#x2F;求链表的长度</span><br><span class="line">void ListInsert(DuLinkList L, int i, ElemType e);&#x2F;&#x2F;在L中第i个位置之后插入一个结点的数值为e</span><br><span class="line">void ListDelete(DuLinkList L, int i);&#x2F;&#x2F;链表第i个结点的删除</span><br><span class="line">int GetElemtype(DuLinkList L, int i);&#x2F;&#x2F; 返回L中第i个位置的数据元素的值</span><br><span class="line">void GetElem(DuLinkList L, ElemType e);&#x2F;&#x2F;查找在链表中是否有e这个元素，有的话返回它在链表中的位置，没有的话显示无</span><br><span class="line">void ListCleaner(DuLinkList L);&#x2F;&#x2F;链表的清除</span><br><span class="line">void print(DuLinkList L);&#x2F;&#x2F;链表的输出</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line">DuLinkList InitList()</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList L,Last;</span><br><span class="line">	L &#x3D; (DuLinkList)malloc(sizeof(DuLinkList));</span><br><span class="line">	L-&gt;prior &#x3D; NULL;</span><br><span class="line">	L-&gt;next &#x3D; NULL;</span><br><span class="line">	Last &#x3D; L;&#x2F;&#x2F;last一直指向链表的最后一个元素，便于循环内部的初始化链表的值</span><br><span class="line">	int data;</span><br><span class="line">	printf(&quot;请输入双向链表的值:(以空格为间隔，结尾为-1且不算在链表中)&quot;);</span><br><span class="line">	while (scanf(&quot;%d&quot;,&amp;data)&amp;&amp;data!&#x3D;-1)&#x2F;&#x2F;出现-1则跳出循环，-1不在链表之内</span><br><span class="line">	&#123;</span><br><span class="line">		DuLNode *p &#x3D; (DuLNode *)malloc(sizeof(DuLNode));</span><br><span class="line">		p-&gt;data &#x3D; data;</span><br><span class="line">		Last-&gt;next&#x3D;p;</span><br><span class="line">		p-&gt;prior &#x3D; Last;</span><br><span class="line">		p-&gt;next &#x3D; NULL;</span><br><span class="line">		Last &#x3D; p;</span><br><span class="line">	&#125;</span><br><span class="line">	Last-&gt;next &#x3D; NULL;&#x2F;&#x2F;最后last指向最后一个有效的结点p，使其的next指向NULL</span><br><span class="line">	return L;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int Listlength(DuLinkList L)</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList p;</span><br><span class="line">	p &#x3D; L;</span><br><span class="line">	int length &#x3D; 0;</span><br><span class="line">	while (p-&gt;next)&#x2F;&#x2F;若p-&gt;next不空，则temp++，temp即为链表的长度</span><br><span class="line">	&#123;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">		length++;</span><br><span class="line">	&#125;</span><br><span class="line">	return length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int GetElemtype(DuLinkList L, int i)</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList p &#x3D; L;</span><br><span class="line">	int j &#x3D; 0;</span><br><span class="line">	if (L&#x3D;NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		while (p-&gt;next&amp;&amp;j &lt; i)&#x2F;&#x2F;找到第i个元素所在的位置</span><br><span class="line">		&#123;</span><br><span class="line">			p &#x3D; p-&gt;next;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;&#x2F;&#x2F;跳出循环时p当前的位置即为第i个元素所在的位置(判断并输出的条件是j&#x3D;&#x3D;i)</span><br><span class="line">		if (j&#x3D;&#x3D;i)</span><br><span class="line">		&#123;</span><br><span class="line">			return p-&gt;data;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void GetElem(DuLinkList L, ElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList p &#x3D; L;</span><br><span class="line">	int temp &#x3D; 0;</span><br><span class="line">	while (p-&gt;next)&#x2F;&#x2F;p-&gt;next若不空，则继续进行遍历，知道找到p</span><br><span class="line">	&#123;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">		temp++;</span><br><span class="line">		if (p-&gt;data&#x3D;&#x3D;e)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;存在该元素，且它的位置在链表的第%d个位置上\n&quot;, temp);</span><br><span class="line">			temp &#x3D; -1;&#x2F;&#x2F;若元素在最后一个位置上，则下面的话也会输出，所以改变temp的值，使其跳出循环时不会被下面的判断句所接收</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (temp&gt;0)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;该链表中不存在该元素！\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListCleaner(DuLinkList L)</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList p;</span><br><span class="line">	p &#x3D; L-&gt;next;&#x2F;&#x2F;L为头结点，所以p要指向链表中第一个有效的结点即头结点的next</span><br><span class="line">	while (p)</span><br><span class="line">	&#123;</span><br><span class="line">		L-&gt;next &#x3D; p-&gt;next;&#x2F;&#x2F;将L-&gt;next指向p-&gt;next，便于删除p时影响链表的结构</span><br><span class="line">		free(p);</span><br><span class="line">		p &#x3D; L-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;链表已清除完毕！\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void print(DuLinkList L)</span><br><span class="line">&#123;</span><br><span class="line">	int i &#x3D; 1;</span><br><span class="line">	DuLinkList p &#x3D; L-&gt;next;</span><br><span class="line">	while (p)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;链表的第%d个元素为：%d\n&quot;, i, p-&gt;data);</span><br><span class="line">		i++;</span><br><span class="line">		p &#x3D; p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListInsert(DuLinkList L, int i, ElemType e)</span><br><span class="line">&#123;</span><br><span class="line">	DuLinkList p &#x3D; L-&gt;next;</span><br><span class="line">	int j &#x3D; 0;</span><br><span class="line">	if (i&lt;0||i&gt;Listlength(L))</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;所插入的位置不存在！\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		while (p&amp;&amp;j &lt; i - 1)&#x2F;&#x2F;找到p为所要插入的位置(即i之后的位置)</span><br><span class="line">		&#123;</span><br><span class="line">			p &#x3D; p-&gt;next;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (i&#x3D;&#x3D;0)&#x2F;&#x2F;想在头结点之后插入元素时</span><br><span class="line">		&#123;</span><br><span class="line">			DuLinkList inserted;</span><br><span class="line">			inserted &#x3D; (DuLinkList)malloc(sizeof(DuLinkList));</span><br><span class="line">			&#x2F;&#x2F;四步走，把四个线连起来</span><br><span class="line">			inserted-&gt;data &#x3D; e;</span><br><span class="line">			L-&gt;next &#x3D; inserted;</span><br><span class="line">			inserted-&gt;prior &#x3D; L;</span><br><span class="line">			inserted-&gt;next &#x3D; p;</span><br><span class="line">			p-&gt;prior &#x3D; inserted;</span><br><span class="line">		&#125;</span><br><span class="line">		else if (p-&gt;next)&#x2F;&#x2F;i&gt;0&amp;&amp;p之后还有结点时</span><br><span class="line">		&#123;</span><br><span class="line">			DuLinkList inserted;</span><br><span class="line">			inserted &#x3D; (DuLinkList)malloc(sizeof(DuLinkList));</span><br><span class="line">			inserted-&gt;data &#x3D; e;</span><br><span class="line">			&#x2F;&#x2F;四步走，把四个线连起来</span><br><span class="line">			inserted-&gt;next &#x3D; p-&gt;next;</span><br><span class="line">			p-&gt;next-&gt;prior &#x3D; inserted;</span><br><span class="line">			p-&gt;next &#x3D; inserted;</span><br><span class="line">			inserted-&gt;prior &#x3D; p;</span><br><span class="line">			printf(&quot;插入成功！\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;&#x2F;&#x2F;i&gt;0&amp;&amp;p为链表最后一个结点时</span><br><span class="line">			DuLinkList inserted;</span><br><span class="line">			inserted &#x3D; (DuLinkList)malloc(sizeof(DuLinkList));</span><br><span class="line">			inserted-&gt;data &#x3D; e;</span><br><span class="line">			&#x2F;&#x2F;三步走</span><br><span class="line">			p-&gt;next &#x3D; inserted;</span><br><span class="line">			inserted-&gt;prior &#x3D; p;</span><br><span class="line">			inserted-&gt;next &#x3D; NULL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ListDelete(DuLinkList L, int i)</span><br><span class="line">&#123;</span><br><span class="line">	if (i&lt;0||i&gt;Listlength(L))</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;位置不存在！\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		int j &#x3D; 0;</span><br><span class="line">		DuLinkList p &#x3D; L-&gt;next;&#x2F;&#x2F;L为头结点，所以p要指向链表中第一个有效的结点即头结点的next</span><br><span class="line">		&#x2F;&#x2F;先找到被删除结点的位置</span><br><span class="line">		while (p&amp;&amp;j &lt; i - 1)</span><br><span class="line">		&#123;</span><br><span class="line">			p &#x3D; p-&gt;next;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		if (p-&gt;next)&#x2F;&#x2F;p的next后还有结点时</span><br><span class="line">		&#123;&#x2F;&#x2F;两步走</span><br><span class="line">			p-&gt;next-&gt;prior &#x3D; p-&gt;prior;</span><br><span class="line">			p-&gt;prior-&gt;next &#x3D; p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;&#x2F;&#x2F;p为链表最后一个元素</span><br><span class="line">			p-&gt;prior-&gt;next &#x3D; NULL;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	&#x2F;&#x2F;双向链表的定义及初始化</span><br><span class="line">	DuLinkList L;</span><br><span class="line">	L &#x3D; InitList();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;求链表的长度</span><br><span class="line">	printf(&quot;该链表的长度为;%d\n&quot;, Listlength(L));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;&#x2F;&#x2F;求链表的第i个位置上的元素</span><br><span class="line">	int temp;</span><br><span class="line">	printf(&quot;请输入想要知道的第几个位置：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;temp);</span><br><span class="line">	printf(&quot;该位置上的数为:%d\n&quot;, GetElemtype(L, temp));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;求链表是否存在元素的某个值</span><br><span class="line">	printf(&quot;请输入想知道链表中是否存在该元素的值：&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;temp);</span><br><span class="line">	GetElem(L, temp);</span><br><span class="line">	&#x2F;&#x2F;遍历输出链表的元素</span><br><span class="line">	print(L);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;在链表中指定位置后插入元素</span><br><span class="line">	printf(&quot;输入你想在第几个位置之后插入元素:&quot;);</span><br><span class="line">	int yuansu, weizhi;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;weizhi);</span><br><span class="line">	printf(&quot;输入你想插入元素的值:&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;yuansu);</span><br><span class="line">	ListInsert(L, weizhi, yuansu);</span><br><span class="line">	&#x2F;&#x2F;遍历</span><br><span class="line">	print(L);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;在链表中指定位置删除元素</span><br><span class="line">	printf(&quot;输入你想删除的结点在链表中的位置:&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;weizhi);</span><br><span class="line">	ListDelete(L, weizhi);</span><br><span class="line">	&#x2F;&#x2F;遍历</span><br><span class="line">	print(L);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#x2F;&#x2F;选择是否进行摧毁链表操作</span><br><span class="line">	printf(&quot;是否选择进行摧毁链表操作，1是确定，2是不进行：&quot;);</span><br><span class="line">	int boolean;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;boolean);	</span><br><span class="line">	if (boolean&#x3D;&#x3D;1)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;链表正在删除当中。。。\n&quot;);</span><br><span class="line">		ListCleaner(L);</span><br><span class="line">		printf(&quot;该链表的长度为:%d\n&quot;, Listlength(L));</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		printf(&quot;恭喜你完成双向链表的全部基本操作!\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>双向链表代码里面的基本内容也都是参照单向链表里面写的，只不过更进一步而已。而循环链表我没再写是因为只要把最后last-next从指向NULL改为指向头结点即可。具体操作跟单向链表几乎一模一样（当然你也可以从双向链表的基础上做也就是双向循环链表hhh）</p>
+<p>还有就是，emmmm…我写的两个基本操作集里面的链表都是带头结点的，而且Ctrl A+Crtl C+Ctrl V是可以直接使用C语言编译器通过的。。。刚想起来补充上，还有一些可能想不起来了想起来的时候会更新哦！</p>
+<p>大家也要加油鸭！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PAT</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PAT//" class="article-tag-list-link color4">PAT</a>
+        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          二叉树的基本操作（数据结构）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/01/22/android-%E5%8F%B3%E4%B8%8A%E8%A7%923%E4%B8%AA%E7%82%B9%E7%9A%84menu%E8%8F%9C%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android 右上角3个点的menu菜单的创建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -262,10 +394,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
