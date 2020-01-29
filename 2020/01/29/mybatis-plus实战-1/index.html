@@ -6,31 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Android Studio | MrSun Blog</title>
+  <title>mybatis-plus实战-1 | MrSun Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrSun Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Android-Studio/index.html">
+  <meta name="description" content="1、创建数据库mybatis_plus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis-plus实战-1">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="1、创建数据库mybatis_plus">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/3.png">
+<meta property="article:published_time" content="2020-01-29T10:41:04.000Z">
+<meta property="article:modified_time" content="2020-01-29T10:57:32.679Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="DeepLearning">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="css">
-<meta property="article:tag" content="开发者">
-<meta property="article:tag" content="程序猿">
-<meta property="article:tag" content="极客">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="IT网站">
-<meta property="article:tag" content="用户体验">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="MyBatis-plus">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/1.png">
   
     <link rel="alternative" href="/atom.xml" title="MrSun Blog" type="application/atom+xml">
   
@@ -164,138 +159,239 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mybatis-plus实战-1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/android-%E5%8F%B3%E4%B8%8A%E8%A7%923%E4%B8%AA%E7%82%B9%E7%9A%84menu%E8%8F%9C%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:38:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/22/android-%E5%8F%B3%E4%B8%8A%E8%A7%923%E4%B8%AA%E7%82%B9%E7%9A%84menu%E8%8F%9C%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA/">android 右上角3个点的menu菜单的创建</a>
+    <h1 class="article-title" itemprop="name">
+      mybatis-plus实战-1
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/" class="archive-article-date">
+  	<time datetime="2020-01-29T10:41:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1、创建数据库</strong><br>mybatis_plus  </p>
+<a id="more"></a>
+<p><strong>2.创建User表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS user;</span><br><span class="line"></span><br><span class="line">CREATE TABLE user</span><br><span class="line">(</span><br><span class="line">	id BIGINT(20) NOT NULL COMMENT &#39;主键ID&#39;,</span><br><span class="line">	name VARCHAR(30) NULL DEFAULT NULL COMMENT &#39;姓名&#39;,</span><br><span class="line">	age INT(11) NULL DEFAULT NULL COMMENT &#39;年龄&#39;,</span><br><span class="line">	email VARCHAR(50) NULL DEFAULT NULL COMMENT &#39;邮箱&#39;,</span><br><span class="line">	PRIMARY KEY (id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM user;</span><br><span class="line"></span><br><span class="line">INSERT INTO user (id, name, age, email) VALUES</span><br><span class="line">(1, &#39;Jone&#39;, 18, &#39;test1@baomidou.com&#39;),</span><br><span class="line">(2, &#39;Jack&#39;, 20, &#39;test2@baomidou.com&#39;),</span><br><span class="line">(3, &#39;Tom&#39;, 28, &#39;test3@baomidou.com&#39;),</span><br><span class="line">(4, &#39;Sandy&#39;, 21, &#39;test4@baomidou.com&#39;),</span><br><span class="line">(5, &#39;Billie&#39;, 24, &#39;test5@baomidou.com&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>最后的表结构如下：  </p>
+<img src="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/1.png" class="" title="[mybatis-plus实战-1]">
+<p><strong>3、使用 Spring Initializr 快速初始化一个 Spring Boot 工程</strong><br>==Group：com.atguigu<br>Artifact：mybatis_plus<br>版本：2.0.7.RELEASE==<br>引入三个新依赖：<br>mybatis-plus-boot-starter、MySQL、lombok  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--mybatis-plus--&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;com.baomidou&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mybatis-plus-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">			&lt;version&gt;3.0.5&lt;&#x2F;version&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;!--mysql--&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;!--lombok用来简化实体类--&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>别忘下载lombok插件。<br><strong>4、配置</strong>  </p>
+<img src="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/2.png" class="" title="[mybatis-plus实战-1]">  
+<p><strong>5、编写</strong><br>新建entity文件夹后新建User类  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Integer age;</span><br><span class="line">    private String email;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建mapper文件夹后新建UserMapper接口  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface UserMapper extends BaseMapper&lt;User&gt; &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在启动类中添加MapperScan注解，文件夹就是上面创建的文件夹目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(&quot;com.atguigu.mybatisplus.mapper&quot;)</span><br><span class="line">public class MybatisPlusApplication &#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>6、测试</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest</span><br><span class="line">public class MybatisPlusApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectList() &#123;</span><br><span class="line">        System.out.println((&quot;----- selectAll method test ------&quot;));</span><br><span class="line">        &#x2F;&#x2F;UserMapper 中的 selectList() 方法的参数为 MP 内置的条件封装器 Wrapper</span><br><span class="line">        &#x2F;&#x2F;所以不填写就是无任何条件</span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectList(null);</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/3.png" class="" title="[mybatis-plus实战-1]">  
+<p>成功!</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis-plus</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
+        			<a href="/categories/MyBatis-plus//" class="article-tag-list-link color3">MyBatis-plus</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/01/22/android-studio-FloatingActionButton-%E5%9C%A8%E7%8E%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%96%B9%E5%BC%8F%EF%BC%883-4-2%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mybatis-plus实战-2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring实战-第一章-Spring之旅-2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/22/android-studio-FloatingActionButton-%E5%9C%A8%E7%8E%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%96%B9%E5%BC%8F%EF%BC%883-4-2%EF%BC%89/">android studio FloatingActionButton 在现版本的添加方式（3.4.2）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Android Studio</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Android//" class="article-tag-list-link color3">Android</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -330,9 +426,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
