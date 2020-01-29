@@ -6,31 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>MrSun Blog</title>
+  <title>Mybatis-plus实战-3 | MrSun Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrSun Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="1.Select1.1根据id查询记录：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis-plus实战-3">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="1.Select1.1根据id查询记录：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/5.png">
+<meta property="article:published_time" content="2020-01-29T10:58:32.000Z">
+<meta property="article:modified_time" content="2020-01-29T13:53:52.099Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="DeepLearning">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="css">
-<meta property="article:tag" content="开发者">
-<meta property="article:tag" content="程序猿">
-<meta property="article:tag" content="极客">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="IT网站">
-<meta property="article:tag" content="用户体验">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="MyBatis-plus">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/1.png">
   
     <link rel="alternative" href="/atom.xml" title="MrSun Blog" type="application/atom+xml">
   
@@ -164,21 +161,24 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Mybatis-plus实战-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Mybatis-plus实战-3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/">Mybatis-plus实战-3</a>
+    <h1 class="article-title" itemprop="name">
+      Mybatis-plus实战-3
     </h1>
   
 
         
         
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/" class="archive-article-date">
   	<time datetime="2020-01-29T10:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
 </a>
@@ -188,11 +188,122 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>1.Select<br>1.1根据id查询记录：  </p>
-        
-          <a class="article-more-a" href="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/#more">more >></a>
-        
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void testSelectById()&#123;</span><br><span class="line"></span><br><span class="line">    User user &#x3D; userMapper.selectById(1L);</span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：  </p>
+<img src="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/1.png" class="" title="[Mybatis-plus实战-3]">  
+<p>1.2根据多个id查询记录：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">    public void testSelectBatchIds()&#123;&#x2F;&#x2F;多个id查询</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectBatchIds(Arrays.asList(1, 2, 3));</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：  </p>
+<img src="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/2.png" class="" title="[Mybatis-plus实战-3]">  
+<p>1.3 使用map进行条件查询  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">    public void testSelectByMap()&#123;&#x2F;&#x2F;使用map封装查询条件</span><br><span class="line"></span><br><span class="line">        HashMap&lt;String, Object&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;name&quot;, &quot;Helen&quot;);</span><br><span class="line">        map.put(&quot;age&quot;, 18);</span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectByMap(map);</span><br><span class="line"></span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：  </p>
+<img src="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/3.png" class="" title="[Mybatis-plus实战-3]">  
+<blockquote>
+<p>需要注意的一点是：map中的key对应==数据库中的列名==。如：数据库user_id，实体类是userId，这时map的key需要填写user_id</p>
+</blockquote>
+<p>使用map进行条件查询的<strong>缺点</strong>：只能精确匹配，无法查询大于小于等等。</p>
+<p>1.4 分页插件<br>MyBatis Plus自带分页插件，只要简单的配置即可实现分页功能<br>在MyBatisPlusConfig中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bean</span><br><span class="line">    public PaginationInterceptor paginationInterceptor() &#123;</span><br><span class="line">        return new PaginationInterceptor();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>新建分页测试，其最终通过page对象获取相关数据：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">    public void testSelectPage() &#123;</span><br><span class="line"></span><br><span class="line">        Page&lt;User&gt; page &#x3D; new Page&lt;&gt;(1,5);&#x2F;&#x2F;第一个参数:页码，第二个参数:每页的数量</span><br><span class="line">        userMapper.selectPage(page, null);</span><br><span class="line"></span><br><span class="line">        page.getRecords().forEach(System.out::println);</span><br><span class="line">        System.out.println(page.getCurrent());&#x2F;&#x2F;当前页码</span><br><span class="line">        System.out.println(page.getPages());&#x2F;&#x2F;总页数</span><br><span class="line">        System.out.println(page.getSize());&#x2F;&#x2F;每页记录数</span><br><span class="line">        System.out.println(page.getTotal());&#x2F;&#x2F;总记录数</span><br><span class="line">        System.out.println(page.hasNext());&#x2F;&#x2F;是否有下一页内容</span><br><span class="line">        System.out.println(page.hasPrevious());&#x2F;&#x2F;是否有上页内容</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：  </p>
+<img src="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/4.png" class="" title="[Mybatis-plus实战-3]">  
+<p>1.5 分页使用map</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">    public void testSelectMapsPage() &#123;&#x2F;&#x2F;结果集是Map</span><br><span class="line"></span><br><span class="line">        Page&lt;User&gt; page &#x3D; new Page&lt;&gt;(1, 5);</span><br><span class="line"></span><br><span class="line">        IPage&lt;Map&lt;String, Object&gt;&gt; mapIPage &#x3D; userMapper.selectMapsPage(page, null);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;注意：此行必须使用 mapIPage 获取记录列表，否则会有数据类型转换错误</span><br><span class="line">        mapIPage.getRecords().forEach(System.out::println);</span><br><span class="line">        System.out.println(page.getCurrent());</span><br><span class="line">        System.out.println(page.getPages());</span><br><span class="line">        System.out.println(page.getSize());</span><br><span class="line">        System.out.println(page.getTotal());</span><br><span class="line">        System.out.println(page.hasNext());</span><br><span class="line">        System.out.println(page.hasPrevious());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.6使用条件构造器进行查询</strong><br>1.6.1 wrapper介绍  </p>
+<img src="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/5.png" class="" title="[Mybatis-plus实战-3]">  
+<p>创建一个新的测试类用于测试12种wrapper查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest</span><br><span class="line">public class QueryWrapperTests &#123;</span><br><span class="line">    </span><br><span class="line">    @Autowired</span><br><span class="line">    private UserMapper userMapper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1.6.2 12种常见语句(使用时字段均为数据库内字段)：<br>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    ge:greater and equals 大于等于</span><br><span class="line">    gt:greater than 大于</span><br><span class="line">    le:less and equals 小于等于</span><br><span class="line">    lt:less than 小于</span><br><span class="line">    isNull: 为空</span><br><span class="line">    isNotNull：不为空</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testDelete() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper</span><br><span class="line">                .isNull(&quot;name&quot;)</span><br><span class="line">                .ge(&quot;age&quot;, 12)</span><br><span class="line">                .isNotNull(&quot;email&quot;);</span><br><span class="line">        int result &#x3D; userMapper.delete(queryWrapper);</span><br><span class="line">        System.out.println(&quot;delete return count &#x3D; &quot; + result);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    eq:equals 等于</span><br><span class="line">    ne:not equals 不等于</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectOne() &#123;&#x2F;&#x2F;只能查询一条记录，多于一条便报错</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.eq(&quot;name&quot;, &quot;Tom&quot;);</span><br><span class="line"></span><br><span class="line">        User user &#x3D; userMapper.selectOne(queryWrapper);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    between: 包括</span><br><span class="line">    notBetween ：不包括</span><br><span class="line">     *&#x2F;</span><br><span class="line">@Test</span><br><span class="line">    public void testSelectCount() &#123;&#x2F;&#x2F;包括大小边界，即可以取到20和30</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.between(&quot;age&quot;, 20, 30);</span><br><span class="line"></span><br><span class="line">        Integer count &#x3D; userMapper.selectCount(queryWrapper);</span><br><span class="line">        System.out.println(count);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;allEq: 所有条件都是等于的</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectList() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">        map.put(&quot;id&quot;, 2);</span><br><span class="line">        map.put(&quot;name&quot;, &quot;Jack&quot;);</span><br><span class="line">        map.put(&quot;age&quot;, 20);</span><br><span class="line"></span><br><span class="line">        queryWrapper.allEq(map);</span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectList(queryWrapper);</span><br><span class="line"></span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    like: 包含</span><br><span class="line">    notLike: 不包含</span><br><span class="line">    likeLeft: 这个val左边模糊匹配(%val)</span><br><span class="line">    likeRight: 这个val右面模糊匹配(val%)</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectMaps() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper</span><br><span class="line">                .notLike(&quot;name&quot;, &quot;e&quot;)</span><br><span class="line">                .likeRight(&quot;email&quot;, &quot;t&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; maps &#x3D; userMapper.selectMaps(queryWrapper);&#x2F;&#x2F;返回值是Map列表</span><br><span class="line">        maps.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    in: notIn(&quot;age&quot;,&#123;1,2,3&#125;)---&gt;age not in (1,2,3)</span><br><span class="line">    notIn: notIn(&quot;age&quot;, 1, 2, 3)---&gt;age not in (1,2,3)</span><br><span class="line">    inSql:子查询中包括 ：inSql(&quot;age&quot;, &quot;1,2,3,4,5,6&quot;)---&gt;age in (1,2,3,4,5,6)；inSql(&quot;id&quot;, &quot;select id from table where id &lt; 3&quot;)---&gt;id in (select id from table where id &lt; 3)</span><br><span class="line">    notinSql: 子查询中不包括：</span><br><span class="line">    exists:</span><br><span class="line">    notExists:</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectObjs() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        &#x2F;&#x2F;queryWrapper.in(&quot;id&quot;, 1, 2, 3);</span><br><span class="line">        queryWrapper.inSql(&quot;id&quot;, &quot;select id from user where id &lt; 3&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;Object&gt; objects &#x3D; userMapper.selectObjs(queryWrapper);&#x2F;&#x2F;返回值是Object列表</span><br><span class="line">        objects.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    不调用or则默认为使用 and ，</span><br><span class="line">    or表示或</span><br><span class="line">    and表示和</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testUpdate1() &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;修改值</span><br><span class="line">        User user &#x3D; new User();</span><br><span class="line">        user.setAge(99);</span><br><span class="line">        user.setName(&quot;Andy&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;修改条件</span><br><span class="line">        UpdateWrapper&lt;User&gt; userUpdateWrapper &#x3D; new UpdateWrapper&lt;&gt;();</span><br><span class="line">        userUpdateWrapper</span><br><span class="line">                .like(&quot;name&quot;, &quot;h&quot;)</span><br><span class="line">                .or()</span><br><span class="line">                .between(&quot;age&quot;, 20, 30);</span><br><span class="line"></span><br><span class="line">        int result &#x3D; userMapper.update(user, userUpdateWrapper);</span><br><span class="line"></span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">   使用lambda表达式进行嵌套or、嵌套and操作，跟testUpdate1类似，</span><br><span class="line">   当需要组装较为复杂的sql查询条件时，可以使用lambda表达式提升语句优先级，即可做到嵌套</span><br><span class="line">    *&#x2F;</span><br><span class="line">   @Test</span><br><span class="line">   public void testUpdate2() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F;修改值</span><br><span class="line">       User user &#x3D; new User();</span><br><span class="line">       user.setAge(99);</span><br><span class="line">       user.setName(&quot;Andy&quot;);</span><br><span class="line"></span><br><span class="line">       &#x2F;&#x2F;修改条件</span><br><span class="line">       UpdateWrapper&lt;User&gt; userUpdateWrapper &#x3D; new UpdateWrapper&lt;&gt;();</span><br><span class="line">       userUpdateWrapper</span><br><span class="line">               .like(&quot;name&quot;, &quot;h&quot;)</span><br><span class="line">               .or(i -&gt; i.eq(&quot;name&quot;, &quot;李白&quot;).ne(&quot;age&quot;, 20));&#x2F;&#x2F;or里面有and</span><br><span class="line"></span><br><span class="line">       int result &#x3D; userMapper.update(user, userUpdateWrapper);</span><br><span class="line"></span><br><span class="line">       System.out.println(result);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>9.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">    orderBy:</span><br><span class="line">    orderByDesc:查询结果倒序排列</span><br><span class="line">    orderByAsc:查询结果正序排列</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectListOrderBy() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.orderByDesc(&quot;id&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectList(queryWrapper);</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>10.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;直接拼接到 sql 的最后，只能调用一次,多次调用以最后一次为准，谨慎使用，有sql注入风险</span><br><span class="line">&#x2F;&#x2F;在sql最后添加自定义代码片段</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectListLast() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.last(&quot;limit 1&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectList(queryWrapper);</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>11.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;指定要查询的列,不需要展示表中所有的列</span><br><span class="line">    @Test</span><br><span class="line">    public void testSelectListColumn() &#123;</span><br><span class="line"></span><br><span class="line">        QueryWrapper&lt;User&gt; queryWrapper &#x3D; new QueryWrapper&lt;&gt;();</span><br><span class="line">        queryWrapper.select(&quot;id&quot;, &quot;name&quot;, &quot;age&quot;);</span><br><span class="line"></span><br><span class="line">        List&lt;User&gt; users &#x3D; userMapper.selectList(queryWrapper);</span><br><span class="line">        users.forEach(System.out::println);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>12.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;为更新操作指定查询条件</span><br><span class="line">    @Test</span><br><span class="line">    public void testUpdateSet() &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;修改值</span><br><span class="line">        User user &#x3D; new User();</span><br><span class="line">        user.setAge(99);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;修改条件</span><br><span class="line">        UpdateWrapper&lt;User&gt; userUpdateWrapper &#x3D; new UpdateWrapper&lt;&gt;();</span><br><span class="line">        userUpdateWrapper</span><br><span class="line">                .like(&quot;name&quot;, &quot;h&quot;)</span><br><span class="line">                .set(&quot;name&quot;, &quot;老李头&quot;)&#x2F;&#x2F;除了可以查询还可以使用set设置修改的字段</span><br><span class="line">                .setSql(&quot; email &#x3D; &#39;123@qq.com&#39;&quot;);&#x2F;&#x2F;可以有子查询</span><br><span class="line"></span><br><span class="line">        int result &#x3D; userMapper.update(user, userUpdateWrapper);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -231,16 +342,75 @@
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/29/Mybatis-plus%E5%AE%9E%E6%88%98-3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mybatis-plus实战-2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -260,843 +430,14 @@
 
 
 
-
-  
-    <article id="post-mybatis-plus实战-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/">mybatis-plus实战-2</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/" class="archive-article-date">
-  	<time datetime="2020-01-29T10:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>实现CURD接口：</strong><br>1、Insert:<br>新建Insert测试类  </p>
-        
-          <a class="article-more-a" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis-plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis-plus//" class="article-tag-list-link color3">MyBatis-plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mybatis-plus实战-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/">mybatis-plus实战-1</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/" class="archive-article-date">
-  	<time datetime="2020-01-29T10:41:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1、创建数据库</strong><br>mybatis_plus  </p>
-        
-          <a class="article-more-a" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MyBatis-plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MyBatis-plus//" class="article-tag-list-link color3">MyBatis-plus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/29/mybatis-plus%E5%AE%9E%E6%88%98-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring实战-第一章-Spring之旅-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/">Spring实战-第一章-Spring之旅-2</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/" class="archive-article-date">
-  	<time datetime="2020-01-28T01:22:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>继续上节内容：  </p>
-        
-          <a class="article-more-a" href="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring实战-第一章-Spring之旅" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/27/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85/">Spring实战-第一章-Spring之旅</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/27/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85/" class="archive-article-date">
-  	<time datetime="2020-01-27T12:56:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong><em>Spring之旅</em></strong><br>Spring是一个开源框架，用于简化Java企业级应用开发，并且可以使JAVA应用变得简单，可测试和松耦合。  </p>
-        
-          <a class="article-more-a" href="/2020/01/27/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/27/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-添加总站访问量和文章访问量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E6%B7%BB%E5%8A%A0%E6%80%BB%E7%AB%99%E8%AE%BF%E9%97%AE%E9%87%8F%E5%92%8C%E6%96%87%E7%AB%A0%E8%AE%BF%E9%97%AE%E9%87%8F/">添加总站访问量和文章访问量</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/22/%E6%B7%BB%E5%8A%A0%E6%80%BB%E7%AB%99%E8%AE%BF%E9%97%AE%E9%87%8F%E5%92%8C%E6%96%87%E7%AB%A0%E8%AE%BF%E9%97%AE%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-01-22T10:22:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、配置是否开启不蒜子访问量统计功能<br>在<strong>themes/yilia/_config.yml</strong>添加属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 是否开启访问量统计功能(不蒜子)</span><br><span class="line">busuanzi:</span><br><span class="line"> enable: true</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/01/22/%E6%B7%BB%E5%8A%A0%E6%80%BB%E7%AB%99%E8%AE%BF%E9%97%AE%E9%87%8F%E5%92%8C%E6%96%87%E7%AB%A0%E8%AE%BF%E9%97%AE%E9%87%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/博客搭建//" class="article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/22/%E6%B7%BB%E5%8A%A0%E6%80%BB%E7%AB%99%E8%AE%BF%E9%97%AE%E9%87%8F%E5%92%8C%E6%96%87%E7%AB%A0%E8%AE%BF%E9%97%AE%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-修改hexo博客代码块样式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/">修改hexo博客代码块样式</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-01-22T09:36:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>直接修改编译好的文件。路径为： theme/yilia/source/main.0cf68a.css<br>修改代码背景色，搜索 .article-entry .highlight, 修改background后面的颜色</p>
-        
-          <a class="article-more-a" href="/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/博客搭建//" class="article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-由树的前序遍历和中序遍历推后序遍历-由树的中序遍历和后序遍历推前序遍历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E7%94%B1%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E7%94%B1%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/">由树的前序遍历和中序遍历推后序遍历&amp;&amp;由树的中序遍历和后序遍历推前序遍历</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/22/%E7%94%B1%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E7%94%B1%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:49:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>假设树是酱婶的  </p>
-<img src="/2020/01/22/%E7%94%B1%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E7%94%B1%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/1.png" class="" title="[由树的前序遍历和中序遍历推后序遍历&amp;&amp;由树的中序遍历和后序遍历推前序遍历]">  
-<p>首先前序遍历为 123456，中序遍历为324165，没什么问题，如果不会求前序或中序百度一下就好</p>
-        
-          <a class="article-more-a" href="/2020/01/22/%E7%94%B1%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E7%94%B1%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/22/%E7%94%B1%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E7%94%B1%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%92%8C%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E6%8E%A8%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-二叉树的基本操作（数据结构）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/">二叉树的基本操作（数据结构）</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:46:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看了很多博客许多大牛的文章，发现他们的方法即巧妙又简便，果断学习并理解。结合所学的知识，把二叉树的基本操作罗列了下来。<br>废话不多说，直接上源码，一些不容易理解的地方会有注释，要是有问题也可以私信我QQ``:790567648交个朋友互相学习鸭~</p>
-        
-          <a class="article-more-a" href="/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-单向链表和双向链表基本操作的实现（数据结构-C语言实现版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/">单向链表和双向链表基本操作的实现（数据结构 C语言实现版)</a>
-    </h1>
-  
-
-        
-        
-<a href="/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大家吼我又来了，今天我给大家带来的是单向链表和双向链表的基本操作（基本上挺全的。。。）<br>    <strong>数据结构</strong>这门课程是学计算机的学生们感觉很重要很困难的学科。而链表也基本上算是数据结构刚入门时所写的了吧。<br>    我把自己学习数据结构的历程分享到自己的博客里，供大家学习也供我自己查阅自己的学习历程。若是感觉还不错或者有任何问题的话，欢迎加我的qq：790567648来跟我进一步的交流。hhh<br>    话不多说，我先上代码为敬，（基本上操作内我都写上注释了，再有什么看不懂的地方可以私信我聊）</p>
-        
-          <a class="article-more-a" href="/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/22/%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8%E5%92%8C%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E7%89%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1131,8 +472,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
