@@ -6,21 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>理解RESTful | MrSun Blog</title>
+  <title>leetcode-数组的相对排序 | MrSun Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、REST    REST：即 Representational State Transfer，（资源）表现层状态转化。是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便， 所以正得到越来越多网站的采用。  具体说，就是 HTTP 协议里面，四个表示操作方式的动 词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET 用来获取资源POST 用来新建资">
+  <meta name="description" content="https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;relative-sort-array&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解RESTful">
-<meta property="og:url" content="http://yoursite.com/2020/01/31/%E7%90%86%E8%A7%A3RESTful/index.html">
+<meta property="og:title" content="leetcode-数组的相对排序">
+<meta property="og:url" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="一、REST    REST：即 Representational State Transfer，（资源）表现层状态转化。是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便， 所以正得到越来越多网站的采用。  具体说，就是 HTTP 协议里面，四个表示操作方式的动 词：GET、POST、PUT、DELETE。它们分别对应四种基本操作：GET 用来获取资源POST 用来新建资">
+<meta property="og:description" content="https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;relative-sort-array&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-31T13:53:45.000Z">
-<meta property="article:modified_time" content="2020-01-31T13:55:53.093Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/2.png">
+<meta property="article:published_time" content="2020-02-15T11:30:33.000Z">
+<meta property="article:modified_time" content="2020-02-15T11:46:54.892Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="协议">
-<meta property="article:tag" content="RESTful">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png">
   
     <link rel="alternative" href="/atom.xml" title="MrSun Blog" type="application/atom+xml">
   
@@ -154,14 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-理解RESTful" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-leetcode-数组的相对排序" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      理解RESTful
+      leetcode-数组的相对排序
     </h1>
   
 
@@ -172,56 +177,20 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2020/01/31/%E7%90%86%E8%A7%A3RESTful/" class="archive-article-date">
-  	<time datetime="2020-01-31T13:53:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-31</time>
+<a href="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-02-15T11:30:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、REST  </p>
-<blockquote>
-<p>REST：即 Representational State Transfer，（资源）表现层状态转化。是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便， 所以正得到越来越多网站的采用。</p>
-</blockquote>
-<p>具体说，就是 HTTP 协议里面，四个表示操作方式的动 词：<br>GET、POST、PUT、DELETE。<br>它们分别对应四种基本操作：<br>GET 用来获取资源<br>POST 用来新建资源<br>PUT 用来更新资源<br>DELETE 用来删除资源  </p>
+        <p><a href="https://leetcode-cn.com/problems/relative-sort-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/relative-sort-array/</a>  </p>
+<img src="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png" class="" title="[leetcode-数组的相对排序]">  
 <a id="more"></a>
-<p>URL示例 ：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET     &#x2F;tickets       # 获取ticket列表</span><br><span class="line">GET     &#x2F;tickets&#x2F;12    # 查看ticket 12</span><br><span class="line">POST    &#x2F;tickets       # 新建一个ticket</span><br><span class="line">PUT     &#x2F;tickets&#x2F;12    # 更新ticket 12</span><br><span class="line">PATCH   &#x2F;tickets&#x2F;12    # 更新ticket 12</span><br><span class="line">DELETE  &#x2F;tickets&#x2F;12    # 删除ticekt 12</span><br></pre></td></tr></table></figure>
-
-
-<p>二、幂等性<br>理解RESTful的幂等性，并且设计符合幂等规范的高质量RESTful API。</p>
-<p>HTTP幂等方法，是指无论调用多少次都不会有不同结果的 HTTP 方法。不管你调用一次，还是调用一百次，一千次，结果都是相同的。</p>
-<p>HTTP GET方法<br>HTTP GET方法，用于获取资源，不管调用多少次接口，结果都不会改变，所以是幂等的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET     &#x2F;tickets       # 获取ticket列表</span><br><span class="line">GET     &#x2F;tickets&#x2F;12    # 查看ticket 12</span><br></pre></td></tr></table></figure>
-
-<p>只是查询数据，不会影响到资源的变化，因此我们认为它幂等。</p>
-<p>值得注意，幂等性指的是作用于结果而非资源本身。怎么理解呢？例如，这个HTTP GET方法可能会每次得到不同的返回内容，但并不影响资源。</p>
-<p>可能你会问有这种情况么？当然有咯。例如，我们有一个接口获取当前时间，我们就应该设计成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET     &#x2F;service_time # 获取服务器当前时间</span><br></pre></td></tr></table></figure>
-
-<p>它本身不会对资源本身产生影响，因此满足幂等性。</p>
-<p>HTTP POST方法<br>HTTP POST方法是一个非幂等方法，因为调用多次，都将产生新的资源。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST    &#x2F;tickets       # 新建一个ticket</span><br></pre></td></tr></table></figure>
-
-<p>因为它会对资源本身产生影响，每次调用都会有新的资源产生，因此不满足幂等性。</p>
-<p>HTTP PUT方法<br>HTTP PUT方法是不是幂等的呢？我们来看下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PUT     &#x2F;tickets&#x2F;12    # 更新ticket 12</span><br></pre></td></tr></table></figure>
-
-<p>因为它直接把实体部分的数据替换到服务器的资源，我们多次调用它，只会产生一次影响，但是有相同结果的 HTTP 方法，所以满足幂等性。</p>
-<p>HTTP PATCH方法<br>HTTP PATCH方法是非幂等的。HTTP POST方法和HTTP PUT方法可能比较好理解，但是HTTP PATCH方法只是更新部分资源，怎么是非幂等的呢? 我们举个例子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATCH   &#x2F;tickets&#x2F;12    # 更新ticket 12</span><br></pre></td></tr></table></figure>
-
-<p>此时，我们服务端对方法的处理是，当调用一次方法，更新部分字段，将这条ticket记录的操作记录加一，这次，每次调用的资源是不是变了呢，所以它是有可能是非幂等的操作。</p>
-<p>HTTP DELETE方法<br>HTTP DELETE方法用于删除资源，会将资源删除。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE  &#x2F;tickets&#x2F;12    # 删除ticekt 12</span><br></pre></td></tr></table></figure>
-
-<p>调用一次和多次对资源产生影响是相同的，所以也满足幂等性。</p>
-<p>三、如何设计符合幂等性的高质量RESTful API<br>HTTP GET方法 vs HTTP POST方法<br>也许，你会想起一个面试题。HTTP请求的GET与POST方式有什么区别？你可能会回答到：GET方式通过URL提交数据，数据在URL中可以看到；POST方式，数据放置在HTML HEADER内提交。但是，我们现在从RESTful的资源角度来看待问题，HTTP GET方法是幂等的，所以它适合作为查询操作，HTTP POST方法是非幂等的，所以用来表示新增操作。</p>
-<p>但是，也有例外，我们有的时候可能需要把查询方法改造成HTTP POST方法。比如，超长（1k）的GET URL使用POST方法来替代，因为GET受到URL长度的限制。虽然，它不符合幂等性，但是它是一种折中的方案。</p>
-<p>HTTP POST方法 vs HTTP PUT方法<br>对于HTTP POST方法和HTTP PUT方法，我们一般的理解是POST表示创建资源，PUT表示更新资源。当然，这个是正确的理解。</p>
-<p>但是，实际上，两个方法都用于创建资源，更为本质的差别是在幂等性。HTTP POST方法是非幂等，所以用来表示创建资源，HTTP PUT方法是幂等的，因此表示更新资源更加贴切。</p>
-<p>HTTP PUT方法 vs HTTP PATCH方法<br>此时，你看会有另外一个问题。HTTP PUT方法和HTTP PATCH方法，都是用来表述更新资源，它们之间有什么区别呢？我们一般的理解是PUT表示更新全部资源，PATCH表示更新部分资源。首先，这个是我们遵守的第一准则。根据上面的描述，PATCH方法是非幂等的，因此我们在设计我们服务端的RESTful API的时候，也需要考虑。如果，我们想要明确的告诉调用者我们的资源是幂等的，我的设计更倾向于使用HTTP PUT方法。</p>
+<p>这道题我的思路是只需在arr1中找到arr2中依次出现的元素，然后放入vector中，但是需要将每一个放入vector中的元素删除，这样时间复杂度就会变小。不过我看还有计数排序的方法，也可以使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; relativeSortArray(vector&lt;int&gt; &amp;arr1, vector&lt;int&gt; &amp;arr2)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        for (auto it1 &#x3D; arr2.begin(); it1 !&#x3D; arr2.end(); it1++)</span><br><span class="line">        &#123;</span><br><span class="line">            auto it2 &#x3D; arr1.begin();</span><br><span class="line">            while (it2 !&#x3D; arr1.end())</span><br><span class="line">            &#123;</span><br><span class="line">                if (*it2 &#x3D;&#x3D; *it1)</span><br><span class="line">                &#123;</span><br><span class="line">                    V.push_back(*it2);</span><br><span class="line">                    it2 &#x3D; arr1.erase(it2);&#x2F;&#x2F;从arr1中删除it2指针指向的元素</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                    it2++;&#x2F;&#x2F;如果没匹配成功，必须要指针后移</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(arr1.begin(), arr1.end());&#x2F;&#x2F;将剩下的元素排序后再放入V中</span><br><span class="line">        for (auto i &#x3D; arr1.begin(); i !&#x3D; arr1.end(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            V.push_back(*i);</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/2.png" class="" title="[leetcode-数组的相对排序]">  
 
       
 
@@ -266,11 +235,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">协议</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RESTful</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
         		</li>
       		
 		</ul>
@@ -282,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/RESTful//" class="article-tag-list-link color3">RESTful</a>
+        			<a href="/categories/leetcode//" class="article-tag-list-link color4">leetcode</a>
         		</li>
       		
 		</ul>
@@ -337,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/01/31/%E7%90%86%E8%A7%A3RESTful/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -351,18 +328,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/05/you-get%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          you-get批量下载视频
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/30/Mybatis-plus%E5%AE%9E%E6%88%98-5/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mybatis-plus实战-5</div>
+    <a href="/2020/02/13/leetcode-%E6%8C%89%E5%A5%87%E5%81%B6%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">leetcode-按奇偶判断数组</div>
       <i class="icon-circle-right"></i>
     </a>
   
