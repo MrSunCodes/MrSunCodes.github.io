@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/2.png">
 <meta property="article:published_time" content="2020-02-15T11:30:33.000Z">
-<meta property="article:modified_time" content="2020-02-15T11:46:54.892Z">
+<meta property="article:modified_time" content="2020-02-15T11:48:48.438Z">
 <meta property="article:author" content="Chris Paul">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="leetcode">
@@ -186,8 +186,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://leetcode-cn.com/problems/relative-sort-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/relative-sort-array/</a>  </p>
-<img src="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png" class="" title="[leetcode-数组的相对排序]">  
 <a id="more"></a>
+<img src="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/1.png" class="" title="[leetcode-数组的相对排序]">  
 <p>这道题我的思路是只需在arr1中找到arr2中依次出现的元素，然后放入vector中，但是需要将每一个放入vector中的元素删除，这样时间复杂度就会变小。不过我看还有计数排序的方法，也可以使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; relativeSortArray(vector&lt;int&gt; &amp;arr1, vector&lt;int&gt; &amp;arr2)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        for (auto it1 &#x3D; arr2.begin(); it1 !&#x3D; arr2.end(); it1++)</span><br><span class="line">        &#123;</span><br><span class="line">            auto it2 &#x3D; arr1.begin();</span><br><span class="line">            while (it2 !&#x3D; arr1.end())</span><br><span class="line">            &#123;</span><br><span class="line">                if (*it2 &#x3D;&#x3D; *it1)</span><br><span class="line">                &#123;</span><br><span class="line">                    V.push_back(*it2);</span><br><span class="line">                    it2 &#x3D; arr1.erase(it2);&#x2F;&#x2F;从arr1中删除it2指针指向的元素</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                    it2++;&#x2F;&#x2F;如果没匹配成功，必须要指针后移</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(arr1.begin(), arr1.end());&#x2F;&#x2F;将剩下的元素排序后再放入V中</span><br><span class="line">        for (auto i &#x3D; arr1.begin(); i !&#x3D; arr1.end(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            V.push_back(*i);</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <img src="/2020/02/15/leetcode-%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F/2.png" class="" title="[leetcode-数组的相对排序]">  
@@ -327,6 +327,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/02/16/leetcode-1030/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          leetcode-1030
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/13/leetcode-%E6%8C%89%E5%A5%87%E5%81%B6%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
@@ -489,14 +498,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
@@ -506,6 +507,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Android Studio</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,14 +539,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
