@@ -19,12 +19,12 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/17/leetcode-976/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/17/leetcode-976/3.png">
 <meta property="article:published_time" content="2020-02-17T04:26:25.000Z">
-<meta property="article:modified_time" content="2020-02-17T04:41:25.704Z">
+<meta property="article:modified_time" content="2020-02-20T13:05:19.654Z">
 <meta property="article:author" content="Chris Paul">
+<meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="leetcode">
-<meta property="article:tag" content="���ݽṹ">
-<meta property="article:tag" content="�㷨">
-<meta property="article:tag" content="����">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/02/17/leetcode-976/1.png">
   
@@ -189,11 +189,11 @@
         <p><a href="https://leetcode-cn.com/problems/largest-perimeter-triangle/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/largest-perimeter-triangle/</a>  </p>
 <img src="/2020/02/17/leetcode-976/1.png" class="" title="[leetcode-976]">  
 <a id="more"></a>
-<p>��һ���㷨��������Ȼ��Ӻ�����ǰ��������Ϊ�����ߣ�����ȡ���α�����ÿ���ж��Ƿ��������Σ�������򷵻أ����ǵĻ����������0������һ���ͳ�ʱ��  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#x2F;&#x2F;����㷨��ʱ��</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int largestPerimeter(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        for (int i &#x3D; A.size() - 1; i &gt;&#x3D; 0; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j &#x3D; i - 1; j &gt;&#x3D; 0; j--)</span><br><span class="line">            &#123;</span><br><span class="line">                for (int m &#x3D; j - 1; m &gt;&#x3D; 0; m--)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (A[m] + A[j] &gt; A[i]) &#x2F;&#x2F;��Ϊ�����������ߴ�С����������A[m],A[j]��A[i](��Ϊ�����ҴӺ���ǰ����)������ֻ����������̵����߱ȵ����ߴ󼴿�</span><br><span class="line">                    &#123;</span><br><span class="line">                        return A[i] + A[j] + A[m];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>第一个算法：先排序，然后从后面往前遍历，因为是三边，所以取三次遍历，每次判断是否是三角形，如果是则返回，不是的话最后函数跳出0，但是一看就超时了  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#x2F;&#x2F;这个算法超时了</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int largestPerimeter(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        for (int i &#x3D; A.size() - 1; i &gt;&#x3D; 0; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j &#x3D; i - 1; j &gt;&#x3D; 0; j--)</span><br><span class="line">            &#123;</span><br><span class="line">                for (int m &#x3D; j - 1; m &gt;&#x3D; 0; m--)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (A[m] + A[j] &gt; A[i]) &#x2F;&#x2F;因为是三角形三边从小到大依次是A[m],A[j]和A[i](因为排序并且从后向前遍历)，所以只需三角形最短的两边比第三边大即可</span><br><span class="line">                    &#123;</span><br><span class="line">                        return A[i] + A[j] + A[m];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <img src="/2020/02/17/leetcode-976/2.png" class="" title="[leetcode-976]">  
-<p>�ڶ����㷨���ڵ�һ���㷨�Ļ����ϸĽ�����Ϊ����������Σ��϶����������:�����ź���֮������Ϊ1,3,5,7.ȡ����3,5,7��1,5,7��1,3,5����ȡ����ʵ�������3,5,7�޷���������Σ���ô1,5,7һ��Ҳ�����ԣ���Ϊ1��3С��<br>��������ֻ��һ����СΪ3�Ļ������ڣ�Ȼ������������ǰ�ƶ����ɡ�</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int largestPerimeter(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        for (int i &#x3D; A.size() - 3; i &gt;&#x3D; 0; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            if (A[i]+A[i+1]&gt;A[i+2])&#x2F;&#x2F;��Ϊ��С����ΪA[i]��A[i+1]��A[i+2]��ֻҪ������С������֮�ʹ��ڵ����߼���</span><br><span class="line">            &#123;</span><br><span class="line">                return A[i]+A[i+1]+A[i+2];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>第二个算法：在第一个算法的基础上改进，因为如果遍历三次，肯定是这种情况:比如排好序之后数组为1,3,5,7.取得是3,5,7；1,5,7；1,3,5这样取。但实际上如果3,5,7无法组成三角形，那么1,5,7一定也不可以，因为1比3小。<br>所以我们只需一个大小为3的滑动窗口，然后从数组最后往前移动即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution </span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int largestPerimeter(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        sort(A.begin(), A.end());</span><br><span class="line">        for (int i &#x3D; A.size() - 3; i &gt;&#x3D; 0; i--)</span><br><span class="line">        &#123;</span><br><span class="line">            if (A[i]+A[i+1]&gt;A[i+2])&#x2F;&#x2F;因为从小到大为A[i]，A[i+1]，A[i+2]，只要满足最小的两边之和大于第三边即可</span><br><span class="line">            &#123;</span><br><span class="line">                return A[i]+A[i+1]+A[i+2];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <img src="/2020/02/17/leetcode-976/3.png" class="" title="[leetcode-976]">  
       
 
@@ -238,19 +238,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">���ݽṹ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">�㷨</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">����</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
         		</li>
       		
 		</ul>
@@ -330,6 +330,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/02/20/leetcode-148/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          leetcode-148
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/16/leetcode-1030/" id="article-nav-older" class="article-nav-link-wrap">
@@ -472,6 +481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PAT</a>
               </li>
              
@@ -504,18 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">���ݽṹ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">�㷨</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">����</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -533,10 +534,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">you-get</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
              
               <li class="article-tag-list-item">
