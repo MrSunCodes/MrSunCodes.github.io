@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+<meta name="baidu-site-verification" content="8CbHshECuh" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="true">
+  <meta name="baidu-site-verification" content="true">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-material.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"PRXMR01NC1","apiKey":"2821ed1166fb5c3797b2f3c979cdb0b4","indexName":"hexo_search","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本实践使用多层感知器训练（DNN）模型，用于预测手写数字图片。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DL-手写数字识别">
+<meta property="og:url" content="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:site_name" content="MrSun Blog">
+<meta property="og:description" content="本实践使用多层感知器训练（DNN）模型，用于预测手写数字图片。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ai-studio-static-online.cdn.bcebos.com/ba26eac845334208851e72c7a2dfef5e1eec566894ba430aba7492e72c49cacd">
+<meta property="og:image" content="https://ai-studio-static-online.cdn.bcebos.com/daa656fb63c54dec8e0e468ba8f65e1c94ccd7debd314d8ca6d179f12f13883d">
+<meta property="og:image" content="https://ai-studio-static-online.cdn.bcebos.com/fc73217ae57f451a89badc801a903bb742e42eabd9434ecc8089efe19a66c076">
+<meta property="og:image" content="https://ai-studio-static-online.cdn.bcebos.com/cb69f928778c4299b75814179607a89eea770bdc409d4e08a87e2975cb96b19b">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/output_25_1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/output_30_0.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/infer_3.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/infer_9.jpg">
+<meta property="article:published_time" content="2020-03-09T04:36:41.000Z">
+<meta property="article:modified_time" content="2020-03-09T04:51:49.596Z">
+<meta property="article:author" content="Chris Paul">
+<meta property="article:tag" content="DeepLearning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ai-studio-static-online.cdn.bcebos.com/ba26eac845334208851e72c7a2dfef5e1eec566894ba430aba7492e72c49cacd">
+
+<link rel="canonical" href="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>DL-手写数字识别 | MrSun Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband">  	
+    </div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MrSun Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">欢迎私戳</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="algolia-results">
+  <div id="algolia-stats"></div>
+  <div id="algolia-hits"></div>
+  <div id="algolia-pagination" class="algolia-pagination"></div>
+</div>
+
+  
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+      <a href="https://github.com/MrSuncodes" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+	<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      </svg>
+</a>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/09/DL-%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pig.jpg">
+      <meta itemprop="name" content="Chris Paul">
+      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrSun Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DL-手写数字识别
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-09 12:36:41 / 修改时间：12:51:49" itemprop="dateCreated datePublished" datetime="2020-03-09T12:36:41+08:00">2020-03-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本实践使用多层感知器训练（DNN）模型，用于预测手写数字图片。</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/ba26eac845334208851e72c7a2dfef5e1eec566894ba430aba7492e72c49cacd" alt=""></p>
+<a id="more"></a>
+
+<p> 实践总体过程和步骤如下图</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/daa656fb63c54dec8e0e468ba8f65e1c94ccd7debd314d8ca6d179f12f13883d" alt=""></p>
+<p>首先导入必要的包</p>
+<p>numpy———-&gt;python第三方库，用于进行科学计算</p>
+<p>PIL————&gt; Python Image Library,python第三方图像处理库</p>
+<p>matplotlib—–&gt;python的绘图库 pyplot:matplotlib的绘图框架</p>
+<p>os————-&gt;提供了丰富的方法来处理文件和目录</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入需要的包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> paddle <span class="keyword">as</span> paddle</span><br><span class="line"><span class="keyword">import</span> paddle.fluid <span class="keyword">as</span> fluid</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step1：准备数据。"><a href="#Step1：准备数据。" class="headerlink" title="Step1：准备数据。"></a><strong>Step1：准备数据。</strong></h1><p>(1)数据集介绍</p>
+<p>MNIST数据集包含60000个训练集和10000测试数据集。分为图片和标签，图片是28*28的像素矩阵，标签为0~9共10个数字。</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/fc73217ae57f451a89badc801a903bb742e42eabd9434ecc8089efe19a66c076" alt=""></p>
+<p>(2)train_reader和test_reader</p>
+<p>paddle.dataset.mnist.train()和test()分别用于获取mnist训练集和测试集</p>
+<p>paddle.reader.shuffle()表示每次缓存BUF_SIZE个数据项，并进行打乱</p>
+<p>paddle.batch()表示每BATCH_SIZE组成一个batch</p>
+<p>（3）打印看下数据是什么样的？PaddlePaddle接口提供的数据已经经过了归一化、居中等处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BUF_SIZE=<span class="number">512</span></span><br><span class="line">BATCH_SIZE=<span class="number">128</span></span><br><span class="line"><span class="comment">#用于训练的数据提供器，每次从缓存中随机读取批次大小的数据</span></span><br><span class="line">train_reader = paddle.batch(</span><br><span class="line">    paddle.reader.shuffle(paddle.dataset.mnist.train(),</span><br><span class="line">                          buf_size=BUF_SIZE),</span><br><span class="line">    batch_size=BATCH_SIZE)</span><br><span class="line"><span class="comment">#用于训练的数据提供器，每次从缓存中随机读取批次大小的数据</span></span><br><span class="line">test_reader = paddle.batch(</span><br><span class="line">    paddle.reader.shuffle(paddle.dataset.mnist.test(),</span><br><span class="line">                          buf_size=BUF_SIZE),</span><br><span class="line">    batch_size=BATCH_SIZE)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#用于打印，查看mnist数据</span></span><br><span class="line">train_data=paddle.dataset.mnist.train();</span><br><span class="line">sampledata=next(train_data())</span><br><span class="line">print(sampledata)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[==================================================]t/train-images-idx3-ubyte.gz not found, downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+[==================================================]t/train-labels-idx1-ubyte.gz not found, downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+[==================================================]t/t10k-images-idx3-ubyte.gz not found, downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+[==================================================]t/t10k-labels-idx1-ubyte.gz not found, downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+
+
+
+
+(array([-1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -0.9764706 , -0.85882354, -0.85882354,
+       -0.85882354, -0.01176471,  0.06666672,  0.37254906, -0.79607844,
+        0.30196083,  1.        ,  0.9372549 , -0.00392157, -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -0.7647059 , -0.7176471 , -0.26274508,  0.20784318,
+        0.33333337,  0.9843137 ,  0.9843137 ,  0.9843137 ,  0.9843137 ,
+        0.9843137 ,  0.7647059 ,  0.34901965,  0.9843137 ,  0.8980392 ,
+        0.5294118 , -0.4980392 , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -0.6156863 ,  0.8666667 ,
+        0.9843137 ,  0.9843137 ,  0.9843137 ,  0.9843137 ,  0.9843137 ,
+        0.9843137 ,  0.9843137 ,  0.9843137 ,  0.96862745, -0.27058822,
+       -0.35686272, -0.35686272, -0.56078434, -0.69411767, -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -0.85882354,  0.7176471 ,  0.9843137 ,  0.9843137 ,
+        0.9843137 ,  0.9843137 ,  0.9843137 ,  0.5529412 ,  0.427451  ,
+        0.9372549 ,  0.8901961 , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -0.372549  ,  0.22352946, -0.1607843 ,  0.9843137 ,  0.9843137 ,
+        0.60784316, -0.9137255 , -1.        , -0.6627451 ,  0.20784318,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -0.8901961 ,
+       -0.99215686,  0.20784318,  0.9843137 , -0.29411763, -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        ,  0.09019613,
+        0.9843137 ,  0.4901961 , -0.9843137 , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -0.9137255 ,  0.4901961 ,  0.9843137 ,
+       -0.45098037, -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -0.7254902 ,  0.8901961 ,  0.7647059 ,  0.254902  ,
+       -0.15294117, -0.99215686, -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -0.36470586,  0.88235295,  0.9843137 ,  0.9843137 , -0.06666666,
+       -0.8039216 , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -0.64705884,
+        0.45882356,  0.9843137 ,  0.9843137 ,  0.17647064, -0.7882353 ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -0.8745098 , -0.27058822,
+        0.9764706 ,  0.9843137 ,  0.4666667 , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        ,  0.9529412 ,  0.9843137 ,
+        0.9529412 , -0.4980392 , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -0.6392157 ,  0.0196079 ,
+        0.43529415,  0.9843137 ,  0.9843137 ,  0.62352943, -0.9843137 ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -0.69411767,
+        0.16078436,  0.79607844,  0.9843137 ,  0.9843137 ,  0.9843137 ,
+        0.9607843 ,  0.427451  , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -0.8117647 , -0.10588235,  0.73333335,  0.9843137 ,  0.9843137 ,
+        0.9843137 ,  0.9843137 ,  0.5764706 , -0.38823527, -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -0.81960785, -0.4823529 ,  0.67058825,  0.9843137 ,
+        0.9843137 ,  0.9843137 ,  0.9843137 ,  0.5529412 , -0.36470586,
+       -0.9843137 , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -0.85882354,  0.3411765 ,  0.7176471 ,
+        0.9843137 ,  0.9843137 ,  0.9843137 ,  0.9843137 ,  0.5294118 ,
+       -0.372549  , -0.92941177, -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -0.5686275 ,  0.34901965,
+        0.77254903,  0.9843137 ,  0.9843137 ,  0.9843137 ,  0.9843137 ,
+        0.9137255 ,  0.04313731, -0.9137255 , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        ,  0.06666672,  0.9843137 ,  0.9843137 ,  0.9843137 ,
+        0.6627451 ,  0.05882359,  0.03529418, -0.8745098 , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        , -1.        ,
+       -1.        , -1.        , -1.        , -1.        ], dtype=float32), 5)</code></pre><h1 id="Step2-网络配置"><a href="#Step2-网络配置" class="headerlink" title="Step2.网络配置"></a><strong>Step2.网络配置</strong></h1><p>以下的代码判断就是定义一个简单的多层感知器，一共有三层，两个大小为100的隐层和一个大小为10的输出层，因为MNIST数据集是手写0到9的灰度图像，类别有10个，所以最后的输出大小是10。最后输出层的激活函数是Softmax，所以最后的输出层相当于一个分类器。加上一个输入层的话，多层感知器的结构是：输入层–&gt;&gt;隐层–&gt;&gt;隐层–&gt;&gt;输出层。</p>
+<p><img src="https://ai-studio-static-online.cdn.bcebos.com/cb69f928778c4299b75814179607a89eea770bdc409d4e08a87e2975cb96b19b" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义多层感知器 </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">multilayer_perceptron</span><span class="params">(input)</span>:</span> </span><br><span class="line">    <span class="comment"># 第一个全连接层，激活函数为ReLU </span></span><br><span class="line">    hidden1 = fluid.layers.fc(input=input, size=<span class="number">100</span>, act=<span class="string">'relu'</span>) </span><br><span class="line">    <span class="comment"># 第二个全连接层，激活函数为ReLU </span></span><br><span class="line">    hidden2 = fluid.layers.fc(input=hidden1, size=<span class="number">100</span>, act=<span class="string">'relu'</span>) </span><br><span class="line">    <span class="comment"># 以softmax为激活函数的全连接输出层，输出层的大小必须为数字的个数10 </span></span><br><span class="line">    prediction = fluid.layers.fc(input=hidden2, size=<span class="number">10</span>, act=<span class="string">'softmax'</span>) </span><br><span class="line">    <span class="keyword">return</span> prediction</span><br></pre></td></tr></table></figure>
+
+<p>（2）定义数据层</p>
+<p>输入的是图像数据。图像是 28 * 28 的灰度图，所以输入的形状是[1, 28, 28]，如果图像是32*32的彩色图，那么输入的形状是[3. 32, 32]，因为灰度图只有一个通道，而彩色图有RGB三个通道。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入的原始图像数据，大小为1*28*28</span></span><br><span class="line">image = fluid.layers.data(name=<span class="string">'image'</span>, shape=[<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>], dtype=<span class="string">'float32'</span>)<span class="comment">#单通道，28*28像素值</span></span><br><span class="line"><span class="comment"># 标签，名称为label,对应输入图片的类别标签</span></span><br><span class="line">label = fluid.layers.data(name=<span class="string">'label'</span>, shape=[<span class="number">1</span>], dtype=<span class="string">'int64'</span>)          <span class="comment">#图片标签</span></span><br></pre></td></tr></table></figure>
+
+<p>（3）获取分类器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取分类器</span></span><br><span class="line">predict = multilayer_perceptron(image)</span><br></pre></td></tr></table></figure>
+
+<p>（4）定义损失函数和准确率</p>
+<p>这次使用的是交叉熵损失函数，该函数在分类任务上比较常用。</p>
+<p>定义了一个损失函数之后，还有对它求平均值，训练程序必须返回平均损失作为第一个返回值，因为它会被后面反向传播算法所用到。。</p>
+<p>同时我们还可以定义一个准确率函数，这个可以在我们训练的时候输出分类的准确率。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用交叉熵损失函数,描述真实样本标签和预测概率之间的差值</span></span><br><span class="line">cost = fluid.layers.cross_entropy(input=predict, label=label)  </span><br><span class="line"><span class="comment"># 使用类交叉熵函数计算predict和label之间的损失函数</span></span><br><span class="line">avg_cost = fluid.layers.mean(cost)</span><br><span class="line"><span class="comment"># 计算分类准确率</span></span><br><span class="line">acc = fluid.layers.accuracy(input=predict, label=label)</span><br></pre></td></tr></table></figure>
+
+<p>（5）定义优化函数</p>
+<p>这次我们使用的是Adam优化方法，同时指定学习率为0.001</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#使用Adam算法进行优化, learning_rate 是学习率(它的大小与网络的训练收敛速度有关系)</span></span><br><span class="line">optimizer = fluid.optimizer.AdamOptimizer(learning_rate=<span class="number">0.001</span>)  </span><br><span class="line">opts = optimizer.minimize(avg_cost)</span><br></pre></td></tr></table></figure>
+
+<p>在上述模型配置完毕后，得到两个fluid.Program：fluid.default_startup_program() 与fluid.default_main_program() 配置完毕了。</p>
+<p>参数初始化操作会被写入fluid.default_startup_program()</p>
+<p>fluid.default_main_program()用于获取默认或全局main program(主程序)。该主程序用于训练和测试模型。fluid.layers 中的所有layer函数可以向 default_main_program 中添加算子和变量。default_main_program 是fluid的许多编程接口（API）的Program参数的缺省值。例如,当用户program没有传入的时候， Executor.run() 会默认执行 default_main_program 。</p>
+<h1 id="Step3-模型训练-and-Step4-模型评估"><a href="#Step3-模型训练-and-Step4-模型评估" class="headerlink" title="Step3.模型训练 and Step4.模型评估"></a><strong>Step3.模型训练 and Step4.模型评估</strong></h1><p>（1）创建训练的Executor</p>
+<p>首先定义运算场所 fluid.CPUPlace()和 fluid.CUDAPlace(0)分别表示运算场所为CPU和GPU</p>
+<p>Executor:接收传入的program，通过run()方法运行program。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义使用CPU还是GPU，使用CPU时use_cuda = False,使用GPU时use_cuda = True</span></span><br><span class="line">use_cuda = <span class="literal">False</span></span><br><span class="line">place = fluid.CUDAPlace(<span class="number">0</span>) <span class="keyword">if</span> use_cuda <span class="keyword">else</span> fluid.CPUPlace()</span><br><span class="line"><span class="comment"># 获取测试程序</span></span><br><span class="line">test_program = fluid.default_main_program().clone(for_test=<span class="literal">True</span>)</span><br><span class="line">exe = fluid.Executor(place)</span><br><span class="line">exe.run(fluid.default_startup_program())</span><br></pre></td></tr></table></figure>
+
+<p>（2）告知网络传入的数据分为两部分，第一部分是image值，第二部分是label值</p>
+<p>DataFeeder负责将数据提供器（train_reader,test_reader）返回的数据转成一种特殊的数据结构，使其可以输入到Executor中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">feeder = fluid.DataFeeder(place=place, feed_list=[image, label])</span><br></pre></td></tr></table></figure>
+
+<p>(3)展示模型训练曲线</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">all_train_iter=<span class="number">0</span></span><br><span class="line">all_train_iters=[]</span><br><span class="line">all_train_costs=[]</span><br><span class="line">all_train_accs=[]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_train_process</span><span class="params">(title,iters,costs,accs,label_cost,lable_acc)</span>:</span></span><br><span class="line">    plt.title(title, fontsize=<span class="number">24</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"iter"</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"cost/acc"</span>, fontsize=<span class="number">20</span>)</span><br><span class="line">    plt.plot(iters, costs,color=<span class="string">'red'</span>,label=label_cost) </span><br><span class="line">    plt.plot(iters, accs,color=<span class="string">'green'</span>,label=lable_acc) </span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.grid()</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>（4）训练并保存模型</p>
+<p>训练需要有一个训练程序和一些必要参数，并构建了一个获取训练过程中测试误差的函数。必要参数有executor,program,reader,feeder,fetch_list。</p>
+<p><strong>executor</strong>表示之前创建的执行器</p>
+<p><strong>program</strong>表示执行器所执行的program，是之前创建的program，如果该项参数没有给定的话则默认使用defalut_main_program</p>
+<p><strong>reader</strong>表示读取到的数据</p>
+<p><strong>feeder</strong>表示前向输入的变量</p>
+<p><strong>fetch_list</strong>表示用户想得到的变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">EPOCH_NUM=<span class="number">2</span></span><br><span class="line">model_save_dir = <span class="string">"/home/aistudio/work/hand.inference.model"</span></span><br><span class="line"><span class="keyword">for</span> pass_id <span class="keyword">in</span> range(EPOCH_NUM):</span><br><span class="line">    <span class="comment"># 进行训练</span></span><br><span class="line">    <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(train_reader()):                         <span class="comment">#遍历train_reader</span></span><br><span class="line">        train_cost, train_acc = exe.run(program=fluid.default_main_program(),<span class="comment">#运行主程序</span></span><br><span class="line">                                        feed=feeder.feed(data),              <span class="comment">#给模型喂入数据</span></span><br><span class="line">                                        fetch_list=[avg_cost, acc])          <span class="comment">#fetch 误差、准确率  </span></span><br><span class="line">        </span><br><span class="line">        all_train_iter=all_train_iter+BATCH_SIZE</span><br><span class="line">        all_train_iters.append(all_train_iter)</span><br><span class="line">        </span><br><span class="line">        all_train_costs.append(train_cost[<span class="number">0</span>])</span><br><span class="line">        all_train_accs.append(train_acc[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 每200个batch打印一次信息  误差、准确率</span></span><br><span class="line">        <span class="keyword">if</span> batch_id % <span class="number">200</span> == <span class="number">0</span>:</span><br><span class="line">            print(<span class="string">'Pass:%d, Batch:%d, Cost:%0.5f, Accuracy:%0.5f'</span> %</span><br><span class="line">                  (pass_id, batch_id, train_cost[<span class="number">0</span>], train_acc[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 进行测试</span></span><br><span class="line">    test_accs = []</span><br><span class="line">    test_costs = []</span><br><span class="line">    <span class="comment">#每训练一轮 进行一次测试</span></span><br><span class="line">    <span class="keyword">for</span> batch_id, data <span class="keyword">in</span> enumerate(test_reader()):                         <span class="comment">#遍历test_reader</span></span><br><span class="line">        test_cost, test_acc = exe.run(program=test_program, <span class="comment">#执行训练程序</span></span><br><span class="line">                                      feed=feeder.feed(data),               <span class="comment">#喂入数据</span></span><br><span class="line">                                      fetch_list=[avg_cost, acc])           <span class="comment">#fetch 误差、准确率</span></span><br><span class="line">        test_accs.append(test_acc[<span class="number">0</span>])                                       <span class="comment">#每个batch的准确率</span></span><br><span class="line">        test_costs.append(test_cost[<span class="number">0</span>])                                     <span class="comment">#每个batch的误差</span></span><br><span class="line">        </span><br><span class="line">       </span><br><span class="line">    <span class="comment"># 求测试结果的平均值</span></span><br><span class="line">    test_cost = (sum(test_costs) / len(test_costs))                         <span class="comment">#每轮的平均误差</span></span><br><span class="line">    test_acc = (sum(test_accs) / len(test_accs))                            <span class="comment">#每轮的平均准确率</span></span><br><span class="line">    print(<span class="string">'Test:%d, Cost:%0.5f, Accuracy:%0.5f'</span> % (pass_id, test_cost, test_acc))</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#保存模型</span></span><br><span class="line">    <span class="comment"># 如果保存路径不存在就创建</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(model_save_dir):</span><br><span class="line">    os.makedirs(model_save_dir)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">'save models to %s'</span> % (model_save_dir))</span><br><span class="line">fluid.io.save_inference_model(model_save_dir,   <span class="comment">#保存推理model的路径</span></span><br><span class="line">                                  [<span class="string">'image'</span>],    <span class="comment">#推理（inference）需要 feed 的数据</span></span><br><span class="line">                                  [predict],    <span class="comment">#保存推理（inference）结果的 Variables</span></span><br><span class="line">                                  exe)             <span class="comment">#executor 保存 inference model</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">'训练模型保存完成！'</span>)</span><br><span class="line">draw_train_process(<span class="string">"training"</span>,all_train_iters,all_train_costs,all_train_accs,<span class="string">"trainning cost"</span>,<span class="string">"trainning acc"</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Pass:0, Batch:0, Cost:2.62739, Accuracy:0.17188
+Pass:0, Batch:200, Cost:0.31689, Accuracy:0.87500
+Pass:0, Batch:400, Cost:0.28762, Accuracy:0.92188
+Test:0, Cost:0.22491, Accuracy:0.93008
+Pass:1, Batch:0, Cost:0.28741, Accuracy:0.91406
+Pass:1, Batch:200, Cost:0.20729, Accuracy:0.95312
+Pass:1, Batch:400, Cost:0.20814, Accuracy:0.93750
+Test:1, Cost:0.15814, Accuracy:0.94877
+save models to /home/aistudio/work/hand.inference.model
+训练模型保存完成！</code></pre><p><img src="output_25_1.png" alt="png"></p>
+<h1 id="Step5-模型预测"><a href="#Step5-模型预测" class="headerlink" title="Step5.模型预测"></a><strong>Step5.模型预测</strong></h1><p>（1）图片预处理</p>
+<p>在预测之前，要对图像进行预处理。</p>
+<p>首先进行灰度化，然后压缩图像大小为28*28，接着将图像转换成一维向量，最后再对一维向量进行归一化处理。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_image</span><span class="params">(file)</span>:</span></span><br><span class="line">    im = Image.open(file).convert(<span class="string">'L'</span>)                        <span class="comment">#将RGB转化为灰度图像，L代表灰度图像，像素值在0~255之间</span></span><br><span class="line">    im = im.resize((<span class="number">28</span>, <span class="number">28</span>), Image.ANTIALIAS)                 <span class="comment">#resize image with high-quality 图像大小为28*28</span></span><br><span class="line">    im = np.array(im).reshape(<span class="number">1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>).astype(np.float32)<span class="comment">#返回新形状的数组,把它变成一个 numpy 数组以匹配数据馈送格式。</span></span><br><span class="line">    <span class="comment"># print(im)</span></span><br><span class="line">    im = im / <span class="number">255.0</span> * <span class="number">2.0</span> - <span class="number">1.0</span>                               <span class="comment">#归一化到【-1~1】之间</span></span><br><span class="line">    <span class="keyword">return</span> im</span><br></pre></td></tr></table></figure>
+
+<p>（2）使用Matplotlib工具显示这张图像。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">infer_path=<span class="string">'/home/aistudio/data/data1910/infer_3.png'</span></span><br><span class="line">img = Image.open(infer_path)</span><br><span class="line">plt.imshow(img)   <span class="comment">#根据数组绘制图像</span></span><br><span class="line">plt.show()        <span class="comment">#显示图像</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="output_30_0.png" alt="png"></p>
+<p>(3)创建预测用的Executer</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">infer_exe = fluid.Executor(place)</span><br><span class="line">inference_scope = fluid.core.Scope()</span><br></pre></td></tr></table></figure>
+
+<p>(4)开始预测</p>
+<p>通过fluid.io.load_inference_model，预测器会从params_dirname中读取已经训练好的模型，来对从未遇见过的数据进行预测。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加载数据并开始预测</span></span><br><span class="line"><span class="keyword">with</span> fluid.scope_guard(inference_scope):</span><br><span class="line">    <span class="comment">#获取训练好的模型</span></span><br><span class="line">    <span class="comment">#从指定目录中加载 推理model(inference model)</span></span><br><span class="line">    [inference_program,                                            <span class="comment">#推理Program</span></span><br><span class="line">     feed_target_names,                                            <span class="comment">#是一个str列表，它包含需要在推理 Program 中提供数据的变量的名称。 </span></span><br><span class="line">     fetch_targets] = fluid.io.load_inference_model(model_save_dir,<span class="comment">#fetch_targets：是一个 Variable 列表，从中我们可以得到推断结果。model_save_dir：模型保存的路径</span></span><br><span class="line">                                                    infer_exe)     <span class="comment">#infer_exe: 运行 inference model的 executor</span></span><br><span class="line">    img = load_image(infer_path)</span><br><span class="line"></span><br><span class="line">    results = infer_exe.run(program=inference_program,               <span class="comment">#运行推测程序</span></span><br><span class="line">                   feed=&#123;feed_target_names[<span class="number">0</span>]: img&#125;,           <span class="comment">#喂入要预测的img</span></span><br><span class="line">                   fetch_list=fetch_targets)                   <span class="comment">#得到推测结果,  </span></span><br><span class="line">    <span class="comment"># 获取概率最大的label</span></span><br><span class="line">    lab = np.argsort(results)                                  <span class="comment">#argsort函数返回的是result数组值从小到大的索引值</span></span><br><span class="line">    <span class="comment">#print(lab)</span></span><br><span class="line">    print(<span class="string">"该图片的预测结果的label为: %d"</span> % lab[<span class="number">0</span>][<span class="number">0</span>][<span class="number">-1</span>])     <span class="comment">#-1代表读取数组中倒数第一列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>该图片的预测结果的label为: 3</code></pre><p>测试图片下载(直接右键图片另存为即可)：<br><img src="infer_3.png" alt="png"><br><img src="infer_9.jpg" alt="jpg">  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DeepLearning/" rel="tag"><i class="fa fa-tag"></i> DeepLearning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/02/leetcode-1356/" rel="prev" title="leetcode-1356">
+      <i class="fa fa-chevron-left"></i> leetcode-1356
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Step1：准备数据。"><span class="nav-number">1.</span> <span class="nav-text">Step1：准备数据。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step2-网络配置"><span class="nav-number">2.</span> <span class="nav-text">Step2.网络配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step3-模型训练-and-Step4-模型评估"><span class="nav-number">3.</span> <span class="nav-text">Step3.模型训练 and Step4.模型评估</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step5-模型预测"><span class="nav-number">4.</span> <span class="nav-text">Step5.模型预测</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chris Paul"
+      src="/images/pig.jpg">
+  <p class="site-author-name" itemprop="name">Chris Paul</p>
+  <div class="site-description" itemprop="description">山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MrSuncodes" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MrSuncodes" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/790567648@qq.com" title="E-Mail → 790567648@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://leetcode-cn.com/problemset/all/" title="https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problemset&#x2F;all&#x2F;" rel="noopener" target="_blank">leetcode</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://pintia.cn/problem-sets?tab=0" title="https:&#x2F;&#x2F;pintia.cn&#x2F;problem-sets?tab&#x3D;0" rel="noopener" target="_blank">PAT</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chris Paul</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共28.3k字</span>
+</div>
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover"></div>
+  </div>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
+<script src="/js/algolia-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
