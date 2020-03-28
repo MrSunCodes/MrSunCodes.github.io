@@ -88,6 +88,10 @@
 <img src="/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/19.png" class="" title="[李宏毅机器学习-第三课作业]">  
 <p>这数据集加载速度！这训练速度！爽到！但记得在设置里开启硬件加速GPU，否则是不会很快的。(甚至出错),而且最重要的，google colab完全免费，我当时跑模型用的GPU是16G的显存！足足比我的小1050ti快了3倍！<br>colab大家都说不好用的原因是因为我们需要挂载google drive来存放数据集进而进行训练，而google drive只有50g的免费空间，如果数据集过大，一是国内上传速度太慢，而是如果50g不够就得缴费了。所以大家好像都不是很感冒。但！因为我们做的作业数据集是保存在李老师网盘中的，而且给了链接任何人都可以访问，所以完美的解决我们的问题！</p>
 <p>最后还有一个需要注意的点，在训练时，如果你的显存够大，那么你可以在设置batch_size时设置的大一点，但如果像我这种渣渣1050ti，最好设置50左右就可以了，64会爆(亲测)，所以如果你在运行时发现显卡爆了，你就检查一下看看是不是batch_size设置的太大了，调小一点试试。</p>
+<h1 id="Step8：kaggle-rank"><a href="#Step8：kaggle-rank" class="headerlink" title="Step8：kaggle rank"></a><strong>Step8：kaggle rank</strong></h1><p><a href="https://www.kaggle.com/c/ml2020spring-hw3/">https://www.kaggle.com/c/ml2020spring-hw3/</a>  </p>
+<img src="/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/20.png" class="" title="[李宏毅机器学习-第三课作业]">  
+<img src="/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/21.png" class="" title="[李宏毅机器学习-第三课作业]">  
+<p>这是将四个模型得到的结果传到kaggle上的分数：可以看到原始模型才0.57…而最高的得分模型就是简单的DNN模型，这样跟我们的预期也类似。<br>继续加油吧！</p>
 ]]></content>
       <categories>
         <category>Deep Learning</category>
