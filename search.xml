@@ -5,6 +5,7 @@
     <url>/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<p>其实据我上次更新已经间隔了许久。。。不是没学，而是因为要学的东西太多了，要改的东西也太多了。光作业3我大概就将近写了5天，才把他的要求全做完。(渣渣1050Ti没办法，贫穷不配深度学习)，今天将所有模型跑完以及把代码搞懂，还填了很多坑，特记录下来。我还是按照前几次作业的步骤，慢慢来，可能稍微有点变动。</p>
 <h1 id="Step1：明确目标"><a href="#Step1：明确目标" class="headerlink" title="Step1：明确目标"></a><strong>Step1：明确目标</strong></h1><p>这一次的目标是进行多分类，给你一张食物照片来分辨出它是第几类，因为没有给我们具体类的名字，所以我们就不用太在意它是什么分类，只需知道是第几类就好(我看着几个图片感觉蛋糕华夫饼啥的没啥区别。。。)<br>训练集一共9866张，验证集3430张(给我们验证集这样我们就不用在训练集中分出一部分做验证啦)，测试集3347张，其实测试集是我们最不用管的，因为根本就没有给我们任何信息，只是让我们的模型做出预测而已。</p>
+<a id="more"></a>
 <h1 id="Step2：数据预处理及Normalize"><a href="#Step2：数据预处理及Normalize" class="headerlink" title="Step2：数据预处理及Normalize"></a><strong>Step2：数据预处理及Normalize</strong></h1><img src="/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/1.jpg" class="" title="[李宏毅机器学习-第三课作业]">  
 <p>从训练集与验证集中我们可以看到，图片的命名大概是</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;类别_第几张.jpg&quot;</span><br></pre></td></tr></table></figure>
