@@ -186,7 +186,10 @@
 <h1 id="Step7：总结即优化"><a href="#Step7：总结即优化" class="headerlink" title="Step7：总结即优化"></a><strong>Step7：总结即优化</strong></h1><p>以上，我们就完成了作业2的所有内容。还是按道理可以继续优化，使用正则项，但这里我就没再写。<br>调参结果：对相同的批次(8)，相同的迭代次数(10)时，学习率0.05最好 0.8765 loss 0.2837<br>相同迭代次数10，学习率0.05，批次为10时，结果0.8759，loss0.2837<br>学习率0.05，批次为8时,迭代次数20 ，结果0.8789，loss0.2834<br>可以看出，最好的正确率大概是0.8789左右。本来想提交到kaggle上看看是否得分会提高，但不知为啥就算挂了梯子它也提交不上去，估计人太多了吧，下次再试试。<br>我自己第一遍写的代码以及最后获得的两个参数文件可以邮箱私聊找我获取。噶油！</p>
 <img src="/2020/03/19/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E8%AF%BE%E4%BD%9C%E4%B8%9A/5.png" class="" title="[李宏毅机器学习-第二课作业]">  
 <p>在kaggle上的成绩又往前提高了hh，之前两个0.86是我自己写的得到的正确率，后来的0.88617是直接跑的老师的结果得到的，0.88972是调参之后的结果。</p>
-]]></content>
+<p>正则化：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">w &#x3D; w - learning_rate &#x2F; np.sqrt(step) * (w_grad + lamda * w)</span><br><span class="line">        b &#x3D; b - learning_rate &#x2F; np.sqrt(step) * b_grad</span><br></pre></td></tr></table></figure>
+<p>这是对w进行了正则化处理，lamda是自己设定的正则项系数，我这里设置的是0.004，跑出了最好的成绩。  </p>
+<img src="/2020/03/19/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E8%AF%BE%E4%BD%9C%E4%B8%9A/6.png" class="" title="[李宏毅机器学习-第二课作业]"> ]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
