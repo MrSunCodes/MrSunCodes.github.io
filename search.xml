@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>169. 多数元素</title>
+    <url>/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/1.png" class="" title="[title]">
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;int, int&gt; P;&#x2F;&#x2F;建立map来保存每个值的个数</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[nums[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int max &#x3D; -1;</span><br><span class="line">        for (auto i &#x3D; P.begin(); i !&#x3D; P.end(); i++)&#x2F;&#x2F;遍历寻找出现次数最大的值</span><br><span class="line">        &#123;</span><br><span class="line">            if (i-&gt;second &gt; max)</span><br><span class="line">            &#123;</span><br><span class="line">                max &#x3D; i-&gt;second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/2.png" class="" title="[title]">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想</span><br><span class="line">&#x2F;&#x2F;将整个序列分成两部分，分别求两部分的出现次数最多的数；如果分开的部分只有一个元素，那么就返回那个元素。</span><br><span class="line">&#x2F;&#x2F;如果分开后两边元素返回次数最多的数是一样的，那么直接返回即可。如果不一样，则看两边元素返回值哪个出现的个数大于序列总长度的一半就返回哪个数</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int times(vector&lt;int&gt;&amp; nums, int target, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        int count &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; left; i &lt;&#x3D; right; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[i] &#x3D;&#x3D; target)</span><br><span class="line">            &#123;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">    int max(vector&lt;int&gt;&amp; nums, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        if (left &gt;&#x3D; right)</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            int mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">            int max_left &#x3D; max(nums, left, mid);</span><br><span class="line">            int max_right &#x3D; max(nums, mid + 1, right);</span><br><span class="line">            int tleft &#x3D; times(nums, max_left, left, right);</span><br><span class="line">            int tright &#x3D; times(nums, max_right, left, right);</span><br><span class="line">            if (tleft &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_left;</span><br><span class="line">            &#125;</span><br><span class="line">            if (tright &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_right;</span><br><span class="line">            &#125;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        return max(nums, 0, nums.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/3.png" class="" title="[title]">
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
+        <tag>分治算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>李宏毅机器学习-第三课作业</title>
     <url>/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/</url>
     <content><![CDATA[<p>其实据我上次更新已经间隔了许久。。。不是没学，而是因为要学的东西太多了，要改的东西也太多了。光作业3我大概就将近写了5天，才把他的要求全做完。(渣渣1050Ti没办法，贫穷不配深度学习)，今天将所有模型跑完以及把代码搞懂，还填了很多坑，特记录下来。我还是按照前几次作业的步骤，慢慢来，可能稍微有点变动。</p>
