@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>算法导论-分治策略</title>
+    <url>/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/</url>
+    <content><![CDATA[<p>接着上次学到的求解递归式，这节课学的是分治。助教主要是给了几个小例子来分析问题。</p>
+<ul>
+<li><p>归并排序<br>这个算法上节课已经说了，递归式也给出来，这里就不多赘述.  </p>
+<a id="more"></a></li>
+<li><p>二分搜索<br>实际上二分搜索也是分治策略，在排好序的序列中，每次都取中间元素进行比较，来确定下一次是从这个点的左侧或者右侧继续进行搜索。这个算法的递归式是</p>
+<blockquote>
+<p>T(n) = T(n / 2) + O(1) = O(logn)</p>
+</blockquote>
+</li>
+<li><p>求x的n次幂<br>给定浮点数或整数x和整数n，求x的n次方，实际上就是实现C++中pow()函数的功能。<br>实际上，这个问题如果不用递归的话，非常简单，只需一个for循环遍历n次，每次在原基础上乘x即可得最后结果。但这样做的时间复杂度是O(n),如果用分治策略我们可以实现更好的O(logn).<br>具体方法是：</p>
+</li>
+</ul>
+<ol>
+<li><p>n为偶数时，将x^n 分为 x^(n/2)* x^ (n/2),这样在求出x^(n/2)后只需平方一次即一次操作即可得到x的n次方。所以最后递归式为：  </p>
+<blockquote>
+<p>T(n) = T(n / 2) + O(1) = O(logn)</p>
+</blockquote>
+</li>
+<li><p>n为奇数时，将x^n 分为x^(n-1/2) * x^(n-1/2) * x,这样比n为偶数时多一次运算，递归式仍为上式。</p>
+</li>
+</ol>
+<ul>
+<li>斐波那契数列求解<br>斐波那契数列可由下式推出(这个式子我之前从未听说，不过确实是正确的)，其正确性可以很简单的通过数学归纳法证明。  <img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/1.png" class="" title="[title]">  
+这样，我们可以通过优化矩阵乘法来使其算法分治。但课程最后并未给出具体算法。</li>
+<li>Strassen算法应用于矩阵乘法<br>普通的将矩阵分块之后进行计算并没有使最初的矩阵乘法算法的时间复杂度得到明显下降。其递归式为<blockquote>
+<p>T(n) = 8T(n / 2) + O(n^2) = O(n^3)</p>
+</blockquote>
+</li>
+</ul>
+<p>不过Strassen算法通过使前面递归的次数从8次减少到7次来使得算法的复杂度降低到  </p>
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/8.webp" class="" title="[title]">  
+<p>具体做法参加下图：(我确实不知道他是怎么想出解决这个问题的方法的，他一定非常聪明吧–助教原话hh)</p>
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/2.webp" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/3.webp" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/4.webp" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/5.webp" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/6.webp" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/7.webp" class="" title="[title]">  
+
+<ul>
+<li>最大子数组问题<br>这个问题助教在课上并没有讲，但是实际上这是算法导论分治这一章的第一个例子。<br>具体就是给定一个无序数组，里面的数字有大有小，有正有负，然后需要你找到一个区间使得里面所有元素的和最大。<br>这个问题实际上我很久之前做leetcode就见过类似的题，当时使用的是dp，而实际上分治策略也是一个很好的解决此问题的方法。  <img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/9.png" class="" title="[title]">  
+<img src="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/10.jpg" class="" title="[title]">  
+注释写的已经很清楚了，算法的思路一目了然。  </li>
+</ul>
+<hr>
+<p>总体来说，分治策略是一个我们在解决问题时一个很好用的方法，但有些时候(特别是对于leetcode做题时)，有些可以用分治策略写的题也同时可以用dp做，个人觉得dp甚至更简单，时间复杂度更低。但分治策略也是一个重要的方法，需要去掌握的。</p>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>分治</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-求解递归式的三种方法</title>
     <url>/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>大三上学期学过算法课，但是这一部分当时听的时候就迷迷糊糊，感觉似懂非懂，今天看了MIT的算法导论课程（虽然有点老是2005年的）但查尔斯charles教授依然给了我很多的新的思想和帮助。</p>
@@ -1181,8 +1239,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>MyBatis-plus</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
         <tag>MyBatis-plus</tag>
       </tags>
   </entry>
@@ -1240,8 +1298,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>MyBatis-plus</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
         <tag>MyBatis-plus</tag>
       </tags>
   </entry>
@@ -1336,8 +1394,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>MyBatis-plus</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
         <tag>MyBatis-plus</tag>
       </tags>
   </entry>
@@ -1399,8 +1457,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>MyBatis-plus</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
         <tag>MyBatis-plus</tag>
       </tags>
   </entry>
@@ -1441,8 +1499,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>MyBatis-plus</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
         <tag>MyBatis-plus</tag>
       </tags>
   </entry>
@@ -1465,8 +1523,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>Spring</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1527,8 +1585,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>Spring</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>Spring</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1758,41 +1816,6 @@ save models to /home/aistudio/work/hand.inference.model
       </tags>
   </entry>
   <entry>
-    <title>怎样在Hexo上写博客</title>
-    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>编写博客的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<a id="more"></a>  
-
-<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
-<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
-<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
-<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>别忘再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>此时再使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
-<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
-<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>第一篇博客-Hexo博客的建立与部署</title>
     <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<ol>
@@ -1824,6 +1847,41 @@ save models to /home/aistudio/work/hand.inference.model
 <img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
 
 <p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怎样在Hexo上写博客</title>
+    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>编写博客的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+
+<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
+<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
+<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
+<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>别忘再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>此时再使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
+<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
+<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
