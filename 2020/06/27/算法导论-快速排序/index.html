@@ -25,31 +25,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"PRXMR01NC1","apiKey":"2821ed1166fb5c3797b2f3c979cdb0b4","indexName":"hexo_search","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrSun Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="快速排序重要性我就不多说了吧，老师上课主要是对其最差表现和最好表现以及平均表现做了数学推导，我这里简单一写，当做自己肝《导论》的记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论-快速排序">
+<meta property="og:url" content="http://yoursite.com/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="快速排序重要性我就不多说了吧，老师上课主要是对其最差表现和最好表现以及平均表现做了数学推导，我这里简单一写，当做自己肝《导论》的记录。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T14:17:37.000Z">
+<meta property="article:modified_time" content="2020-06-27T14:41:58.511Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="DeepLearning">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="css">
-<meta property="article:tag" content="开发者">
-<meta property="article:tag" content="程序猿">
-<meta property="article:tag" content="极客">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="IT网站">
-<meta property="article:tag" content="用户体验">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/archives/">
+<link rel="canonical" href="http://yoursite.com/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
 
 
 <script id="page-configurations">
@@ -57,11 +47,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>归档 | MrSun Blog</title>
+  <title>算法导论-快速排序 | MrSun Blog</title>
   
 
 
@@ -205,237 +195,148 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pig.jpg">
+      <meta itemprop="name" content="Chris Paul">
+      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrSun Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法导论-快速排序
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-06-27 22:17:37 / 修改时间：22:41:58" itemprop="dateCreated datePublished" datetime="2020-06-27T22:17:37+08:00">2020-06-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">算法导论</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 52 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-27T22:17:37+08:00"
-              content="2020-06-27">
-          06-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" itemprop="url">
-            <span itemprop="name">算法导论-快速排序</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-27T19:06:18+08:00"
-              content="2020-06-27">
-          06-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/" itemprop="url">
-            <span itemprop="name">算法导论-分治策略</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-26T22:00:28+08:00"
-              content="2020-06-26">
-          06-26
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/" itemprop="url">
-            <span itemprop="name">算法导论-求解递归式的三种方法</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-19T20:38:02+08:00"
-              content="2020-06-19">
-          06-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/" itemprop="url">
-            <span itemprop="name">剑指 Offer 42. 连续子数组的最大和</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-19T13:02:29+08:00"
-              content="2020-06-19">
-          06-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/" itemprop="url">
-            <span itemprop="name">面试题25. 合并两个排序的链表</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-18T20:55:20+08:00"
-              content="2020-06-18">
-          06-18
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/" itemprop="url">
-            <span itemprop="name">169. 多数元素</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-28T16:20:21+08:00"
-              content="2020-03-28">
-          03-28
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/" itemprop="url">
-            <span itemprop="name">李宏毅机器学习-第三课作业</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-23T18:07:30+08:00"
-              content="2020-03-23">
-          03-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/23/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-keras-demo/" itemprop="url">
-            <span itemprop="name">李宏毅机器学习-keras demo</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-19T14:50:57+08:00"
-              content="2020-03-19">
-          03-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/19/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E8%AF%BE%E4%BD%9C%E4%B8%9A/" itemprop="url">
-            <span itemprop="name">李宏毅机器学习-第二课作业</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-15T22:24:47+08:00"
-              content="2020-03-15">
-          03-15
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/15/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E8%AF%BE%E4%BD%9C%E4%B8%9A/" itemprop="url">
-            <span itemprop="name">李宏毅机器学习-第一课作业</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+        <p>快速排序重要性我就不多说了吧，老师上课主要是对其最差表现和最好表现以及平均表现做了数学推导，我这里简单一写，当做自己肝《导论》的记录。 </p>
+<a id="more"></a>
+<p>对比归并排序，快排是在原地排序，不需要额外的存储空间。而最关键的步骤就是Partition，也就是排序一个数并且将所有小于它的数以及大于它的数全部分到它的左右两边。之前这里我一直没看懂，用的是网上看的方法即外层一个while循环，里面两个while循环，然后分别从两边向中间遍历。而实际上书上给的算法是一遍从左到右遍历（跟你选的主元位置没有关系），不过确实书上的算法更好些（我大概知道为啥我当时算法才考了89分了，当时老师考试提醒我你这个快排写的不对。。我写的就是网上看的方法，但他教的是导论那本书上写的算法。。我真菜）  </p>
+<hr>
+<p>分析一下快排的性能，我这里就不做推导了，只有结论，推导书上都有。  </p>
+<ul>
+<li><p>最坏情况划分<br>每次划分都是划分为n-1个数和1个数，递归式为  </p>
+<blockquote>
+<p>T(n) = T(n-1) + T(0) + O(n) = T(n-1) + O(n) = O(n^2)[算术级数得出]</p>
+</blockquote>
+</li>
+<li><p>最好情况划分<br>每次划分都是中间划分，递归式为</p>
+<blockquote>
+<p>T(n) = 2T(n/2) + O(n) = O(nlogn)[Master定理得出]</p>
+</blockquote>
+</li>
+<li><p>平衡的划分<br>递归式为  </p>
+<blockquote>
+<p>T(n) = T(9n/10) + T(n/10) + O(n) = O(nlogn)[导论上有递归树得出]</p>
+</blockquote>
+</li>
+<li><p>对于平均情况的直观观察<br>如果每次是一次最好情况划分，一次最坏情况划分这样反复交替[好坏情况随机分布]呢？可由递归式推导出其时间复杂度仍是O(nlogn)</p>
+</li>
+</ul>
+<hr>
+<p>快速排序的随机化版本<br>由上面分析我们知道，影响快排因素的主要是输入的序列，如果输入的序列是已经排好序或者是已经逆序，那么此时就是最坏情况，那么时间复杂度跟插入排序是一样的，发挥不出快排O(nlogn)的优势，那么我们使用随机抽样的技术，使得不需要假设输入的序列是无序的，这样可以最大化的发挥快排的优势，方法有两种：</p>
+<ol>
+<li>随机打乱序列，使得序列不是排好序或逆序</li>
+<li>随机选择主元<br>这两种方法都是属于随机抽样的随机化技术，这里重点讨论下2。只需每次在选择主元之前随机生成一个随机数种子，然后用次随机数对应的序列元素同选择的主元[一般都选最后一个或者是第一个]进行交换。此时，我们就可以分析它的期望。<br>老师上课讲的式子与课本上的不一样，但老师讲的是课后题7-3用的方法，具体可以看课后题7-3，如果不会可以看课上讲的板书（是的没错，最后老师让证明那个期望的上界我没有看懂。。。我太菜了），这里就不再写出。</li>
+</ol>
+<hr>
+<p>总结，快排是一个非常有意思的算法，其思想也可以给我们很多启发。而在C++做题时可以很方便的使用sort()函数直接进行快排的调用，当然，快排是不稳定的排序算法，如果题目中给的是最后输出按某某属性排序，如果相同按输入顺序先后来输出，此时就不可以使用任何不稳定的排序算法，不过可以简单调用stable_sort(),跟sort函数使用方法一模一样只不过是稳定的排序算法。</p>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 排序</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/" rel="prev" title="算法导论-分治策略">
+      <i class="fa fa-chevron-left"></i> 算法导论-分治策略
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {

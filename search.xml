@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>算法导论-快速排序</title>
+    <url>/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p>快速排序重要性我就不多说了吧，老师上课主要是对其最差表现和最好表现以及平均表现做了数学推导，我这里简单一写，当做自己肝《导论》的记录。 </p>
+<a id="more"></a>
+<p>对比归并排序，快排是在原地排序，不需要额外的存储空间。而最关键的步骤就是Partition，也就是排序一个数并且将所有小于它的数以及大于它的数全部分到它的左右两边。之前这里我一直没看懂，用的是网上看的方法即外层一个while循环，里面两个while循环，然后分别从两边向中间遍历。而实际上书上给的算法是一遍从左到右遍历（跟你选的主元位置没有关系），不过确实书上的算法更好些（我大概知道为啥我当时算法才考了89分了，当时老师考试提醒我你这个快排写的不对。。我写的就是网上看的方法，但他教的是导论那本书上写的算法。。我真菜）  </p>
+<hr>
+<p>分析一下快排的性能，我这里就不做推导了，只有结论，推导书上都有。  </p>
+<ul>
+<li><p>最坏情况划分<br>每次划分都是划分为n-1个数和1个数，递归式为  </p>
+<blockquote>
+<p>T(n) = T(n-1) + T(0) + O(n) = T(n-1) + O(n) = O(n^2)[算术级数得出]</p>
+</blockquote>
+</li>
+<li><p>最好情况划分<br>每次划分都是中间划分，递归式为</p>
+<blockquote>
+<p>T(n) = 2T(n/2) + O(n) = O(nlogn)[Master定理得出]</p>
+</blockquote>
+</li>
+<li><p>平衡的划分<br>递归式为  </p>
+<blockquote>
+<p>T(n) = T(9n/10) + T(n/10) + O(n) = O(nlogn)[导论上有递归树得出]</p>
+</blockquote>
+</li>
+<li><p>对于平均情况的直观观察<br>如果每次是一次最好情况划分，一次最坏情况划分这样反复交替[好坏情况随机分布]呢？可由递归式推导出其时间复杂度仍是O(nlogn)</p>
+</li>
+</ul>
+<hr>
+<p>快速排序的随机化版本<br>由上面分析我们知道，影响快排因素的主要是输入的序列，如果输入的序列是已经排好序或者是已经逆序，那么此时就是最坏情况，那么时间复杂度跟插入排序是一样的，发挥不出快排O(nlogn)的优势，那么我们使用随机抽样的技术，使得不需要假设输入的序列是无序的，这样可以最大化的发挥快排的优势，方法有两种：</p>
+<ol>
+<li>随机打乱序列，使得序列不是排好序或逆序</li>
+<li>随机选择主元<br>这两种方法都是属于随机抽样的随机化技术，这里重点讨论下2。只需每次在选择主元之前随机生成一个随机数种子，然后用次随机数对应的序列元素同选择的主元[一般都选最后一个或者是第一个]进行交换。此时，我们就可以分析它的期望。<br>老师上课讲的式子与课本上的不一样，但老师讲的是课后题7-3用的方法，具体可以看课后题7-3，如果不会可以看课上讲的板书（是的没错，最后老师让证明那个期望的上界我没有看懂。。。我太菜了），这里就不再写出。</li>
+</ol>
+<hr>
+<p>总结，快排是一个非常有意思的算法，其思想也可以给我们很多启发。而在C++做题时可以很方便的使用sort()函数直接进行快排的调用，当然，快排是不稳定的排序算法，如果题目中给的是最后输出按某某属性排序，如果相同按输入顺序先后来输出，此时就不可以使用任何不稳定的排序算法，不过可以简单调用stable_sort(),跟sort函数使用方法一模一样只不过是稳定的排序算法。</p>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-分治策略</title>
     <url>/2020/06/27/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/</url>
     <content><![CDATA[<p>接着上次学到的求解递归式，这节课学的是分治。助教主要是给了几个小例子来分析问题。</p>
@@ -118,8 +162,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -137,8 +181,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -160,8 +204,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -725,8 +769,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -745,8 +789,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -767,8 +811,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -789,8 +833,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -808,8 +852,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -827,8 +871,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -846,8 +890,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -865,8 +909,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -898,8 +942,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -918,8 +962,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -938,8 +982,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -958,8 +1002,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -997,8 +1041,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1018,8 +1062,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1040,8 +1084,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1063,8 +1107,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1083,8 +1127,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1105,8 +1149,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1126,8 +1170,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1786,8 +1830,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
       </tags>
   </entry>
@@ -1811,8 +1855,43 @@ save models to /home/aistudio/work/hand.inference.model
         <category>PAT</category>
       </categories>
       <tags>
-        <tag>PAT</tag>
         <tag>数据结构</tag>
+        <tag>PAT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怎样在Hexo上写博客</title>
+    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>编写博客的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+
+<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
+<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
+<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
+<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>别忘再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>此时再使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
+<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
+<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1847,41 +1926,6 @@ save models to /home/aistudio/work/hand.inference.model
 <img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
 
 <p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怎样在Hexo上写博客</title>
-    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>编写博客的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<a id="more"></a>  
-
-<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
-<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
-<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
-<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>别忘再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>此时再使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
-<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
-<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
