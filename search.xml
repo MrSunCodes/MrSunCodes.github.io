@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>leetcode-215</title>
+    <url>/2020/06/30/leetcode-215/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">题目链接</a>  </p>
+<img src="/2020/06/30/leetcode-215/1.png" class="" title="[title]">  
+<a id="more"></a>
+<p>刚学到的算法就用到了，这是一个变相求第k小的值的问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * @lc app&#x3D;leetcode.cn id&#x3D;215 lang&#x3D;cpp</span><br><span class="line"> *</span><br><span class="line"> * [215] 数组中的第K个最大元素</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;start</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void swap(int &amp;a, int &amp;b)&#x2F;&#x2F;交换函数</span><br><span class="line">    &#123;</span><br><span class="line">        int t &#x3D; a;</span><br><span class="line">        a &#x3D; b;</span><br><span class="line">        b &#x3D; t;</span><br><span class="line">    &#125;</span><br><span class="line">    int randomPartition(vector&lt;int&gt; &amp;nums, int start, int end)&#x2F;&#x2F;进行随机化partition，不然时间复杂度会退化到O(n^2)</span><br><span class="line">    &#123;</span><br><span class="line">        int i &#x3D; rand() % (end - start + 1) + start;</span><br><span class="line">        swap(nums[i], nums[end]);</span><br><span class="line">        return partition(nums, start, end);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int partition(vector&lt;int&gt; &amp;nums, int start, int end)&#x2F;&#x2F;快排划分函数</span><br><span class="line">    &#123;</span><br><span class="line">        int i &#x3D; start - 1, j &#x3D; start;</span><br><span class="line">        int x &#x3D; nums[end];</span><br><span class="line">        while (j &lt;&#x3D; end - 1)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[j] &lt;&#x3D; x)</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                swap(nums[i], nums[j]);</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums[i + 1], nums[end]);</span><br><span class="line">        return i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    int helper(vector&lt;int&gt; &amp;nums, int start, int end, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        int i &#x3D; partition(nums, start, end);&#x2F;&#x2F;对序列进行划分一次</span><br><span class="line">        if (k &#x3D;&#x3D; i)&#x2F;&#x2F;如果划分的位置恰好为第k位，直接输出即可</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        else if (k &gt; i)&#x2F;&#x2F;如果划分的位置在k前面，那么对前面半区进行递归调用</span><br><span class="line">        &#123;</span><br><span class="line">            return helper(nums, i + 1, end, k);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            return helper(nums, start, i - 1, k);&#x2F;&#x2F;对后面半区进行递归调用</span><br><span class="line">    &#125;</span><br><span class="line">    int findKthLargest(vector&lt;int&gt; &amp;nums, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        srand(time(0));</span><br><span class="line">        return helper(nums, 0, nums.size() - 1, nums.size() - k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;end</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/30/leetcode-215/2.png" class="" title="[title]">  
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法导论-中位数和顺序统计量</title>
+    <url>/2020/06/30/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%92%8C%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1%E9%87%8F/</url>
+    <content><![CDATA[<p>这一章的篇幅只有四页，但却十分重要，因为它提出了一个重要问题的解决方法，就是在O(n)的时间复杂度下找到序列最值以及序列中第k大的值。</p>
+<a id="more"></a>
+<ul>
+<li>寻找最大最小值</li>
+</ul>
+<p>这个很简单了，只需要遍历一遍，然后记录最大或最小值，最后返回即可。</p>
+<ul>
+<li>寻找第k小的元素的期望为线性时间的选择算法</li>
+</ul>
+<p>这个算法比较重要，思想是借助快速排序的随机partition选择函数，因为这个函数的作用是在序列中随机选择一个元素并将其排列到序列中正确位置，并保证其前边所有元素小于它，后边所有元素大于它。然后判断这个元素所在位置跟要找的k的关系，如果相等那么就是正好排序的数就是第k大的数，否则就递归的在前半段或后半段进行查找。</p>
+<p>具体代码可以看一下我做的题<br><a href="https://note.youdao.com/">link</a></p>
+<p>对这个算法时间复杂度的证明，可以参考我课本上记录的内容，因为太过繁琐并且太多就不在博客上写了。</p>
+<ul>
+<li>最坏情况为线性时间的选择算法</li>
+</ul>
+<p>这个算法是助教讲的说至今为止学过最难的算法，不过有前面算法的铺垫，感觉难度还好。<br>思路是:  </p>
+<ol>
+<li>将输入的元素分成n/5取下整的组，每组5个元素，最后一组可能由剩下的n%5个元素组成。</li>
+<li>寻找这所有组里面每个组的中位数：直接对每个组的五个元素进行排序（排序可以选择任意一个稳定排序，插入排序或归并都可，课本给的是插入排序），然后就可以确定每个组的中位数了。</li>
+<li>对第二步找出的n/5取下整个中位数(因为有这么多组，每组会有一个中位数，中位数的个数就是组数)，递归调用select函数用来找出其中位数x。</li>
+<li>然后用修改过的partition函数，对找出的中位数的中位数x进行划分，让k比划分的低区中的元素数目多1，因此x是第k小的元素，并且有n-k个元素在划分的高区。</li>
+<li>剩下步骤同寻找第k小的元素最后步骤一样，如果i==k，返回x;如果i&lt;k，低区递归调用select，否则高区递归调用select。<br>总的来说，这个算法可能比之前的算法多了前面分组并找中位数的步骤。下面注重分析一下它。</li>
+</ol>
+<img src="/2020/06/30/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%92%8C%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1%E9%87%8F/1.png" class="" title="[title]">  
+<p>由这个图片我们可以清楚地看到，除了包含x的组以及最后一个可能不能被5整除的组以外，其余组至少有三个元素大于x，即最后大于x的元素至少为</p>
+<img src="/2020/06/30/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%92%8C%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1%E9%87%8F/2.png" class="" title="[title]">  
+<p>那么，第五步中调用，最多[即最坏情况]为T(7n/10+6)[由n-大于x的元素得到]<br>第一步中时间复杂度为O(n),第二步也是O(n),[用插入排序对5个元素进行排序，时间复杂度是O(1),然后对n/5个组进行排序，所以为O(n)],第三步为O(n/5),第四步为O(n),那么总的递归式为：   </p>
+<img src="/2020/06/30/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%B8%AD%E4%BD%8D%E6%95%B0%E5%92%8C%E9%A1%BA%E5%BA%8F%E7%BB%9F%E8%AE%A1%E9%87%8F/3.png" class="" title="[title]">  
+<p>那个140怎么来的暂时不用管。我们用substitution方法可以得到最后其运行时间为O(n)，因为上述五步都是最坏情况下的时间复杂度，所以总的O(n)就是这个算法的最坏情况下的时间复杂度。</p>
+<hr>
+<p>总的来说，这些个算法确实需要我们好好掌握。如果是我寻找序列中第k小的元素，我肯定先排序再输出第k个元素，但时间复杂度一定为O(nlogn)以上。但既然可以用线性时间可以解决问题，那么这个算法最好掌握。<br>顺便说一下，如果你使用这个算法去leetcode上做题的话[例如215题],很可能做的时间复杂度比直接排序要低，，原因一是现在的库里面的排序算法执行效率实在太高了，二是如果你在partition之前没有随机化的话，它的时间复杂度为退化到O(n^2),毕竟快排引入随机化就是降低其最坏情况发生的概率。<br>还有一个令我头秃的问题，我写的代码跟官方的代码基本上一样，为什么它的执行时间好高超过90%多的人16ms，我写的才148ms…比它慢了十倍。。。烦死了[还是我太菜了]</p>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>最值</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-线性时间排序</title>
     <url>/2020/06/29/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%BF%E6%80%A7%E6%97%B6%E9%97%B4%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<p>助教昨天讲的线性时间排序，主要内容有三个，决策树模型，计数排序和基数排序，桶排序没讲，估计是实验课的时候讲的吧，毕竟堆排就是实验课讲的正课没讲直接用，咱也不知道咱也不敢问。  </p>
@@ -1905,6 +1968,41 @@ save models to /home/aistudio/work/hand.inference.model
       </tags>
   </entry>
   <entry>
+    <title>怎样在Hexo上写博客</title>
+    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>编写博客的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+
+<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
+<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
+<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
+<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>别忘再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>此时再使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
+<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
+<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一篇博客-Hexo博客的建立与部署</title>
     <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<ol>
@@ -1936,41 +2034,6 @@ save models to /home/aistudio/work/hand.inference.model
 <img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
 
 <p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怎样在Hexo上写博客</title>
-    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>编写博客的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<a id="more"></a>  
-
-<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
-<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
-<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
-<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>别忘再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>此时再使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
-<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
-<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
