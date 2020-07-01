@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>算法导论-哈希表</title>
+    <url>/2020/07/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p>昨天和今天看完了MIT算法导论的两节课，哈希表以及全域哈希和完全哈希，感觉在看全域哈希和完全哈希证明部分完全蒙圈了，可能有点超出了我的水平，所以先记录下学会的部分，剩下的部分可能以后等二刷再弄懂。现在只是知道是什么，以后再知道为什么。</p>
+<a id="more"></a>
+<ul>
+<li><p>哈希表的介绍<br>因为之前肯定用过哈希表，所以我就不再多介绍了，大体就是一个数据结构，可以存储键值对，然后使得查找效率十分高效。主要讲解的还是散列函数和解决冲突的方法。</p>
+</li>
+<li><p>解决冲突的方法<br>导论里面主要讲的是链接法。如果两个key同时映射到了一个slot里面，那么只需要将其插入slot所指向的链表里面即可。</p>
+</li>
+</ul>
+<p>链接法的分析：</p>
+<blockquote>
+<p>定义装填因子a（load factor）是 n/m,即一个链的平均存储元素数。</p>
+</blockquote>
+<p>在最坏情况下,所有关键字全部映射到一个slot中，那么整个散列表退化成一个链表，查找效率便从O(1)至O(n)。</p>
+<p>在简单均匀散列的前提下（大前提），对于用链接法解决冲突的散列表，一次不成功查找的平均时间是O(1+a)。这个很好证明，因为定位到slot需要O(1)的时间，然后如果此时不成功需要进一步查找链表的话，查找的期望时间就是查找至链表末尾的期望时间也就是O(a)[平均一个slot的关键字是a],所以其最终平均时间就是O(1+a)。</p>
+<ul>
+<li>常见散列函数</li>
+</ul>
+<ol>
+<li>除法散列法<br>最常用的方法，选取m时最好是稍微大于n的质数，公式为：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">H(k)&#x3D;k  mod  m</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>乘法散列法<br>做题没用过，但步骤是先用关键字k乘上常数A(介于0-1之间，比较理想的值是(根5-1)/2),提取结果的小数部分，然后用m乘以这个值并向下取整，公式是：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">H(k)&#x3D;</span><br><span class="line">\lfloor m(kAmod1) \rfloor</span><br></pre></td></tr></table></figure>
+导论也有具体例子，这里不再展开。</li>
+<li>*全域散列法<br>这个方法是随机地选择散列函数，使之独立于要存储的关键字，不管什么样的关键字，平均性能都很好。具体用法是：<br>定义集合Zp = {0,1, ……，p-1}, *Zp = {1,2, ……，p-1},p是足够大的素数且p&gt;m,m为哈希表slot数。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">H_ab(k)&#x3D;((ak+b)mod p)mod m;</span><br></pre></td></tr></table></figure>
+这里有一个证明，即定理11.3  <img src="/2020/07/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%93%88%E5%B8%8C%E8%A1%A8/1.jpg" class="" title="[title]">  
+导论书上写了证明，这里就不在展开。<br>这里我看了一个博主写的博客挺好，留下来备用：  <blockquote>
+<p><a href="https://blog.csdn.net/lzq20115395/article/details/80517225">证明</a></p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>开放寻址法<br>分为线性探查，二次探查，双重散列。</li>
+</ul>
+<p>1.线性探查：<br>h(k,i)=(h′(k)+i) mod m，即如果当前的slot被占用，这依次往后探查空slot，知道循环一圈回到自己。但缺点是存在一次群集现象。</p>
+<p>2.二次探查：h(k,i)=(h′(k)+ c1*i+ c2 *i^2) mod m,在线性探查的基础上再加上个偏移量。缺点是存在二次群集现象。</p>
+<p>3.双重散列：h(k,i)=(h1(k)+i*h2(k)) mod m，这种探查方式是最好的，不依赖于k。无群集现象。</p>
+<p>我们来看一下定理11.6  </p>
+<img src="/2020/07/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%93%88%E5%B8%8C%E8%A1%A8/2.jpg" class="" title="[title]">  
+<p>证明导论上也有，一些步骤我也补充到书上了。</p>
+<ul>
+<li>完全哈希<br>当键值是static(即固定不变)的时候，我们可以涉及方案使得最差情况下的查询性能也很出色。可以理解为二级哈希表,每一级都是全域哈希，然后第二级哈希表的大小是第一级哈希表大小的平方，用来保证二级哈希表十分稀疏。然后定理11.9需要证明其表中出现冲突的概率小于0.5，这里没听懂。。。留个坑，以后再来填吧。。。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode-215</title>
     <url>/2020/06/30/leetcode-215/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">题目链接</a>  </p>
@@ -1970,41 +2025,6 @@ save models to /home/aistudio/work/hand.inference.model
       </tags>
   </entry>
   <entry>
-    <title>怎样在Hexo上写博客</title>
-    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>编写博客的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<a id="more"></a>  
-
-<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
-<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
-<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
-<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>别忘再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>此时再使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
-<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
-<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>第一篇博客-Hexo博客的建立与部署</title>
     <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<ol>
@@ -2036,6 +2056,41 @@ save models to /home/aistudio/work/hand.inference.model
 <img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
 
 <p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>怎样在Hexo上写博客</title>
+    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>编写博客的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+
+<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
+<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
+<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
+<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>别忘再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>此时再使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
+<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
+<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
