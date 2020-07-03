@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>leetcode-700</title>
+    <url>/2020/07/03/leetcode-700/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a></p>
+<a id="more"></a>
+<img src="/2020/07/03/leetcode-700/1.png" class="" title="[title]">  
+
+<p>非常简单，主要是对应算法导论二叉搜索树那一张顺手做的题。。。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">递归</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *searchBST(TreeNode *root, int val)</span><br><span class="line">    &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; NULL &amp;&amp; root-&gt;val &#x3D;&#x3D; val)</span><br><span class="line">        &#123;</span><br><span class="line">            return root;</span><br><span class="line">        &#125;</span><br><span class="line">        if (root-&gt;val &lt; val)</span><br><span class="line">        &#123;</span><br><span class="line">            searchBST(root-&gt;right, val);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            searchBST(root-&gt;left, val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;*</span><br><span class="line">迭代</span><br><span class="line"> *&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *searchBST(TreeNode *root, int val)</span><br><span class="line">    &#123;</span><br><span class="line">        while (root !&#x3D; NULL &amp;&amp; root-&gt;val !&#x3D; val)</span><br><span class="line">        &#123;</span><br><span class="line">            if (root-&gt;val &lt; val)</span><br><span class="line">            &#123;</span><br><span class="line">                root &#x3D; root-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                root &#x3D; root-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>迭代结果：  </p>
+<img src="/2020/07/03/leetcode-700/2.png" class="" title="[title]">  
+
+<p>递归结果：  </p>
+<img src="/2020/07/03/leetcode-700/3.png" class="" title="[title]">  
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>搜索二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法导论-二叉搜索树</title>
+    <url>/2020/07/03/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</url>
+    <content><![CDATA[<p>二叉搜素树之前数据结构课和算法课都学过，但导论里主要还是讲的证明随机构建二叉搜索树的期望为O(lgn).</p>
+<a id="more"></a>
+<ul>
+<li>二叉搜索树的性质<br>这个不用多说，就是二叉搜索树节点的左子树所有节点都小于它，右子树所有节点都大于它。左子树和右子树也是二叉搜索树。</li>
+</ul>
+<hr>
+<ul>
+<li>二叉搜索树排序算法<br>这里只需要注意一个点，就是该排序算法同快排类似。</li>
+</ul>
+<hr>
+<ul>
+<li>查询二叉搜索树<br>这里有两个算法，递归式和迭代式</li>
+</ul>
+<ol>
+<li>递归式:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TreeNode *searchBST(TreeNode *root, int val)</span><br><span class="line">    &#123;</span><br><span class="line">        if (root &#x3D;&#x3D; NULL || root-&gt;val &#x3D;&#x3D; val)</span><br><span class="line">        &#123;</span><br><span class="line">            return root;</span><br><span class="line">        &#125;</span><br><span class="line">        if (root-&gt;val &lt; val)</span><br><span class="line">        &#123;</span><br><span class="line">            return searchBST(root-&gt;right, val);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            return searchBST(root-&gt;left, val);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>2.迭代式:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TreeNode *searchBST(TreeNode *root, int val)</span><br><span class="line">    &#123;</span><br><span class="line">        while (root !&#x3D; NULL &amp;&amp; root-&gt;val !&#x3D; val)</span><br><span class="line">        &#123;</span><br><span class="line">            if (root-&gt;val &lt; val)</span><br><span class="line">            &#123;</span><br><span class="line">                root &#x3D; root-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                root &#x3D; root-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://mrsuncodes.github.io/2020/07/03/leetcode-700/#more">这里可具体看我做题的例子</a></p>
+<hr>
+<ul>
+<li>查找二叉搜索树中最大关键字和最小关键字</li>
+</ul>
+<p>这个很简单，只需要找二叉搜索树最左边的节点和最右边的节点即可，代码就不再写了。</p>
+<hr>
+<ul>
+<li>插入和删除<br>这个老师没讲，但是却很重要。<br>插入的思路是先搜索，然后在最后未找到的位置建立新的节点进行插入。<br>删除的操作比较复杂，思路是先搜索，找到要删除的节点位置，并进行判断。</li>
+</ul>
+<ol>
+<li>如果它没有孩子节点，那么直接删除即可。</li>
+<li>如果它有一个孩子节点，那么将孩子节点跟其交换再删除孩子节点即可。</li>
+<li>如果它有两个孩子节点，那么就有两个选择了，选择左子树所有节点中最大的那个跟要删除结点交换，并最终删除最大的那个节点所在位置；或者是选择右子树所有节点中最小的那个跟要删除结点交换，并最终删除最小的那个节点所在位置。</li>
+</ol>
+<hr>
+<ul>
+<li>随机构建二叉搜索树<br>这里主要是证明定理12.4，也是本节课的重点，老师大概花了50分钟讲了这个地方的证明。。。[课一共才1个多小时]。</li>
+</ul>
+<p>定理12.4的证明导论上写的很清楚，然后需要补充的地方我也补充了，然后简单版证明[即助教上课讲的证明方法，不同于课本上证明的方法]我也另附页写了，然后课本上复杂证明所需要的前提证明我也在附页上证明出来了。只需看课本P169即可。</p>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-哈希表</title>
     <url>/2020/07/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
     <content><![CDATA[<p>昨天和今天看完了MIT算法导论的两节课，哈希表以及全域哈希和完全哈希，感觉在看全域哈希和完全哈希证明部分完全蒙圈了，可能有点超出了我的水平，所以先记录下学会的部分，剩下的部分可能以后等二刷再弄懂。现在只是知道是什么，以后再知道为什么。</p>
@@ -327,8 +403,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -346,8 +422,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -369,8 +445,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>分治算法</tag>
       </tags>
@@ -934,8 +1010,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -954,8 +1030,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -976,8 +1052,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -998,8 +1074,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1017,8 +1093,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1036,8 +1112,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1055,8 +1131,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1074,8 +1150,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1107,8 +1183,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1127,8 +1203,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1147,8 +1223,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1167,8 +1243,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1206,8 +1282,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1227,8 +1303,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1249,8 +1325,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1272,8 +1348,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1292,8 +1368,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1314,8 +1390,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1335,8 +1411,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -1995,8 +2071,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
       </tags>
   </entry>
@@ -2020,8 +2096,8 @@ save models to /home/aistudio/work/hand.inference.model
         <category>PAT</category>
       </categories>
       <tags>
-        <tag>PAT</tag>
         <tag>数据结构</tag>
+        <tag>PAT</tag>
       </tags>
   </entry>
   <entry>
