@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>算法导论-红黑树</title>
+    <url>/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <content><![CDATA[<p>这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。</p>
+<a id="more"></a>
+<ul>
+<li>红黑树的性质<br>一共有四点，即：</li>
+</ul>
+<ol>
+<li>每个结点要么是红色，要么是黑色。</li>
+<li>根节点和叶节点都是黑色[这个叶节点跟二叉树的叶节点定义不一样，这个叶节点是最下层的NIL节点]</li>
+<li>如果一个结点是红色的，那么它的两个子节点都是黑色的，它的父亲结点也是黑色。</li>
+<li>对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点，即其黑高是相同的。</li>
+<li>另外有补充的几点注意事项，就是红黑树的黑高为其根节点的黑高。而红结点也不会连续出现。</li>
+</ol>
+<hr>
+<ul>
+<li>证明引理13.1 一颗有n个内部结点的红黑树的高度至多为2lg(n+1)<br>助教讲的方法和课本上的方法不太一样，是借助2-3-4 tree进行证明的，证明过程我也已经写到附页上了。<br>由这个引理我们也就知道红黑树是一个非常平衡的树，那么关于它的查询操作[search，maximum,minimum等等]都可以在O(lgn)的时间内执行。<br>附上证明过程：  <img src="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" class="" title="[title]">  
+
+
+</li>
+</ul>
+<hr>
+<ul>
+<li>旋转<br>这个旋转跟AVL树的旋转差不多，但课本上只分了左旋和右旋，没分左右旋和右左旋。</li>
+</ul>
+<hr>
+<ul>
+<li>插入<br>插入步骤非常复杂，可以分为三步，没步对应一个case，关于代码注释部分我写到了课本上。在插入过程中，首先执行的是查找操作[同二叉搜索树]，然后进行具体操作后再看情况进行旋转。只有case2和case3才对应旋转，而case2和case3只能最多执行一次，所以在插入过程中旋转操作最多为2。</li>
+</ul>
+<hr>
+<ul>
+<li>删除<br>这个助教没讲，但是说比插入还要复杂一些，但思路都是类似的。插入已经看得迷迷糊糊了，删除就不再看了。我特地查了查应用，好像除了linux中进程调度使用红黑树，其他条件下应用的很少。这个坑以后等水平到了再填吧。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode-700</title>
     <url>/2020/07/03/leetcode-700/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/search-in-a-binary-search-tree/">700. 二叉搜索树中的搜索</a></p>
@@ -2101,6 +2144,41 @@ save models to /home/aistudio/work/hand.inference.model
       </tags>
   </entry>
   <entry>
+    <title>怎样在Hexo上写博客</title>
+    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>编写博客的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<a id="more"></a>  
+
+<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
+<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
+<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
+<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>别忘再</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>此时再使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
+<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
+<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>第一篇博客-Hexo博客的建立与部署</title>
     <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
     <content><![CDATA[<ol>
@@ -2132,41 +2210,6 @@ save models to /home/aistudio/work/hand.inference.model
 <img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
 
 <p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>怎样在Hexo上写博客</title>
-    <url>/2020/01/20/%E6%80%8E%E6%A0%B7%E5%9C%A8Hexo%E4%B8%8A%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>编写博客的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>title是博客的名称，即显示到主页的title<br>此条命令会在source/posts文件夹中新建一个以title命名的md文件，只需修改其md文件后再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<a id="more"></a>  
-
-<p>执行上面两条命令即可将修改的md文件push到github上，即可通过网站访问，不过推荐先使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>在本地进行测试，这样更快而且只要本地服务器开着，就不需要再上传一遍才能看效果了，可以边看效果边修改，之后一并将修改的最终内容push到github。  </p>
-<p>编写博客时，推荐使用有道云笔记(我使用的就是有道云笔记)：<a href="http://note.youdao.com/download.html">官网下载</a>  </p>
-<p>使用有道云笔记编写Markdown文件后可以边编写边预览效果，最后编写完成后只需复制粘贴到之前的md文件中(使用记录本复制粘贴即可)</p>
-<p>如果博客中有图片需要上传，首先找到项目根目录的_config.yml文件,修改post_asset_folder属性为true</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-<p>别忘再</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>此时再使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<p>创建新博客时，在source/posts中会生成title同名文件夹,只需将所有该博客需要的图片放入其中，然后在图片引用位置加上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_img 图片名.图片后缀 [title] %&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>title直接就是该博客的title，不需要再加引号</strong></p>
-<p>至于修改博客的样式，需要修改主目录下的 _config.yml文件，以及themes/你的主题下的 _config.yml文件，<br>这两个文件修改的部分请见示例：<br><a href="https://github.com/litten/hexo-theme-yilia/blob/master/_config.yml">主目录的_config.yml文件</a><br><a href="https://github.com/litten/BlogBackup/blob/master/_config.yml">主题下的 _config.yml文件</a></p>
-<p>最后需要注意的是，默认情况主页会显示博客的所有内容，如果想让其精简，加入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
-<p>即可<br>此时，该位置会显示more，点击就是该博客剩下的内容，而剩下的内容在主页中不会显示。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>

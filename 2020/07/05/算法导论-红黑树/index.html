@@ -25,31 +25,23 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"PRXMR01NC1","apiKey":"2821ed1166fb5c3797b2f3c979cdb0b4","indexName":"hexo_search","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MrSun Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/07/index.html">
+  <meta name="description" content="这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法导论-红黑树">
+<meta property="og:url" content="http://yoursite.com/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg">
+<meta property="article:published_time" content="2020-07-05T12:39:34.000Z">
+<meta property="article:modified_time" content="2020-07-05T13:00:15.066Z">
 <meta property="article:author" content="Chris Paul">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="DeepLearning">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="javascript">
-<meta property="article:tag" content="html">
-<meta property="article:tag" content="css">
-<meta property="article:tag" content="开发者">
-<meta property="article:tag" content="程序猿">
-<meta property="article:tag" content="极客">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="开源">
-<meta property="article:tag" content="IT网站">
-<meta property="article:tag" content="用户体验">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg">
 
-<link rel="canonical" href="http://yoursite.com/archives/2020/07/">
+<link rel="canonical" href="http://yoursite.com/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/">
 
 
 <script id="page-configurations">
@@ -57,11 +49,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>归档 | MrSun Blog</title>
+  <title>算法导论-红黑树 | MrSun Blog</title>
   
 
 
@@ -205,114 +197,147 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pig.jpg">
+      <meta itemprop="name" content="Chris Paul">
+      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrSun Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法导论-红黑树
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-05 20:39:34 / 修改时间：21:00:15" itemprop="dateCreated datePublished" datetime="2020-07-05T20:39:34+08:00">2020-07-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">算法导论</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 59 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
+        <p>这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。</p>
+<a id="more"></a>
+<ul>
+<li>红黑树的性质<br>一共有四点，即：</li>
+</ul>
+<ol>
+<li>每个结点要么是红色，要么是黑色。</li>
+<li>根节点和叶节点都是黑色[这个叶节点跟二叉树的叶节点定义不一样，这个叶节点是最下层的NIL节点]</li>
+<li>如果一个结点是红色的，那么它的两个子节点都是黑色的，它的父亲结点也是黑色。</li>
+<li>对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点，即其黑高是相同的。</li>
+<li>另外有补充的几点注意事项，就是红黑树的黑高为其根节点的黑高。而红结点也不会连续出现。</li>
+</ol>
+<hr>
+<ul>
+<li>证明引理13.1 一颗有n个内部结点的红黑树的高度至多为2lg(n+1)<br>助教讲的方法和课本上的方法不太一样，是借助2-3-4 tree进行证明的，证明过程我也已经写到附页上了。<br>由这个引理我们也就知道红黑树是一个非常平衡的树，那么关于它的查询操作[search，maximum,minimum等等]都可以在O(lgn)的时间内执行。<br>附上证明过程：  <img src="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" class="" title="[title]">  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-05T20:39:34+08:00"
-              content="2020-07-05">
-          07-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/" itemprop="url">
-            <span itemprop="name">算法导论-红黑树</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-03T10:56:28+08:00"
-              content="2020-07-03">
-          07-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/07/03/leetcode-700/" itemprop="url">
-            <span itemprop="name">leetcode-700</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-03T10:14:58+08:00"
-              content="2020-07-03">
-          07-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/07/03/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" itemprop="url">
-            <span itemprop="name">算法导论-二叉搜索树</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-01T21:32:15+08:00"
-              content="2020-07-01">
-          07-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/07/01/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E5%93%88%E5%B8%8C%E8%A1%A8/" itemprop="url">
-            <span itemprop="name">算法导论-哈希表</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+</li>
+</ul>
+<hr>
+<ul>
+<li>旋转<br>这个旋转跟AVL树的旋转差不多，但课本上只分了左旋和右旋，没分左右旋和右左旋。</li>
+</ul>
+<hr>
+<ul>
+<li>插入<br>插入步骤非常复杂，可以分为三步，没步对应一个case，关于代码注释部分我写到了课本上。在插入过程中，首先执行的是查找操作[同二叉搜索树]，然后进行具体操作后再看情况进行旋转。只有case2和case3才对应旋转，而case2和case3只能最多执行一次，所以在插入过程中旋转操作最多为2。</li>
+</ul>
+<hr>
+<ul>
+<li>删除<br>这个助教没讲，但是说比插入还要复杂一些，但思路都是类似的。插入已经看得迷迷糊糊了，删除就不再看了。我特地查了查应用，好像除了linux中进程调度使用红黑树，其他条件下应用的很少。这个坑以后等水平到了再填吧。</li>
+</ul>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/03/leetcode-700/" rel="prev" title="leetcode-700">
+      <i class="fa fa-chevron-left"></i> leetcode-700
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
