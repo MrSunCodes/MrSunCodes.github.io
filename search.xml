@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>软件实训-博客管理系统</title>
+    <url>/2020/07/13/%E8%BD%AF%E4%BB%B6%E5%AE%9E%E8%AE%AD-%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>7月伊始我们暑假的小学期多了一门必修课，是达内培训机构的老师负责给我们讲下SpringCloud相关框架的使用，并且最后评分需要我们做出项目并进行答辩。我们组最终确定做一款博客管理系统，然后码云地址如下：<br><a href="https://gitee.com/victorygy/mall01">地址</a>  </p>
+<a id="more"></a>
+<p>因为项目涉及到太多的内容（包括前端，后端所有功能实现，需求分析文档和设计文档），我的工作是<strong>数据库设计</strong>[共九张表]，<strong>博客管理模块</strong>[博客的增删改查，已发表，回收站，全部文章等标题下的文章列表显示功能，发表博客功能以及管理员的功能]还有<em>微服务模块</em>[eureka注册中心的配置，zuul网关配置，监控等等技术的使用]。<br>我把我的那部分ppt展示下，供以后参考使用。<br><a href="presentation.pptx" title="ppt">点击下载</a>  </p>
+<p>项目的浏览界面：  </p>
+<img src="/2020/07/13/%E8%BD%AF%E4%BB%B6%E5%AE%9E%E8%AE%AD-%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/3.png" class="" title="[title]">  
+
+<p>需要记录下一些坑，我使用的编译器是IDEA，如果在引用依赖时时间非常慢，可以进行如下配置即可，亲测有效。  </p>
+<img src="/2020/07/13/%E8%BD%AF%E4%BB%B6%E5%AE%9E%E8%AE%AD-%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/1.png" class="" title="[title]">  
+
+<p>另外我终于弄明白了如何在hexo上面上传文件，如下图：  </p>
+<img src="/2020/07/13/%E8%BD%AF%E4%BB%B6%E5%AE%9E%E8%AE%AD-%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/2.png" class="" title="[title]">  ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>SpringBoot</tag>
+        <tag>SpringCloud</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-跳跃表</title>
     <url>/2020/07/08/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E8%B7%B3%E8%B7%83%E8%A1%A8/</url>
     <content><![CDATA[<p>这一部分《导论》这本课本上没有，助教上课时讲的，但感觉确实很重要。<br>我们都知道，对于一个双向链表，搜索操作性能为O(n),如果想改进成O(lgn)[或者是想改进性能],我们可以考虑使用两个链表，一个是只存某一些元素，另一个存所有元素，这样相当于纽约地铁的快线和慢线，慢线包括所有站台，快线只包括一些人流量最大的站台。  </p>
