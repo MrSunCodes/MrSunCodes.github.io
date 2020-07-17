@@ -506,11 +506,11 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
     });
     new Valine({
       el         : '#valine-comments',
-      verify     : false,
-      notify     : false,
+      verify     : true,
+      notify     : true,
       appId      : 'we9Wk3cqQT9uzNMyUXovWLJc-gzGzoHsz',
       appKey     : '3QQaYG7aUFFq0QREe4BzzHOh',
-      placeholder: "欢迎畅所欲言",
+      placeholder: "有任何问题可以留言，博主定期会看的",
       avatar     : 'mm',
       meta       : guest,
       pageSize   : '10' || 10,
