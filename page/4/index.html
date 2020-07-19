@@ -1343,7 +1343,7 @@
 NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
+    var guest = 'nick,mail';
     guest = guest.split(',').filter(item => {
       return GUEST.includes(item);
     });
@@ -1351,8 +1351,8 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
       el         : '#valine-comments',
       verify     : false,
       notify     : false,
-      appId      : 'we9Wk3cqQT9uzNMyUXovWLJc-gzGzoHsz',
-      appKey     : '3QQaYG7aUFFq0QREe4BzzHOh',
+      appId      : 'Y8pr4dC0gj5sMkIInyOwEWJI-gzGzoHsz',
+      appKey     : 'GSSHJ0Kk91Qo0ELaVsC82xt0',
       placeholder: "建议使用QQ邮箱，这样可以收到评论回复提醒！内容会直接发送到你的邮箱",
       avatar     : 'monsterid',
       meta       : guest,
