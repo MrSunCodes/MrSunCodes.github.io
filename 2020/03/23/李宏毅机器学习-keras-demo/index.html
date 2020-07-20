@@ -22,7 +22,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"PRXMR01NC1","apiKey":"2821ed1166fb5c3797b2f3c979cdb0b4","indexName":"hexo_search","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="因为讲了很多deep learning的内容，李老师给我们举了一个使用keras作deep learning的例子，因为keras做神经网络非常方便，里面函数也很全，所以非常简单就可以上手，首先先写处理数据集的函数，因为我们用手写数字识别，那么最著名的就是mnist数据集了，因为我的网络访问keras数据库网站太慢，所以我提前下好了然后改了一下它的数据库源码来映射到我自己下载好的数据库中">
@@ -158,18 +158,17 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-container"></div>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="algolia-results">
-  <div id="algolia-stats"></div>
-  <div id="algolia-hits"></div>
-  <div id="algolia-pagination" class="algolia-pagination"></div>
-</div>
+<div id="search-result"></div>
 
-  
 </div>
 <div class="search-pop-overlay"></div>
 
@@ -539,10 +538,7 @@
 
 
   
-<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script src="/js/algolia-search.js"></script>
-
+<script src="/js/local-search.js"></script>
 
 
 

@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2020-李宏毅机器学习课程作业汇总</title>
-    <url>/2020/07/19/2020-%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<p>因为添加了评论的提醒功能(就是大家以后评论交流时记得附上自己的邮箱[QQ邮箱最好，其他应该也可以]，这样如果我就会收到信息第一时间回复你，你的邮箱也会收到回复。)，但是在之前的后台数据库怎么配置都不成功，索性换了个新的实例然后成了，但是唯一的坏处就是之前大家的评论都没有了(我正在想办法从原来的实例导出来)，所以给评论过的小伙伴说声抱歉。 </p>
+    <title>169. 多数元素</title>
+    <url>/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/1.png" class="" title="[title]">
 <a id="more"></a>
-<p>因为广大的小伙伴大部分都是我朋友或者是知乎上看我回答李宏毅作业的那篇问答过来的，而我从最后一次写李宏毅老师的作业到现在写的博客也挺多了，如果想翻的话可能会很靠后，所以我在做一下汇总，包括写的所有的博客以及对应的代码，用到的数据库以及随堂的电子版pdf[都在我的github’s repo中]，特供大家参。因为我实际上是因为兴趣才看的机器学习的课，而且只看到RNN那一章,RNN那一章的作业都没做，是因为我机器因为一些硬件原因(穷)跑不了助教的代码，导致我写不出来(不是因为我懒哈)，从那以后就把精力主要放在考研，刷题，刷算法导论上了。  </p>
-<hr>
-<p><a href="https://mrsuncodes.github.io/2020/03/15/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第一课作业</a></p>
-<p><a href="https://mrsuncodes.github.io/2020/03/19/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第二课作业</a></p>
-<p><a href="https://mrsuncodes.github.io/2020/03/23/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-keras-demo/#more">李宏毅机器学习-keras-Demo</a>  </p>
-<p><a href="https://mrsuncodes.github.io/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第三课作业</a>  </p>
-<p><a href="https://github.com/MrSunCodes/Machine-Learning">李宏毅机器学习-作业使用到的资料汇总</a> </p>
-<hr>
-<p>祝大家学业有成！</p>
+<p><a href="https://leetcode-cn.com/problems/majority-element/">题目链接</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;int, int&gt; P;&#x2F;&#x2F;建立map来保存每个值的个数</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[nums[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int max &#x3D; -1;</span><br><span class="line">        for (auto i &#x3D; P.begin(); i !&#x3D; P.end(); i++)&#x2F;&#x2F;遍历寻找出现次数最大的值</span><br><span class="line">        &#123;</span><br><span class="line">            if (i-&gt;second &gt; max)</span><br><span class="line">            &#123;</span><br><span class="line">                max &#x3D; i-&gt;second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/2.png" class="" title="[title]">
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想</span><br><span class="line">&#x2F;&#x2F;将整个序列分成两部分，分别求两部分的出现次数最多的数；如果分开的部分只有一个元素，那么就返回那个元素。</span><br><span class="line">&#x2F;&#x2F;如果分开后两边元素返回次数最多的数是一样的，那么直接返回即可。如果不一样，则看两边元素返回值哪个出现的个数大于序列总长度的一半就返回哪个数</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int times(vector&lt;int&gt;&amp; nums, int target, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        int count &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; left; i &lt;&#x3D; right; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[i] &#x3D;&#x3D; target)</span><br><span class="line">            &#123;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">    int max(vector&lt;int&gt;&amp; nums, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        if (left &gt;&#x3D; right)</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            int mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">            int max_left &#x3D; max(nums, left, mid);</span><br><span class="line">            int max_right &#x3D; max(nums, mid + 1, right);</span><br><span class="line">            int tleft &#x3D; times(nums, max_left, left, right);</span><br><span class="line">            int tright &#x3D; times(nums, max_right, left, right);</span><br><span class="line">            if (tleft &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_left;</span><br><span class="line">            &#125;</span><br><span class="line">            if (tright &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_right;</span><br><span class="line">            &#125;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        return max(nums, 0, nums.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/3.png" class="" title="[title]">
 ]]></content>
       <categories>
-        <category>Machine Learning</category>
+        <category>leetcode</category>
       </categories>
       <tags>
-        <tag>Machine Learning</tag>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>分治算法</tag>
       </tags>
   </entry>
   <entry>
@@ -42,31 +43,30 @@
         <category>PAT</category>
       </categories>
       <tags>
-        <tag>PAT</tag>
         <tag>数据结构</tag>
+        <tag>PAT</tag>
       </tags>
   </entry>
   <entry>
-    <title>169. 多数元素</title>
-    <url>/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/</url>
-    <content><![CDATA[<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/1.png" class="" title="[title]">
+    <title>2020-李宏毅机器学习课程作业汇总</title>
+    <url>/2020/07/19/2020-%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<p>因为添加了评论的提醒功能(就是大家以后评论交流时记得附上自己的邮箱[QQ邮箱最好，其他应该也可以]，这样如果我就会收到信息第一时间回复你，你的邮箱也会收到回复。)，但是在之前的后台数据库怎么配置都不成功，索性换了个新的实例然后成了，但是唯一的坏处就是之前大家的评论都没有了(我正在想办法从原来的实例导出来)，所以给评论过的小伙伴说声抱歉。 </p>
 <a id="more"></a>
-<p><a href="https://leetcode-cn.com/problems/majority-element/">题目链接</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;int, int&gt; P;&#x2F;&#x2F;建立map来保存每个值的个数</span><br><span class="line">        for (int i &#x3D; 0; i &lt; nums.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[nums[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int max &#x3D; -1;</span><br><span class="line">        for (auto i &#x3D; P.begin(); i !&#x3D; P.end(); i++)&#x2F;&#x2F;遍历寻找出现次数最大的值</span><br><span class="line">        &#123;</span><br><span class="line">            if (i-&gt;second &gt; max)</span><br><span class="line">            &#123;</span><br><span class="line">                max &#x3D; i-&gt;second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/2.png" class="" title="[title]">
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想</span><br><span class="line">&#x2F;&#x2F;将整个序列分成两部分，分别求两部分的出现次数最多的数；如果分开的部分只有一个元素，那么就返回那个元素。</span><br><span class="line">&#x2F;&#x2F;如果分开后两边元素返回次数最多的数是一样的，那么直接返回即可。如果不一样，则看两边元素返回值哪个出现的个数大于序列总长度的一半就返回哪个数</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int times(vector&lt;int&gt;&amp; nums, int target, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        int count &#x3D; 0;</span><br><span class="line">        for (int i &#x3D; left; i &lt;&#x3D; right; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[i] &#x3D;&#x3D; target)</span><br><span class="line">            &#123;</span><br><span class="line">                ++count;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">    int max(vector&lt;int&gt;&amp; nums, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        if (left &gt;&#x3D; right)</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            int mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">            int max_left &#x3D; max(nums, left, mid);</span><br><span class="line">            int max_right &#x3D; max(nums, mid + 1, right);</span><br><span class="line">            int tleft &#x3D; times(nums, max_left, left, right);</span><br><span class="line">            int tright &#x3D; times(nums, max_right, left, right);</span><br><span class="line">            if (tleft &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_left;</span><br><span class="line">            &#125;</span><br><span class="line">            if (tright &gt; (right-left+1) &#x2F; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                return max_right;</span><br><span class="line">            &#125;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int majorityElement(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        return max(nums, 0, nums.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<img src="/2020/06/18/169-%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/3.png" class="" title="[title]">
+<p>因为广大的小伙伴大部分都是我朋友或者是知乎上看我回答李宏毅作业的那篇问答过来的，而我从最后一次写李宏毅老师的作业到现在写的博客也挺多了，如果想翻的话可能会很靠后，所以我在做一下汇总，包括写的所有的博客以及对应的代码，用到的数据库以及随堂的电子版pdf[都在我的github’s repo中]，特供大家参。因为我实际上是因为兴趣才看的机器学习的课，而且只看到RNN那一章,RNN那一章的作业都没做，是因为我机器因为一些硬件原因(穷)跑不了助教的代码，导致我写不出来(不是因为我懒哈)，从那以后就把精力主要放在考研，刷题，刷算法导论上了。  </p>
+<hr>
+<p><a href="https://mrsuncodes.github.io/2020/03/15/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第一课作业</a></p>
+<p><a href="https://mrsuncodes.github.io/2020/03/19/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第二课作业</a></p>
+<p><a href="https://mrsuncodes.github.io/2020/03/23/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-keras-demo/#more">李宏毅机器学习-keras-Demo</a>  </p>
+<p><a href="https://mrsuncodes.github.io/2020/03/28/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E8%AF%BE%E4%BD%9C%E4%B8%9A/#more">李宏毅机器学习-第三课作业</a>  </p>
+<p><a href="https://github.com/MrSunCodes/Machine-Learning">李宏毅机器学习-作业使用到的资料汇总</a> </p>
+<hr>
+<p>祝大家学业有成！</p>
 ]]></content>
       <categories>
-        <category>leetcode</category>
+        <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
-        <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>分治算法</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -129,6 +129,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Spring实战-第一章-Spring之旅-2</title>
+    <url>/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/</url>
+    <content><![CDATA[<p>继续上节内容：  </p>
+<a id="more"></a>  
+<p>2.容纳你的Bean<br>2.1 使用应用上下文  </p>
+<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/1.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
+<p>在基于Spring的应用中，应用对象生存于Spring容器中，且容器负责创建对象，装载它们，配置它们并管理整个生命周期，从生存到死亡。<br>Spring容器有多个容器实现：<br>==bean工厂==和==应用上下文==，bean工厂对大多数企业级开发太低级，所以主要讨论应用上下文。<br>下列是可能用得到的应用上下文：  </p>
+<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/2.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
+<p>可以使用上述方法加载bean。且上下文准备就绪后，可以调用上下文的getBean()方法从Spring容器中获取bean。<br>2.2 bean的生命周期<br>在传统的Java应用中，bean的生命周期很简单。使用Java关键字new进行bean实例化，然后该bean就可以使用了。一旦该bean不再被使用， 则由Java自动进行垃圾回收。 而Spring容器中的bean的生命周期相对复杂，大体如下图所示：  </p>
+<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/3.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
+<p>3.俯瞰Spring风景线  </p>
+<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/4.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
+<p>4.Spring新功能<br>没什么好说的，因为之前几个版本我也没学过，从Spring 4.0开始算起。<br>5.小结<br>Spring致力于简化企业级Java开发，促进代码的松散耦合。==成功的关键在于依赖注入和AOP==。DI是组装应用对象的一种方式，==借助这种方式对象无需知道依赖来自何处或者依赖的实现方式==。不同于自己获取依赖对象，对象会在运行期赋予它们所依赖的对象。依赖对象通常会通过接口了解所注入的对象，这样的话就能确保低耦合。<br>除了DI，我们还简单介绍了Spring对AOP的支持。AOP可以帮助应用将散落在各处的逻辑汇集于一处——切面。当Spring装配bean的时候，这些切面能够在运行期编织起来，这样就能非常有效地赋予bean新的行为。==DI和AOP是Spring框架最核心的部分。==</p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mybatis-plus实战-5</title>
     <url>/2020/01/30/Mybatis-plus%E5%AE%9E%E6%88%98-5/</url>
     <content><![CDATA[<p>sql性能分析插件：<br>在MyBatisPlusConfig中添加性能分析插件：</p>
@@ -154,88 +177,6 @@
         <tag>Spring</tag>
         <tag>Java</tag>
         <tag>MyBatis-plus</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>android 右上角3个点的menu菜单的创建</title>
-    <url>/2020/01/22/android-%E5%8F%B3%E4%B8%8A%E8%A7%923%E4%B8%AA%E7%82%B9%E7%9A%84menu%E8%8F%9C%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<p>直接在res文件中新建一个文件夹叫menu，往里面放menu文件，在需要的xml上面建立,<br>比如我在layout文件夹下有activity_catalog，那么我想在这个布局上面建立一个三个点的菜单，则我在menu下建立一个menu_catalog,然后下列代码就是一个例子<br>其中</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tools:context&#x3D;&quot;.CatalogActivity&quot;</span><br></pre></td></tr></table></figure>
-<p>用来指定你要在哪个布局上建立三个点的菜单栏，然后<br>item用来添加菜单项，对应的属性就不多说了可以网上搜到</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- Options menu for the CatalogActivity --&gt;</span><br><span class="line">    &lt;menu xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">        xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">        xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">        tools:context&#x3D;&quot;.CatalogActivity&quot;&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;item</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;action_insert_dummy_data&quot;</span><br><span class="line">            android:title&#x3D;&quot;@string&#x2F;action_insert_dummy_data&quot;</span><br><span class="line">            app:showAsAction&#x3D;&quot;never&quot; &#x2F;&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;item</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;action_delete_all_entries&quot;</span><br><span class="line">            android:title&#x3D;&quot;@string&#x2F;action_delete_all_entries&quot;</span><br><span class="line">            app:showAsAction&#x3D;&quot;never&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;menu&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Android</tag>
-        <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>android studio FloatingActionButton 在现版本的添加方式（3.4.2）</title>
-    <url>/2020/01/22/android-studio-FloatingActionButton-%E5%9C%A8%E7%8E%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%96%B9%E5%BC%8F%EF%BC%883-4-2%EF%BC%89/</url>
-    <content><![CDATA[<p>之前我在看优达学城的android基础开发（<a href="https://classroom.udacity.com/courses/ud845/lessons/f5bb088f-6cc0-4e7d-9985-1418654bb141/concepts/e6620651-469b-4754-9ac9-dc34f6f0b781/">https://classroom.udacity.com/courses/ud845/lessons/f5bb088f-6cc0-4e7d-9985-1418654bb141/concepts/e6620651-469b-4754-9ac9-dc34f6f0b781/</a>）<br>时遇到了问题（<a href="https://github.com/udacity/ud845-Pets/">https://github.com/udacity/ud845-Pets/</a>），就是它创建的主界面有一个floatingActionButton,但是需要特殊的支持。<br>百度后很多人说要引用这个：</p>
-<a id="more"></a>
-<p><strong>在build.gradle中加入：<br>　compile ‘com.android.support:design:26.0.0’</strong><br>实际上我的IDE中还是不可以，但是我使用了默认的方法，alt加enter，这样IDE自动加上了引用<br><strong>import com.google.android.material.floatingactionbutton.FloatingActionButton;</strong><br>原因可能是因为安卓版本的更新导致引用发生了变化，特记录下来方便以后查看。<br>引用时：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;com.google.android.material.floatingactionbutton.FloatingActionButton</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;fab&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_alignParentRight&#x3D;&quot;true&quot;</span><br><span class="line">        android:layout_alignParentBottom&#x3D;&quot;true&quot;</span><br><span class="line">        android:layout_margin&#x3D;&quot;@dimen&#x2F;fab_margin&quot;</span><br><span class="line">        android:src&#x3D;&quot;@drawable&#x2F;ic_add_pet&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Android</tag>
-        <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring实战-第一章-Spring之旅-2</title>
-    <url>/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/</url>
-    <content><![CDATA[<p>继续上节内容：  </p>
-<a id="more"></a>  
-<p>2.容纳你的Bean<br>2.1 使用应用上下文  </p>
-<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/1.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
-<p>在基于Spring的应用中，应用对象生存于Spring容器中，且容器负责创建对象，装载它们，配置它们并管理整个生命周期，从生存到死亡。<br>Spring容器有多个容器实现：<br>==bean工厂==和==应用上下文==，bean工厂对大多数企业级开发太低级，所以主要讨论应用上下文。<br>下列是可能用得到的应用上下文：  </p>
-<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/2.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
-<p>可以使用上述方法加载bean。且上下文准备就绪后，可以调用上下文的getBean()方法从Spring容器中获取bean。<br>2.2 bean的生命周期<br>在传统的Java应用中，bean的生命周期很简单。使用Java关键字new进行bean实例化，然后该bean就可以使用了。一旦该bean不再被使用， 则由Java自动进行垃圾回收。 而Spring容器中的bean的生命周期相对复杂，大体如下图所示：  </p>
-<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/3.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
-<p>3.俯瞰Spring风景线  </p>
-<img src="/2020/01/28/Spring%E5%AE%9E%E6%88%98-%E7%AC%AC%E4%B8%80%E7%AB%A0-Spring%E4%B9%8B%E6%97%85-2/4.png" class="" title="[Spring实战-第一章-Spring之旅-2]">   
-<p>4.Spring新功能<br>没什么好说的，因为之前几个版本我也没学过，从Spring 4.0开始算起。<br>5.小结<br>Spring致力于简化企业级Java开发，促进代码的松散耦合。==成功的关键在于依赖注入和AOP==。DI是组装应用对象的一种方式，==借助这种方式对象无需知道依赖来自何处或者依赖的实现方式==。不同于自己获取依赖对象，对象会在运行期赋予它们所依赖的对象。依赖对象通常会通过接口了解所注入的对象，这样的话就能确保低耦合。<br>除了DI，我们还简单介绍了Spring对AOP的支持。AOP可以帮助应用将散落在各处的逻辑汇集于一处——切面。当Spring装配bean的时候，这些切面能够在运行期编织起来，这样就能非常有效地赋予bean新的行为。==DI和AOP是Spring框架最核心的部分。==</p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-1030</title>
-    <url>/2020/02/16/leetcode-1030/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/matrix-cells-in-distance-order/">https://leetcode-cn.com/problems/matrix-cells-in-distance-order/</a>  </p>
-<img src="/2020/02/16/leetcode-1030/1.png" class="" title="[leetcode-1030]">  
-
-<a id="more"></a>  
-
-<p>我的思路是既然是按距离排序，那我就创建一个struct node，然后使用sort的重载cmp函数进行排序，最后再只将struct node的横纵坐标加入到二维数组中。  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    struct node</span><br><span class="line">    &#123;</span><br><span class="line">        int r;</span><br><span class="line">        int c;</span><br><span class="line">        int dis;</span><br><span class="line">    &#125;;</span><br><span class="line">    static bool cmp(node a, node b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.dis &lt; b.dis;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; allCellsDistOrder(int R, int C, int r0, int c0)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; vec;</span><br><span class="line">        vector&lt;node&gt; V;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; R; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; C; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                node temp &#x3D; &#123;i, j, abs(i - r0) + abs(j - c0)&#125;;&#x2F;&#x2F;创建temp节点并放入V中</span><br><span class="line">                V.push_back(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(), V.end(), cmp);&#x2F;&#x2F;排序</span><br><span class="line">        for (int i &#x3D; 0; i &lt; V.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            vec.push_back(&#123;V[i].r, V[i].c&#125;);&#x2F;&#x2F;将V中的元素放入vec中，但只放入横纵坐标</span><br><span class="line">        &#125;</span><br><span class="line">        return vec;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/02/16/leetcode-1030/2.png" class="" title="[leetcode-1030]">  
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -301,6 +242,65 @@
       </tags>
   </entry>
   <entry>
+    <title>android 右上角3个点的menu菜单的创建</title>
+    <url>/2020/01/22/android-%E5%8F%B3%E4%B8%8A%E8%A7%923%E4%B8%AA%E7%82%B9%E7%9A%84menu%E8%8F%9C%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA/</url>
+    <content><![CDATA[<p>直接在res文件中新建一个文件夹叫menu，往里面放menu文件，在需要的xml上面建立,<br>比如我在layout文件夹下有activity_catalog，那么我想在这个布局上面建立一个三个点的菜单，则我在menu下建立一个menu_catalog,然后下列代码就是一个例子<br>其中</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tools:context&#x3D;&quot;.CatalogActivity&quot;</span><br></pre></td></tr></table></figure>
+<p>用来指定你要在哪个布局上建立三个点的菜单栏，然后<br>item用来添加菜单项，对应的属性就不多说了可以网上搜到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- Options menu for the CatalogActivity --&gt;</span><br><span class="line">    &lt;menu xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">        xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">        xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;</span><br><span class="line">        tools:context&#x3D;&quot;.CatalogActivity&quot;&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;item</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;action_insert_dummy_data&quot;</span><br><span class="line">            android:title&#x3D;&quot;@string&#x2F;action_insert_dummy_data&quot;</span><br><span class="line">            app:showAsAction&#x3D;&quot;never&quot; &#x2F;&gt;</span><br><span class="line">    </span><br><span class="line">        &lt;item</span><br><span class="line">            android:id&#x3D;&quot;@+id&#x2F;action_delete_all_entries&quot;</span><br><span class="line">            android:title&#x3D;&quot;@string&#x2F;action_delete_all_entries&quot;</span><br><span class="line">            app:showAsAction&#x3D;&quot;never&quot; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;menu&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Android</tag>
+        <tag>Android Studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-1030</title>
+    <url>/2020/02/16/leetcode-1030/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/matrix-cells-in-distance-order/">https://leetcode-cn.com/problems/matrix-cells-in-distance-order/</a>  </p>
+<img src="/2020/02/16/leetcode-1030/1.png" class="" title="[leetcode-1030]">  
+
+<a id="more"></a>  
+
+<p>我的思路是既然是按距离排序，那我就创建一个struct node，然后使用sort的重载cmp函数进行排序，最后再只将struct node的横纵坐标加入到二维数组中。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    struct node</span><br><span class="line">    &#123;</span><br><span class="line">        int r;</span><br><span class="line">        int c;</span><br><span class="line">        int dis;</span><br><span class="line">    &#125;;</span><br><span class="line">    static bool cmp(node a, node b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.dis &lt; b.dis;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; allCellsDistOrder(int R, int C, int r0, int c0)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; vec;</span><br><span class="line">        vector&lt;node&gt; V;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; R; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for (int j &#x3D; 0; j &lt; C; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                node temp &#x3D; &#123;i, j, abs(i - r0) + abs(j - c0)&#125;;&#x2F;&#x2F;创建temp节点并放入V中</span><br><span class="line">                V.push_back(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(), V.end(), cmp);&#x2F;&#x2F;排序</span><br><span class="line">        for (int i &#x3D; 0; i &lt; V.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            vec.push_back(&#123;V[i].r, V[i].c&#125;);&#x2F;&#x2F;将V中的元素放入vec中，但只放入横纵坐标</span><br><span class="line">        &#125;</span><br><span class="line">        return vec;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/16/leetcode-1030/2.png" class="" title="[leetcode-1030]">  
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>android studio FloatingActionButton 在现版本的添加方式（3.4.2）</title>
+    <url>/2020/01/22/android-studio-FloatingActionButton-%E5%9C%A8%E7%8E%B0%E7%89%88%E6%9C%AC%E7%9A%84%E6%B7%BB%E5%8A%A0%E6%96%B9%E5%BC%8F%EF%BC%883-4-2%EF%BC%89/</url>
+    <content><![CDATA[<p>之前我在看优达学城的android基础开发（<a href="https://classroom.udacity.com/courses/ud845/lessons/f5bb088f-6cc0-4e7d-9985-1418654bb141/concepts/e6620651-469b-4754-9ac9-dc34f6f0b781/">https://classroom.udacity.com/courses/ud845/lessons/f5bb088f-6cc0-4e7d-9985-1418654bb141/concepts/e6620651-469b-4754-9ac9-dc34f6f0b781/</a>）<br>时遇到了问题（<a href="https://github.com/udacity/ud845-Pets/">https://github.com/udacity/ud845-Pets/</a>），就是它创建的主界面有一个floatingActionButton,但是需要特殊的支持。<br>百度后很多人说要引用这个：</p>
+<a id="more"></a>
+<p><strong>在build.gradle中加入：<br>　compile ‘com.android.support:design:26.0.0’</strong><br>实际上我的IDE中还是不可以，但是我使用了默认的方法，alt加enter，这样IDE自动加上了引用<br><strong>import com.google.android.material.floatingactionbutton.FloatingActionButton;</strong><br>原因可能是因为安卓版本的更新导致引用发生了变化，特记录下来方便以后查看。<br>引用时：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;com.google.android.material.floatingactionbutton.FloatingActionButton</span><br><span class="line">        android:id&#x3D;&quot;@+id&#x2F;fab&quot;</span><br><span class="line">        android:layout_width&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height&#x3D;&quot;wrap_content&quot;</span><br><span class="line">        android:layout_alignParentRight&#x3D;&quot;true&quot;</span><br><span class="line">        android:layout_alignParentBottom&#x3D;&quot;true&quot;</span><br><span class="line">        android:layout_margin&#x3D;&quot;@dimen&#x2F;fab_margin&quot;</span><br><span class="line">        android:src&#x3D;&quot;@drawable&#x2F;ic_add_pet&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Android</tag>
+        <tag>Android Studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode-1054</title>
     <url>/2020/02/28/leetcode-1054/</url>
     <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/distant-barcodes/">https://leetcode-cn.com/problems/distant-barcodes/</a>  </p>
@@ -316,27 +316,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-1356</title>
-    <url>/2020/03/02/leetcode-1356/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/">https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/</a>  </p>
-<a id="more"></a>
-<img src="/2020/03/02/leetcode-1356/1.png" class="" title="[leetcode-1356]">  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    struct node&#123;&#x2F;&#x2F;自定义结构体</span><br><span class="line">        int data;</span><br><span class="line">        int num;</span><br><span class="line">    &#125;;</span><br><span class="line">    static bool cmp(node a,node b)&#123;&#x2F;&#x2F;自定义排序函数</span><br><span class="line">        return a.num&#x3D;&#x3D;b.num?a.data&lt;b.data;a.num&lt;b.num;</span><br><span class="line">    &#125;</span><br><span class="line">    int checked(int n)&#x2F;&#x2F;输入一个十进制数字，输出数字在二进制下1的个数</span><br><span class="line">    &#123;</span><br><span class="line">        int num&#x3D;0;</span><br><span class="line">        while (n!&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            if (n%2!&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">            n&#x2F;&#x3D;2;</span><br><span class="line">        &#125;</span><br><span class="line">        return num;       </span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; sortByBits(vector&lt;int&gt;&amp; arr) &#123;</span><br><span class="line">        vector&lt;node&gt;V;</span><br><span class="line">        for(auto i:arr)&#123;</span><br><span class="line">            int num&#x3D;checked(i);</span><br><span class="line">            V.push_back(&#123;i,num&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(),V.end(),cmp);</span><br><span class="line">        arr.clear();</span><br><span class="line">        for(auto i:V)&#123;</span><br><span class="line">            arr.push_back(i.data);</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/03/02/leetcode-1356/2.png" class="" title="[leetcode-1356]">  ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -354,8 +335,27 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-1356</title>
+    <url>/2020/03/02/leetcode-1356/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/">https://leetcode-cn.com/problems/sort-integers-by-the-number-of-1-bits/</a>  </p>
+<a id="more"></a>
+<img src="/2020/03/02/leetcode-1356/1.png" class="" title="[leetcode-1356]">  
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    struct node&#123;&#x2F;&#x2F;自定义结构体</span><br><span class="line">        int data;</span><br><span class="line">        int num;</span><br><span class="line">    &#125;;</span><br><span class="line">    static bool cmp(node a,node b)&#123;&#x2F;&#x2F;自定义排序函数</span><br><span class="line">        return a.num&#x3D;&#x3D;b.num?a.data&lt;b.data;a.num&lt;b.num;</span><br><span class="line">    &#125;</span><br><span class="line">    int checked(int n)&#x2F;&#x2F;输入一个十进制数字，输出数字在二进制下1的个数</span><br><span class="line">    &#123;</span><br><span class="line">        int num&#x3D;0;</span><br><span class="line">        while (n!&#x3D;0)</span><br><span class="line">        &#123;</span><br><span class="line">            if (n%2!&#x3D;0)</span><br><span class="line">            &#123;</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">            n&#x2F;&#x3D;2;</span><br><span class="line">        &#125;</span><br><span class="line">        return num;       </span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; sortByBits(vector&lt;int&gt;&amp; arr) &#123;</span><br><span class="line">        vector&lt;node&gt;V;</span><br><span class="line">        for(auto i:arr)&#123;</span><br><span class="line">            int num&#x3D;checked(i);</span><br><span class="line">            V.push_back(&#123;i,num&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(),V.end(),cmp);</span><br><span class="line">        arr.clear();</span><br><span class="line">        for(auto i:V)&#123;</span><br><span class="line">            arr.push_back(i.data);</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/03/02/leetcode-1356/2.png" class="" title="[leetcode-1356]">  ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -373,8 +373,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -394,8 +394,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -433,27 +433,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-56</title>
-    <url>/2020/02/24/leetcode-56/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-intervals/">https://leetcode-cn.com/problems/merge-intervals/</a>  </p>
-<a id="more"></a>
-  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;思路：首先按区间开头从小到大排序，然后每次比较前两个元素并判断：如果第一个元素的区间结尾</span><br><span class="line">&#x2F;&#x2F;大于第二个元素的区间开头，说明两个区间重合，因为已经排序，所以改变第二个元素，它的区间开头</span><br><span class="line">&#x2F;&#x2F;一定是第一个元素的区间开头，它的区间结尾是第一个元素和第二个元素区间结尾的最大值&#123;比如[0,4],[1,3];和[0,4],[1,5]&#125;</span><br><span class="line">&#x2F;&#x2F;然后删除第一个元素即可</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(vector&lt;int&gt; v1, vector&lt;int&gt; v2)</span><br><span class="line">    &#123;</span><br><span class="line">        return v1[0]&lt;v2[0];       </span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; merge(vector&lt;vector&lt;int&gt;&gt; &amp;intervals)</span><br><span class="line">    &#123;</span><br><span class="line">        if (intervals.size() &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            return intervals;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(intervals.begin(), intervals.end(), cmp);</span><br><span class="line">        for (auto it &#x3D; intervals.begin(); it !&#x3D; intervals.end() - 1;)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it[0][1] &gt;&#x3D; (it + 1)[0][0])</span><br><span class="line">            &#123;</span><br><span class="line">                (it + 1)[0][0] &#x3D; it[0][0];</span><br><span class="line">                (it + 1)[0][1] &#x3D; max(it[0][1],(it+1)[0][1]);</span><br><span class="line">                it &#x3D; intervals.erase(it);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                it++;</span><br><span class="line">        &#125;</span><br><span class="line">        return intervals;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-  ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -485,47 +466,27 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
   </entry>
   <entry>
-    <title>leetcode-75</title>
-    <url>/2020/02/22/leetcode-75/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/sort-colors/">https://leetcode-cn.com/problems/sort-colors/</a>  </p>
+    <title>leetcode-56</title>
+    <url>/2020/02/24/leetcode-56/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/merge-intervals/">https://leetcode-cn.com/problems/merge-intervals/</a>  </p>
 <a id="more"></a>
-<img src="/2020/02/22/leetcode-75/1.png" class="" title="[leetcode-75]">  
+  
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">我的思路：定两个指针，前指针指向第一个元素和后指针指向最后一个元素，然后从前往后扫描数组，遇到0，</span><br><span class="line">与前指针元素交换，前指针++；遇到1继续走，遇到2，与后指针元素交换，后指针--，前指针与后指针相等时跳出遍历，</span><br><span class="line">这样时间复杂度是O(n),空间复杂度是常数O(1)</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void sortColors(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        int front &#x3D; 0, rear &#x3D; nums.size() - 1;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        while (i &lt;&#x3D; rear)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[i] &#x3D;&#x3D; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(nums[i], nums[front]);</span><br><span class="line">                i++;</span><br><span class="line">                front++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums[i] &#x3D;&#x3D; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(nums[i], nums[rear]);</span><br><span class="line">                rear--;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums[i] &#x3D;&#x3D; 1)</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>肺都气炸，思路跟迪杰斯特拉解决三色国旗问题的思路是一样的，但跳出循环条件不一样，我一开始写的条件是front!=rear,后来改成front!=rear-1也不对，压根没想到i一直往后走知道i&gt;rear跳出循环，只能说差一点吧，继续加油</p>
-<img src="/2020/02/22/leetcode-75/2.png" class="" title="[leetcode-75]">  ]]></content>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;思路：首先按区间开头从小到大排序，然后每次比较前两个元素并判断：如果第一个元素的区间结尾</span><br><span class="line">&#x2F;&#x2F;大于第二个元素的区间开头，说明两个区间重合，因为已经排序，所以改变第二个元素，它的区间开头</span><br><span class="line">&#x2F;&#x2F;一定是第一个元素的区间开头，它的区间结尾是第一个元素和第二个元素区间结尾的最大值&#123;比如[0,4],[1,3];和[0,4],[1,5]&#125;</span><br><span class="line">&#x2F;&#x2F;然后删除第一个元素即可</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(vector&lt;int&gt; v1, vector&lt;int&gt; v2)</span><br><span class="line">    &#123;</span><br><span class="line">        return v1[0]&lt;v2[0];       </span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; merge(vector&lt;vector&lt;int&gt;&gt; &amp;intervals)</span><br><span class="line">    &#123;</span><br><span class="line">        if (intervals.size() &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            return intervals;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(intervals.begin(), intervals.end(), cmp);</span><br><span class="line">        for (auto it &#x3D; intervals.begin(); it !&#x3D; intervals.end() - 1;)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it[0][1] &gt;&#x3D; (it + 1)[0][0])</span><br><span class="line">            &#123;</span><br><span class="line">                (it + 1)[0][0] &#x3D; it[0][0];</span><br><span class="line">                (it + 1)[0][1] &#x3D; max(it[0][1],(it+1)[0][1]);</span><br><span class="line">                it &#x3D; intervals.erase(it);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                it++;</span><br><span class="line">        &#125;</span><br><span class="line">        return intervals;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-767</title>
-    <url>/2020/02/24/leetcode-767/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/reorganize-string/">https://leetcode-cn.com/problems/reorganize-string/</a>  </p>
-<a id="more"></a>
-<img src="/2020/02/24/leetcode-767/1.png" class="" title="[leetcode-767]">  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * @lc app&#x3D;leetcode.cn id&#x3D;767 lang&#x3D;cpp</span><br><span class="line"> *</span><br><span class="line"> * [767] 重构字符串</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;start</span><br><span class="line">&#x2F;&#x2F;思路：</span><br><span class="line">&#x2F;*先构造S的哈希表，如果S的最大值-1(就是需要填充的地方)小于剩余元素的和，那么</span><br><span class="line">肯定可以重排使其相邻字符不同，否则不可；</span><br><span class="line">判断出其可以后，只需按P的顺序输出即可*&#x2F;</span><br><span class="line">&#x2F;&#x2F;60,61,62测试点未通过，感觉我的方法有点笨拙，果断换思路</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(pair&lt;char, int&gt; a, pair&lt;char, int&gt; b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;char, int&gt; P;</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; S.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[S[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int max &#x3D; -1;</span><br><span class="line">        char index;</span><br><span class="line">        for (auto it &#x3D; P.begin(); it !&#x3D; P.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it-&gt;second &gt; max)</span><br><span class="line">            &#123;</span><br><span class="line">                max &#x3D; it-&gt;second;</span><br><span class="line">                index &#x3D; it-&gt;first;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        for (auto it &#x3D; P.begin(); it !&#x3D; P.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it-&gt;first !&#x3D; index)</span><br><span class="line">            &#123;</span><br><span class="line">                sum +&#x3D; it-&gt;second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (max - 1 &gt; sum)</span><br><span class="line">        &#123;</span><br><span class="line">            return str;</span><br><span class="line">        &#125;</span><br><span class="line">        bool flag &#x3D; false;</span><br><span class="line">        if (max - 1 &#x3D;&#x3D; sum)</span><br><span class="line">        &#123;</span><br><span class="line">            flag &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;pair&lt;char, int&gt;&gt; V(P.begin(), P.end());</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        if (!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            while (true)</span><br><span class="line">            &#123;</span><br><span class="line">                int cnt &#x3D; 0;</span><br><span class="line">                for (auto it &#x3D; V.begin(); it !&#x3D; V.end(); it++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (it-&gt;second !&#x3D; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        str +&#x3D; it-&gt;first;</span><br><span class="line">                        it-&gt;second--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                        cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                if (cnt &#x3D;&#x3D; V.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            while (true)</span><br><span class="line">            &#123;</span><br><span class="line">                int cnt &#x3D; 0;</span><br><span class="line">                for (auto it &#x3D; V.begin(); it !&#x3D; V.end(); it++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (it-&gt;second !&#x3D; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        str +&#x3D; it-&gt;first;</span><br><span class="line">                        it-&gt;second--;</span><br><span class="line">                        if (it-&gt;first !&#x3D; index)</span><br><span class="line">                        &#123;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                        cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                if (cnt &#x3D;&#x3D; V.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;*</span><br><span class="line">思路:</span><br><span class="line">根据字母出现的顺序排序，然后每次输出前两项即可(输出后记得减少前两项字母的次数)，输出后立刻再进行排序</span><br><span class="line">直到所有字母的次数都为0</span><br><span class="line">每次排序太麻烦，并且没有数据结构支持(set和优先队列当你进行--操作时就已经排序了所以不能保证第二项--时仍为原来的那一项)</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;*</span><br><span class="line">第三个思路：</span><br><span class="line">借鉴的大神思路-先使用哈希表按出现顺序从大到小排列，然后按间隔进行插入</span><br><span class="line">贪心思想</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(pair&lt;char, int&gt; a, pair&lt;char, int&gt; b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;char, int&gt; P;</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; S.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[S[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;pair&lt;char, int&gt;&gt; V(P.begin(), P.end());</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        for (auto p : V)</span><br><span class="line">        &#123;</span><br><span class="line">            string temp(p.second, p.first); &#x2F;&#x2F;String temp(2,&#39;c&#39;)&#x3D;&#x3D;&quot;cc&quot;</span><br><span class="line">            str +&#x3D; temp;</span><br><span class="line">        &#125;</span><br><span class="line">        int len &#x3D; str.size();</span><br><span class="line">        if (V[0].second &gt; (len+1) &#x2F; 2)&#x2F;&#x2F;如果次数出现最多的字母大于字符串的一半长度，那么肯定是不可以成功的了</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        S.clear();</span><br><span class="line">        S &#x3D; (len, &#39;0&#39;);</span><br><span class="line">        int i &#x3D; 0, j &#x3D; 1, index &#x3D; 0;</span><br><span class="line">        while (i &lt; len &amp;&amp; index &lt; len)&#x2F;&#x2F;按奇数进行插入</span><br><span class="line">        &#123;</span><br><span class="line">            S[i] &#x3D; str[index++];</span><br><span class="line">            i +&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line">        while (j &lt; len &amp;&amp; index &lt; len)&#x2F;&#x2F;按偶数进行插入</span><br><span class="line">        &#123;</span><br><span class="line">            S[j] &#x3D; str[index++];</span><br><span class="line">            j +&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line">        return S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;end</span><br></pre></td></tr></table></figure>
-<img src="/2020/02/24/leetcode-767/2.png" class="" title="[leetcode-767]">  ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -556,21 +517,40 @@
       </tags>
   </entry>
   <entry>
-    <title>leetcode-973</title>
-    <url>/2020/02/22/leetcode-969/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/pancake-sorting">https://leetcode-cn.com/problems/pancake-sorting</a>  </p>
+    <title>leetcode-75</title>
+    <url>/2020/02/22/leetcode-75/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/sort-colors/">https://leetcode-cn.com/problems/sort-colors/</a>  </p>
 <a id="more"></a>
-<img src="/2020/02/22/leetcode-969/1.png" class="" title="[leetcode-969]">  
-<p>很有趣的一道题，一开始我的思路是找到先遍历一遍找到最大值，然后将最大值翻转到最后一位，然后每次遍历最大值都已经归位了。但是题目中只可以翻转前n项，所以只需要多一步辅助，将最大值翻转到第一位，然后再翻转到最后一位。  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; pancakeSort(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        int temp &#x3D; 0;&#x2F;&#x2F;每一次循环最大的元素一定在正确位置，所以使用temp来缩短遍历长度</span><br><span class="line">        for (int j &#x3D; 0; j &lt; A.size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int max &#x3D; -1, index &#x3D; 0;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; A.size() - temp; i++)&#x2F;&#x2F;寻找剩余元素中的最大值，返回其下标</span><br><span class="line">            &#123;</span><br><span class="line">                if (max &lt; A[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    max &#x3D; A[i];</span><br><span class="line">                    index &#x3D; i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (index &#x3D;&#x3D; 0)&#x2F;&#x2F;如果最大值恰好在第一个元素位置，那么直接进行翻转A.size() - temp长度将其转到剩余元素的最大位置</span><br><span class="line">            &#123;</span><br><span class="line">                V.push_back(A.size() - temp);</span><br><span class="line">                reverseK(A, A.size() - temp);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                V.push_back(index + 1);&#x2F;&#x2F;先将其翻转到第一个元素位置</span><br><span class="line">                reverseK(A, index + 1);</span><br><span class="line">                V.push_back(A.size() - temp);&#x2F;&#x2F;再将第一个元素位置翻转到剩余元素最大值位置</span><br><span class="line">                reverseK(A, A.size() - temp);</span><br><span class="line">            &#125;</span><br><span class="line">            temp++;</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    void reverseK(vector&lt;int&gt; &amp;V, int k) &#x2F;&#x2F;翻转vector的前k个元素</span><br><span class="line">    &#123;</span><br><span class="line">        if (k &gt; V.size())</span><br><span class="line">        &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(V.begin(), V.begin() + k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/02/22/leetcode-969/2.png" class="" title="[leetcode-969]">  
-]]></content>
+<img src="/2020/02/22/leetcode-75/1.png" class="" title="[leetcode-75]">  
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">我的思路：定两个指针，前指针指向第一个元素和后指针指向最后一个元素，然后从前往后扫描数组，遇到0，</span><br><span class="line">与前指针元素交换，前指针++；遇到1继续走，遇到2，与后指针元素交换，后指针--，前指针与后指针相等时跳出遍历，</span><br><span class="line">这样时间复杂度是O(n),空间复杂度是常数O(1)</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    void sortColors(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        int front &#x3D; 0, rear &#x3D; nums.size() - 1;</span><br><span class="line">        int i &#x3D; 0;</span><br><span class="line">        while (i &lt;&#x3D; rear)</span><br><span class="line">        &#123;</span><br><span class="line">            if (nums[i] &#x3D;&#x3D; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(nums[i], nums[front]);</span><br><span class="line">                i++;</span><br><span class="line">                front++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums[i] &#x3D;&#x3D; 2)</span><br><span class="line">            &#123;</span><br><span class="line">                swap(nums[i], nums[rear]);</span><br><span class="line">                rear--;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums[i] &#x3D;&#x3D; 1)</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>肺都气炸，思路跟迪杰斯特拉解决三色国旗问题的思路是一样的，但跳出循环条件不一样，我一开始写的条件是front!=rear,后来改成front!=rear-1也不对，压根没想到i一直往后走知道i&gt;rear跳出循环，只能说差一点吧，继续加油</p>
+<img src="/2020/02/22/leetcode-75/2.png" class="" title="[leetcode-75]">  ]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-767</title>
+    <url>/2020/02/24/leetcode-767/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/reorganize-string/">https://leetcode-cn.com/problems/reorganize-string/</a>  </p>
+<a id="more"></a>
+<img src="/2020/02/24/leetcode-767/1.png" class="" title="[leetcode-767]">  
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * @lc app&#x3D;leetcode.cn id&#x3D;767 lang&#x3D;cpp</span><br><span class="line"> *</span><br><span class="line"> * [767] 重构字符串</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;start</span><br><span class="line">&#x2F;&#x2F;思路：</span><br><span class="line">&#x2F;*先构造S的哈希表，如果S的最大值-1(就是需要填充的地方)小于剩余元素的和，那么</span><br><span class="line">肯定可以重排使其相邻字符不同，否则不可；</span><br><span class="line">判断出其可以后，只需按P的顺序输出即可*&#x2F;</span><br><span class="line">&#x2F;&#x2F;60,61,62测试点未通过，感觉我的方法有点笨拙，果断换思路</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(pair&lt;char, int&gt; a, pair&lt;char, int&gt; b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;char, int&gt; P;</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; S.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[S[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int max &#x3D; -1;</span><br><span class="line">        char index;</span><br><span class="line">        for (auto it &#x3D; P.begin(); it !&#x3D; P.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it-&gt;second &gt; max)</span><br><span class="line">            &#123;</span><br><span class="line">                max &#x3D; it-&gt;second;</span><br><span class="line">                index &#x3D; it-&gt;first;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        for (auto it &#x3D; P.begin(); it !&#x3D; P.end(); it++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (it-&gt;first !&#x3D; index)</span><br><span class="line">            &#123;</span><br><span class="line">                sum +&#x3D; it-&gt;second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (max - 1 &gt; sum)</span><br><span class="line">        &#123;</span><br><span class="line">            return str;</span><br><span class="line">        &#125;</span><br><span class="line">        bool flag &#x3D; false;</span><br><span class="line">        if (max - 1 &#x3D;&#x3D; sum)</span><br><span class="line">        &#123;</span><br><span class="line">            flag &#x3D; true;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;pair&lt;char, int&gt;&gt; V(P.begin(), P.end());</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        if (!flag)</span><br><span class="line">        &#123;</span><br><span class="line">            while (true)</span><br><span class="line">            &#123;</span><br><span class="line">                int cnt &#x3D; 0;</span><br><span class="line">                for (auto it &#x3D; V.begin(); it !&#x3D; V.end(); it++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (it-&gt;second !&#x3D; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        str +&#x3D; it-&gt;first;</span><br><span class="line">                        it-&gt;second--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                        cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                if (cnt &#x3D;&#x3D; V.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            while (true)</span><br><span class="line">            &#123;</span><br><span class="line">                int cnt &#x3D; 0;</span><br><span class="line">                for (auto it &#x3D; V.begin(); it !&#x3D; V.end(); it++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if (it-&gt;second !&#x3D; 0)</span><br><span class="line">                    &#123;</span><br><span class="line">                        str +&#x3D; it-&gt;first;</span><br><span class="line">                        it-&gt;second--;</span><br><span class="line">                        if (it-&gt;first !&#x3D; index)</span><br><span class="line">                        &#123;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                        cnt++;</span><br><span class="line">                &#125;</span><br><span class="line">                if (cnt &#x3D;&#x3D; V.size())</span><br><span class="line">                &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;*</span><br><span class="line">思路:</span><br><span class="line">根据字母出现的顺序排序，然后每次输出前两项即可(输出后记得减少前两项字母的次数)，输出后立刻再进行排序</span><br><span class="line">直到所有字母的次数都为0</span><br><span class="line">每次排序太麻烦，并且没有数据结构支持(set和优先队列当你进行--操作时就已经排序了所以不能保证第二项--时仍为原来的那一项)</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;*</span><br><span class="line">第三个思路：</span><br><span class="line">借鉴的大神思路-先使用哈希表按出现顺序从大到小排列，然后按间隔进行插入</span><br><span class="line">贪心思想</span><br><span class="line">*&#x2F;</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(pair&lt;char, int&gt; a, pair&lt;char, int&gt; b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a.second &gt; b.second;</span><br><span class="line">    &#125;</span><br><span class="line">    string reorganizeString(string S)</span><br><span class="line">    &#123;</span><br><span class="line">        map&lt;char, int&gt; P;</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (int i &#x3D; 0; i &lt; S.size(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            P[S[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;pair&lt;char, int&gt;&gt; V(P.begin(), P.end());</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        for (auto p : V)</span><br><span class="line">        &#123;</span><br><span class="line">            string temp(p.second, p.first); &#x2F;&#x2F;String temp(2,&#39;c&#39;)&#x3D;&#x3D;&quot;cc&quot;</span><br><span class="line">            str +&#x3D; temp;</span><br><span class="line">        &#125;</span><br><span class="line">        int len &#x3D; str.size();</span><br><span class="line">        if (V[0].second &gt; (len+1) &#x2F; 2)&#x2F;&#x2F;如果次数出现最多的字母大于字符串的一半长度，那么肯定是不可以成功的了</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        S.clear();</span><br><span class="line">        S &#x3D; (len, &#39;0&#39;);</span><br><span class="line">        int i &#x3D; 0, j &#x3D; 1, index &#x3D; 0;</span><br><span class="line">        while (i &lt; len &amp;&amp; index &lt; len)&#x2F;&#x2F;按奇数进行插入</span><br><span class="line">        &#123;</span><br><span class="line">            S[i] &#x3D; str[index++];</span><br><span class="line">            i +&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line">        while (j &lt; len &amp;&amp; index &lt; len)&#x2F;&#x2F;按偶数进行插入</span><br><span class="line">        &#123;</span><br><span class="line">            S[j] &#x3D; str[index++];</span><br><span class="line">            j +&#x3D; 2;</span><br><span class="line">        &#125;</span><br><span class="line">        return S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;end</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/24/leetcode-767/2.png" class="" title="[leetcode-767]">  ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -589,8 +569,28 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-973</title>
+    <url>/2020/02/22/leetcode-969/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/pancake-sorting">https://leetcode-cn.com/problems/pancake-sorting</a>  </p>
+<a id="more"></a>
+<img src="/2020/02/22/leetcode-969/1.png" class="" title="[leetcode-969]">  
+<p>很有趣的一道题，一开始我的思路是找到先遍历一遍找到最大值，然后将最大值翻转到最后一位，然后每次遍历最大值都已经归位了。但是题目中只可以翻转前n项，所以只需要多一步辅助，将最大值翻转到第一位，然后再翻转到最后一位。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; pancakeSort(vector&lt;int&gt; &amp;A)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        int temp &#x3D; 0;&#x2F;&#x2F;每一次循环最大的元素一定在正确位置，所以使用temp来缩短遍历长度</span><br><span class="line">        for (int j &#x3D; 0; j &lt; A.size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            int max &#x3D; -1, index &#x3D; 0;</span><br><span class="line">            for (int i &#x3D; 0; i &lt; A.size() - temp; i++)&#x2F;&#x2F;寻找剩余元素中的最大值，返回其下标</span><br><span class="line">            &#123;</span><br><span class="line">                if (max &lt; A[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    max &#x3D; A[i];</span><br><span class="line">                    index &#x3D; i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (index &#x3D;&#x3D; 0)&#x2F;&#x2F;如果最大值恰好在第一个元素位置，那么直接进行翻转A.size() - temp长度将其转到剩余元素的最大位置</span><br><span class="line">            &#123;</span><br><span class="line">                V.push_back(A.size() - temp);</span><br><span class="line">                reverseK(A, A.size() - temp);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                V.push_back(index + 1);&#x2F;&#x2F;先将其翻转到第一个元素位置</span><br><span class="line">                reverseK(A, index + 1);</span><br><span class="line">                V.push_back(A.size() - temp);&#x2F;&#x2F;再将第一个元素位置翻转到剩余元素最大值位置</span><br><span class="line">                reverseK(A, A.size() - temp);</span><br><span class="line">            &#125;</span><br><span class="line">            temp++;</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    void reverseK(vector&lt;int&gt; &amp;V, int k) &#x2F;&#x2F;翻转vector的前k个元素</span><br><span class="line">    &#123;</span><br><span class="line">        if (k &gt; V.size())</span><br><span class="line">        &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(V.begin(), V.begin() + k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/02/22/leetcode-969/2.png" class="" title="[leetcode-969]">  
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -611,8 +611,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -633,29 +633,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-两个数组的交集</title>
-    <url>/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</url>
-    <content><![CDATA[<img src="/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/2.png" class="" title="[leetcode-两个数组的交集]">  
-<p><a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/">https://leetcode-cn.com/problems/intersection-of-two-arrays/</a><br>这道题我的思路一开始是我先把两个数组进行排序，然后使用双指针思想，分别从两个数组的开头进行遍历，遇到相等时就把它们放到vector中，不相等时数小的指针往后移，直到数组超界。</p>
-<a id="more"></a>
-<p>结果我想的太复杂，实际上两个数组排好序后只要有一个超界，那么就可以break了，因为你已经排好了序，当一个数组超界时，另外一个数组就算没超界，其后面的元素也无法与超界数组进行匹配。而且最简单的办法就是引入一个set，先把相等的元素放入set中，再放到vector里，但是我一开始想着不想再多使用另一个数据结构了。但实际上使用set更简单一点。<br>代码：  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * @lc app&#x3D;leetcode.cn id&#x3D;349 lang&#x3D;cpp</span><br><span class="line"> *</span><br><span class="line"> * [349] 两个数组的交集</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;start</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; intersection(vector&lt;int&gt; &amp;nums1, vector&lt;int&gt; &amp;nums2)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        set&lt;int&gt;S;</span><br><span class="line">        if (nums1.size() &#x3D;&#x3D; 0 || nums2.size() &#x3D;&#x3D; 0)&#x2F;&#x2F;如果一开始其中一个数组没有元素，那么就不会有相同的元素，输出空即可</span><br><span class="line">        &#123;</span><br><span class="line">            return V;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());&#x2F;&#x2F;排序</span><br><span class="line">        sort(nums2.begin(), nums2.end());</span><br><span class="line">        int i &#x3D; 0, j &#x3D; 0;</span><br><span class="line">        while (true)</span><br><span class="line">        &#123;</span><br><span class="line">            if (i &#x3D;&#x3D; nums1.size() || j &#x3D;&#x3D; nums2.size())&#x2F;&#x2F;如果其中一个数组超界，那么直接break</span><br><span class="line">            &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (nums1[i] &#x3D;&#x3D; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                S.insert(nums1[i]);</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;         </span><br><span class="line">            else if (nums1[i] &lt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums1[i] &gt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                j++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (auto it &#x3D; S.begin(); it !&#x3D; S.end(); it++)&#x2F;&#x2F;将set中元素拷贝到vector中</span><br><span class="line">        &#123;</span><br><span class="line">            V.push_back(*it);</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;end</span><br></pre></td></tr></table></figure>
-
-<img src="/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/1.png" class="" title="[leetcode-两个数组的交集]">  
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -676,8 +655,29 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-两个数组的交集</title>
+    <url>/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/</url>
+    <content><![CDATA[<img src="/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/2.png" class="" title="[leetcode-两个数组的交集]">  
+<p><a href="https://leetcode-cn.com/problems/intersection-of-two-arrays/">https://leetcode-cn.com/problems/intersection-of-two-arrays/</a><br>这道题我的思路一开始是我先把两个数组进行排序，然后使用双指针思想，分别从两个数组的开头进行遍历，遇到相等时就把它们放到vector中，不相等时数小的指针往后移，直到数组超界。</p>
+<a id="more"></a>
+<p>结果我想的太复杂，实际上两个数组排好序后只要有一个超界，那么就可以break了，因为你已经排好了序，当一个数组超界时，另外一个数组就算没超界，其后面的元素也无法与超界数组进行匹配。而且最简单的办法就是引入一个set，先把相等的元素放入set中，再放到vector里，但是我一开始想着不想再多使用另一个数据结构了。但实际上使用set更简单一点。<br>代码：  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> * @lc app&#x3D;leetcode.cn id&#x3D;349 lang&#x3D;cpp</span><br><span class="line"> *</span><br><span class="line"> * [349] 两个数组的交集</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;start</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; intersection(vector&lt;int&gt; &amp;nums1, vector&lt;int&gt; &amp;nums2)</span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; V;</span><br><span class="line">        set&lt;int&gt;S;</span><br><span class="line">        if (nums1.size() &#x3D;&#x3D; 0 || nums2.size() &#x3D;&#x3D; 0)&#x2F;&#x2F;如果一开始其中一个数组没有元素，那么就不会有相同的元素，输出空即可</span><br><span class="line">        &#123;</span><br><span class="line">            return V;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(nums1.begin(), nums1.end());&#x2F;&#x2F;排序</span><br><span class="line">        sort(nums2.begin(), nums2.end());</span><br><span class="line">        int i &#x3D; 0, j &#x3D; 0;</span><br><span class="line">        while (true)</span><br><span class="line">        &#123;</span><br><span class="line">            if (i &#x3D;&#x3D; nums1.size() || j &#x3D;&#x3D; nums2.size())&#x2F;&#x2F;如果其中一个数组超界，那么直接break</span><br><span class="line">            &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (nums1[i] &#x3D;&#x3D; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                S.insert(nums1[i]);</span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;         </span><br><span class="line">            else if (nums1[i] &lt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (nums1[i] &gt; nums2[j])</span><br><span class="line">            &#123;</span><br><span class="line">                j++;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (auto it &#x3D; S.begin(); it !&#x3D; S.end(); it++)&#x2F;&#x2F;将set中元素拷贝到vector中</span><br><span class="line">        &#123;</span><br><span class="line">            V.push_back(*it);</span><br><span class="line">        &#125;</span><br><span class="line">        return V;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F; @lc code&#x3D;end</span><br></pre></td></tr></table></figure>
+
+<img src="/2020/02/13/leetcode-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/1.png" class="" title="[leetcode-两个数组的交集]">  
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -696,42 +696,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>排序</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode刷题</title>
-    <url>/2020/01/22/leetcode%E5%88%B7%E9%A2%98/</url>
-    <content><![CDATA[<p>上篇博客提到过，我在备战PAT时也是边看《大话数据结构》边做PAT和leetcode两个平台上面的题，而leetcode平台的题只需要写函数即可，不需要大局观的细节让你实现，所以对于练习算法还是很有帮助的，<a id="more"></a>  我大体就是按线性表-栈队列-树-图等顺序和专题刷的，这是我的链接：<a href="https://leetcode-cn.com/u/user4002g/">https://leetcode-cn.com/u/user4002g/</a></p>
-<img src="/2020/01/22/leetcode%E5%88%B7%E9%A2%98/1.png" class="" title="[leetcode刷题]">  ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-面试题45</title>
-    <url>/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/">https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/</a>  </p>
-<a id="more"></a>
-<img src="/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/1.png" class="" title="[leetcode-面试题45]">  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(string a, string b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a + b &lt; b + a;</span><br><span class="line">    &#125;</span><br><span class="line">    string minNumber(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int len &#x3D; nums.size();</span><br><span class="line">        vector&lt;string&gt; V(len);</span><br><span class="line">        for (int i &#x3D; 0; i &lt; len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            V[i] &#x3D; to_string(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (auto i : V)</span><br><span class="line">        &#123;</span><br><span class="line">            str +&#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>很像179题，思路是一模一样的</p>
-<img src="/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/2.png" class="" title="[leetcode-面试题45]">  ]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
         <tag>排序</tag>
       </tags>
@@ -779,28 +745,17 @@
       </tags>
   </entry>
   <entry>
-    <title>二叉树的基本操作（数据结构）</title>
-    <url>/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/</url>
-    <content><![CDATA[<p>看了很多博客许多大牛的文章，发现他们的方法即巧妙又简便，果断学习并理解。结合所学的知识，把二叉树的基本操作罗列了下来。<br>废话不多说，直接上源码，一些不容易理解的地方会有注释，要是有问题也可以私信我QQ``:790567648交个朋友互相学习鸭~</p>
-<a id="more"></a>
-<p><strong>———头文件，宏定义以及树ADT的实现**</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;头文件</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">&#x2F;&#x2F;宏定义</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line">#define OK 1</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define MAXSIZE 10</span><br><span class="line">&#x2F;&#x2F;ADT</span><br><span class="line">typedef int TElemType;</span><br><span class="line">typedef int Status;</span><br><span class="line">typedef struct BiTNode              &#x2F;&#x2F;定义二叉树节点数据类型 </span><br><span class="line">&#123;</span><br><span class="line">	TElemType data;</span><br><span class="line">	struct BiTNode *lchild, *rchild;</span><br><span class="line">&#125; BiTNode, *BiTree;           &#x2F;&#x2F;bitree为指向bitnode这种结构的指针</span><br></pre></td></tr></table></figure>
-<p><strong>———-基本操作的声明</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BiTree CreateTree();&#x2F;&#x2F;按先序次序输入二叉树中结点的值（一个字符）空格字符表示空数</span><br><span class="line">Status PreOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;先序遍历二叉树T,对每个结点调用函数VIsit一次且仅一次</span><br><span class="line">Status InOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;中序。。。</span><br><span class="line">Status PostOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;后序。。。</span><br><span class="line">Status LevelOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;层序。。。</span><br><span class="line">Status Deepth(BiTree T);&#x2F;&#x2F;求树的高度</span><br><span class="line">Status PreorderPrintLeaves(BiTree BT);&#x2F;&#x2F;先序输出树的结点</span><br></pre></td></tr></table></figure>
-<p><strong>———-具体的函数的实现</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BiTree CreateTree()&#x2F;&#x2F;二叉树的建立</span><br><span class="line">&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	TElemType item;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;item);</span><br><span class="line">	if (item &#x3D;&#x3D; 0)              &#x2F;&#x2F;叶节点数据标志：其后根两个0 </span><br><span class="line">		T &#x3D; NULL;            &#x2F;&#x2F;若某一节点为叶子结点，则其左右子树均为NULL，0表示建空树</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		T &#x3D; (BiTree)malloc(sizeof(BiTNode));</span><br><span class="line">		T-&gt;data &#x3D; item;</span><br><span class="line">		T-&gt;lchild &#x3D; CreateTree();             &#x2F;&#x2F;递归创建其左子树 </span><br><span class="line">		T-&gt;rchild &#x3D; CreateTree();            &#x2F;&#x2F;递归创建其右子树 </span><br><span class="line">	&#125;</span><br><span class="line">	return T;                              &#x2F;&#x2F;返回根节点 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PrintElement(TElemType e)&#x2F;&#x2F;应用函数具体实现</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;%d &quot;, e);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PreOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;先序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (Visit(T-&gt;data))</span><br><span class="line">			if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">				if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status InOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;中序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">			if (Visit(T-&gt;data))</span><br><span class="line">				if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PostOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;后序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">			if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">				if (Visit(T-&gt;data))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status PreOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;先序遍历非递归</span><br><span class="line">&#123;	</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	while (P!&#x3D;NULL||!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		while (P!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Visit(P-&gt;data);</span><br><span class="line">			S.push(P);</span><br><span class="line">			P &#x3D; P-&gt;lchild;</span><br><span class="line">		&#125;	</span><br><span class="line">	if (!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		P&#x3D;S.top();</span><br><span class="line">		S.pop();</span><br><span class="line">		P &#x3D; P-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status InOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;中序遍历非递归</span><br><span class="line">&#123;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	while (P!&#x3D;NULL||!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		while (P!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			S.push(P);</span><br><span class="line">			P &#x3D; P-&gt;lchild;			</span><br><span class="line">		&#125;</span><br><span class="line">		if (!S.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			P &#x3D; S.top();</span><br><span class="line">			S.pop();</span><br><span class="line">			Visit(P-&gt;data);		</span><br><span class="line">			P&#x3D;P-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PostOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;后序遍历非递归</span><br><span class="line">&#123;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	BiTNode *cur;&#x2F;&#x2F;当前结点</span><br><span class="line">	BiTNode *ptr&#x3D;NULL;&#x2F;&#x2F;之前访问的结点</span><br><span class="line">	S.push(T);</span><br><span class="line">	while (!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cur &#x3D; S.top();</span><br><span class="line">		if ((cur-&gt;lchild&#x3D;&#x3D;NULL&amp;&amp;cur-&gt;rchild&#x3D;&#x3D;NULL)||(ptr!&#x3D;NULL&amp;&amp;(ptr&#x3D;&#x3D;cur-&gt;lchild||ptr&#x3D;&#x3D;cur-&gt;rchild)))</span><br><span class="line">		&#123;</span><br><span class="line">			Visit(cur-&gt;data);</span><br><span class="line">			S.pop();</span><br><span class="line">			ptr &#x3D; cur;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			if (cur-&gt;rchild!&#x3D;NULL)</span><br><span class="line">			&#123;</span><br><span class="line">				S.push(cur-&gt;rchild);</span><br><span class="line">			&#125;</span><br><span class="line">			if (cur-&gt;lchild!&#x3D;NULL)</span><br><span class="line">			&#123;</span><br><span class="line">				S.push(cur-&gt;lchild);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status LevelOrderTraverse(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;层序遍历二叉树(借助于队列)</span><br><span class="line">&#123;</span><br><span class="line">	queue&lt;BiTree&gt;Q;</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	Q.push(P);</span><br><span class="line">	while (!Q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		BiTree temp &#x3D; Q.front();</span><br><span class="line">		Q.pop();</span><br><span class="line">		Visit(temp-&gt;data);		</span><br><span class="line">		if (temp-&gt;lchild!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Q.push(temp-&gt;lchild);</span><br><span class="line">		&#125;</span><br><span class="line">		if (temp-&gt;rchild!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Q.push(temp-&gt;rchild);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status LevelOrderTraverse(BiTree T)&#x2F;&#x2F; 二叉树的层序遍历(数组实现)</span><br><span class="line">&#123;</span><br><span class="line">	if (T &#x3D;&#x3D; NULL) return ERROR;</span><br><span class="line"></span><br><span class="line">	BiTree q[MAXSIZE];&#x2F;&#x2F;树中最大的结点数为10.</span><br><span class="line">	q[0] &#x3D; T;</span><br><span class="line"></span><br><span class="line">	int front &#x3D; 0;</span><br><span class="line">	int rear &#x3D; 1;</span><br><span class="line"></span><br><span class="line">	while (front&lt;rear)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;,q[front]-&gt;data);</span><br><span class="line">		if (q[front]-&gt;lchild)</span><br><span class="line">		&#123;</span><br><span class="line">			q[rear] &#x3D; q[front]-&gt;lchild;</span><br><span class="line">			rear++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (q[front]-&gt;rchild)</span><br><span class="line">		&#123;</span><br><span class="line">			q[rear] &#x3D; q[front]-&gt;rchild;</span><br><span class="line">			rear++;</span><br><span class="line">		&#125;</span><br><span class="line">		front++;&#x2F;&#x2F;最后跳出循环的条件为front&#x3D;rear</span><br><span class="line">		&#x2F;&#x2F;rear为除了根节点以外所有结点的总数，front为算上根节点的所有结点总数，遍历所有结点后rear&#x3D;front</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Deepth(BiTree T)&#x2F;&#x2F;求树的高度</span><br><span class="line">&#123;</span><br><span class="line">	int deepthLeft &#x3D; 0;</span><br><span class="line">	int deepthRight &#x3D; 0;</span><br><span class="line">	int deepCount &#x3D; 0;</span><br><span class="line">	if (T &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		deepCount &#x3D; 0;</span><br><span class="line">		return deepCount;</span><br><span class="line">	&#125;	</span><br><span class="line">	deepthLeft &#x3D; Deepth(T-&gt;lchild);</span><br><span class="line">	deepthRight &#x3D; Deepth(T-&gt;rchild);</span><br><span class="line">	deepCount &#x3D; 1 + ((deepthLeft &gt; deepthRight) ? deepthLeft : deepthRight);&#x2F;&#x2F;在左子树和右子树中求最高的那棵树，总树高为其加1</span><br><span class="line">	return deepCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PreorderPrintLeaves(BiTree BT)&#x2F;&#x2F;先序输出树的结点</span><br><span class="line">&#123;</span><br><span class="line">	if (BT &#x3D;&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		if (BT-&gt;lchild &#x3D;&#x3D; NULL&amp;&amp;BT-&gt;rchild &#x3D;&#x3D; NULL) printf(&quot;%d &quot;, BT-&gt;data);</span><br><span class="line">		PreorderPrintLeaves(BT-&gt;lchild);</span><br><span class="line">		PreorderPrintLeaves(BT-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>———–随便写了一下主函数，，，都用的非递归的遍历，，，觉得递归的遍历时间复杂度太高了</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	printf(&quot;请输入数据先序创建一棵二叉树:(结点为空时输入0)\n&quot;);</span><br><span class="line">	T &#x3D; CreateTree();               &#x2F;&#x2F;先序创建一棵二叉树 </span><br><span class="line">	printf(&quot;先序遍历结果为：\n&quot;);</span><br><span class="line">	PreOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;中序遍历结果为：\n&quot;);</span><br><span class="line">	InOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;后序遍历结果为：\n&quot;);</span><br><span class="line">	PostOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;层序遍历结果为：\n&quot;);</span><br><span class="line">	LevelOrderTraverse(T);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	LevelOrderTraverse(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;此树的高度为:\n&quot;);</span><br><span class="line">	printf(&quot;%d\n&quot;, Deepth(T));</span><br><span class="line">	printf(&quot;其树结点为:(先序)\n&quot;);</span><br><span class="line">	PreorderPrintLeaves(T);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>也算是我对数据结构二叉树这一章的总结吧，记录一下自己的学习历程！冲鸭！</p>
-]]></content>
+    <title>leetcode刷题</title>
+    <url>/2020/01/22/leetcode%E5%88%B7%E9%A2%98/</url>
+    <content><![CDATA[<p>上篇博客提到过，我在备战PAT时也是边看《大话数据结构》边做PAT和leetcode两个平台上面的题，而leetcode平台的题只需要写函数即可，不需要大局观的细节让你实现，所以对于练习算法还是很有帮助的，<a id="more"></a>  我大体就是按线性表-栈队列-树-图等顺序和专题刷的，这是我的链接：<a href="https://leetcode-cn.com/u/user4002g/">https://leetcode-cn.com/u/user4002g/</a></p>
+<img src="/2020/01/22/leetcode%E5%88%B7%E9%A2%98/1.png" class="" title="[leetcode刷题]">  ]]></content>
       <categories>
-        <category>数据结构</category>
+        <category>leetcode</category>
       </categories>
       <tags>
+        <tag>leetcode</tag>
         <tag>数据结构</tag>
-        <tag>二叉树</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -867,75 +822,6 @@
       </tags>
   </entry>
   <entry>
-    <title>修改hexo博客代码块样式</title>
-    <url>/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/</url>
-    <content><![CDATA[<p>直接修改编译好的文件。路径为： theme/yilia/source/main.0cf68a.css<br>修改代码背景色，搜索 .article-entry .highlight, 修改background后面的颜色</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pre&#123;background:#272822;</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pre&#123;background:#1a0139;</span><br></pre></td></tr></table></figure>
-<p>修改行号颜色，搜索 .article-entry .highlight .gutter pre .line<br>将</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .gutter pre .line&#123;</span><br><span class="line">    color:#666</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .gutter pre .line&#123;</span><br><span class="line">      color:#fc0000</span><br></pre></td></tr></table></figure>
-<p>修改代码字体颜色 .article-entry .highlight .line</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .line&#123;</span><br><span class="line">color:#fff;</span><br></pre></td></tr></table></figure>
-<p>修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .line&#123;</span><br><span class="line">color:#00ff0d;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用git将本地仓库push到远程仓库上(包括readme.md)</title>
-    <url>/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/</url>
-    <content><![CDATA[<p>1.在本地项目目录文件下右键鼠标点击git bash here，使用git init命令初始化一个新的仓库<br>2.在github上面新建一个项目（不初始化readme.md，最后我们会处理它）<br>3.git remote add origin + 远程仓库url</p>
-<a id="more"></a>
-<p>4.git add .<br>   git commit -m “说明”<br>   git push -u origin master<br>5.此时，刷新github上面的内容，发现已经提交到远程仓库上面了。<br>6.在github下面有一个create readme.md选项（如果你项目中没有readme.md的话），创建并编辑。<br>7.使用git pull origin master:master命令，将远程仓库上面的内容pull到本地仓库（因为此时远程仓库比本地仓库多一个readmd.md）<br>8.大功告成，给自己鼓掌，切记以后尽量不要再github上面直接编辑文件，需要在本地仓库改变文件后进行第4步即可。<br>9.若不小心在github上面动了代码也不要紧，使用第7步即可。</p>
-<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/1.jpg" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
-
-<hr>
-<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/2.png" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
-
-<hr>
-<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/3.jpg" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]"> 
-
-<hr>
-<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/4.png" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指 Offer 42. 连续子数组的最大和</title>
-    <url>/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/</url>
-    <content><![CDATA[<img src="/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/1.png" class="" title="[title]">
-<a id="more"></a>
-<p><a href="https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/">题目链接</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想，三种可能性，最大值的区间可能只在左边或只在右边或横跨左边和右边，这种需要分三次情况来讨论，分别</span><br><span class="line">&#x2F;&#x2F;求出这三种情况下的最大值然后取最大的来作为最后结果</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int cross_max(vector&lt;int&gt; &amp;nums, int left, int right, int mid)&#x2F;&#x2F;如果区间横跨中间时计算其最大值</span><br><span class="line">    &#123;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        int i &#x3D; mid, j &#x3D; mid + 1;</span><br><span class="line">        int max_left&#x3D;-101;</span><br><span class="line">        int max_right&#x3D;-101;</span><br><span class="line">        while (i &gt;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            sum +&#x3D; nums[i];</span><br><span class="line">            if (max_left &lt; sum)</span><br><span class="line">            &#123;</span><br><span class="line">                max_left &#x3D; sum;</span><br><span class="line">            &#125;   </span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        sum &#x3D; 0;</span><br><span class="line">        while (j &lt; nums.size())</span><br><span class="line">        &#123;</span><br><span class="line">            sum +&#x3D; nums[j];</span><br><span class="line">            if (max_right &lt; sum)</span><br><span class="line">            &#123;</span><br><span class="line">                max_right &#x3D; sum;</span><br><span class="line">            &#125;            </span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return max_left+max_right;</span><br><span class="line">    &#125;</span><br><span class="line">    int helper(vector&lt;int&gt; &amp;nums, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        if (left &gt;&#x3D; right)</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        int mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">        int max_left &#x3D; helper(nums, left, mid);</span><br><span class="line">        int max_right &#x3D; helper(nums, mid + 1, right);</span><br><span class="line">        int corss &#x3D; cross_max(nums, left, right, mid);</span><br><span class="line">        return max(max(max_left, max_right), corss);</span><br><span class="line">    &#125;</span><br><span class="line">    int maxSubArray(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        return helper(nums, 0, nums.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/2.png" class="" title="[title]">  
-<p>不要在意时间。。。主要是思想。。。看时间可以用dp，时间复杂度为O(n)…</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>leetcode</tag>
-        <tag>算法</tag>
-        <tag>分治算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>you-get批量下载视频</title>
     <url>/2020/02/05/you-get%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BD%E8%A7%86%E9%A2%91/</url>
     <content><![CDATA[<p>今天在b站上看到了一个很喜欢的网课，怕被和谐，所以想下载下来，但网页端b站没有下载的渠道，使用其他的下载方式还需要下软件，所以又由csdn博客上了解到使用you-get第三方库可以非常轻松的下载b站视频(当然也支持很多其他视频平台)，所以使用一下，效果非常棒，(当然也有缺点，比如下载速度有些慢)不过可以批量下载，所以瑕不掩瑜吧。  </p>
@@ -963,6 +849,75 @@
         <tag>下载视频</tag>
         <tag>python</tag>
         <tag>you-get</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二叉树的基本操作（数据结构）</title>
+    <url>/2020/01/22/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/</url>
+    <content><![CDATA[<p>看了很多博客许多大牛的文章，发现他们的方法即巧妙又简便，果断学习并理解。结合所学的知识，把二叉树的基本操作罗列了下来。<br>废话不多说，直接上源码，一些不容易理解的地方会有注释，要是有问题也可以私信我QQ``:790567648交个朋友互相学习鸭~</p>
+<a id="more"></a>
+<p><strong>———头文件，宏定义以及树ADT的实现**</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;头文件</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">&#x2F;&#x2F;宏定义</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line">#define OK 1</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define MAXSIZE 10</span><br><span class="line">&#x2F;&#x2F;ADT</span><br><span class="line">typedef int TElemType;</span><br><span class="line">typedef int Status;</span><br><span class="line">typedef struct BiTNode              &#x2F;&#x2F;定义二叉树节点数据类型 </span><br><span class="line">&#123;</span><br><span class="line">	TElemType data;</span><br><span class="line">	struct BiTNode *lchild, *rchild;</span><br><span class="line">&#125; BiTNode, *BiTree;           &#x2F;&#x2F;bitree为指向bitnode这种结构的指针</span><br></pre></td></tr></table></figure>
+<p><strong>———-基本操作的声明</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BiTree CreateTree();&#x2F;&#x2F;按先序次序输入二叉树中结点的值（一个字符）空格字符表示空数</span><br><span class="line">Status PreOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;先序遍历二叉树T,对每个结点调用函数VIsit一次且仅一次</span><br><span class="line">Status InOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;中序。。。</span><br><span class="line">Status PostOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;后序。。。</span><br><span class="line">Status LevelOrderTraverse(BiTree T, Status(*Visit)(TElemType e));&#x2F;&#x2F;层序。。。</span><br><span class="line">Status Deepth(BiTree T);&#x2F;&#x2F;求树的高度</span><br><span class="line">Status PreorderPrintLeaves(BiTree BT);&#x2F;&#x2F;先序输出树的结点</span><br></pre></td></tr></table></figure>
+<p><strong>———-具体的函数的实现</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">BiTree CreateTree()&#x2F;&#x2F;二叉树的建立</span><br><span class="line">&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	TElemType item;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;item);</span><br><span class="line">	if (item &#x3D;&#x3D; 0)              &#x2F;&#x2F;叶节点数据标志：其后根两个0 </span><br><span class="line">		T &#x3D; NULL;            &#x2F;&#x2F;若某一节点为叶子结点，则其左右子树均为NULL，0表示建空树</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		T &#x3D; (BiTree)malloc(sizeof(BiTNode));</span><br><span class="line">		T-&gt;data &#x3D; item;</span><br><span class="line">		T-&gt;lchild &#x3D; CreateTree();             &#x2F;&#x2F;递归创建其左子树 </span><br><span class="line">		T-&gt;rchild &#x3D; CreateTree();            &#x2F;&#x2F;递归创建其右子树 </span><br><span class="line">	&#125;</span><br><span class="line">	return T;                              &#x2F;&#x2F;返回根节点 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PrintElement(TElemType e)&#x2F;&#x2F;应用函数具体实现</span><br><span class="line">&#123;</span><br><span class="line">	printf(&quot;%d &quot;, e);</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PreOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;先序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (Visit(T-&gt;data))</span><br><span class="line">			if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">				if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status InOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;中序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">			if (Visit(T-&gt;data))</span><br><span class="line">				if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PostOrderTraverse1(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;后序遍历递归</span><br><span class="line">&#123;</span><br><span class="line">	if (T)</span><br><span class="line">	&#123;</span><br><span class="line">		if (PreOrderTraverse1(T-&gt;lchild, Visit))</span><br><span class="line">			if (PreOrderTraverse1(T-&gt;rchild, Visit))</span><br><span class="line">				if (Visit(T-&gt;data))</span><br><span class="line">					return OK;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Status PreOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;先序遍历非递归</span><br><span class="line">&#123;	</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	while (P!&#x3D;NULL||!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		while (P!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Visit(P-&gt;data);</span><br><span class="line">			S.push(P);</span><br><span class="line">			P &#x3D; P-&gt;lchild;</span><br><span class="line">		&#125;	</span><br><span class="line">	if (!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		P&#x3D;S.top();</span><br><span class="line">		S.pop();</span><br><span class="line">		P &#x3D; P-&gt;rchild;</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status InOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;中序遍历非递归</span><br><span class="line">&#123;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	while (P!&#x3D;NULL||!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		while (P!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			S.push(P);</span><br><span class="line">			P &#x3D; P-&gt;lchild;			</span><br><span class="line">		&#125;</span><br><span class="line">		if (!S.empty())</span><br><span class="line">		&#123;</span><br><span class="line">			P &#x3D; S.top();</span><br><span class="line">			S.pop();</span><br><span class="line">			Visit(P-&gt;data);		</span><br><span class="line">			P&#x3D;P-&gt;rchild;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PostOrderTraverse2(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;后序遍历非递归</span><br><span class="line">&#123;</span><br><span class="line">	stack&lt;BiTree&gt;S;</span><br><span class="line">	BiTNode *cur;&#x2F;&#x2F;当前结点</span><br><span class="line">	BiTNode *ptr&#x3D;NULL;&#x2F;&#x2F;之前访问的结点</span><br><span class="line">	S.push(T);</span><br><span class="line">	while (!S.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		cur &#x3D; S.top();</span><br><span class="line">		if ((cur-&gt;lchild&#x3D;&#x3D;NULL&amp;&amp;cur-&gt;rchild&#x3D;&#x3D;NULL)||(ptr!&#x3D;NULL&amp;&amp;(ptr&#x3D;&#x3D;cur-&gt;lchild||ptr&#x3D;&#x3D;cur-&gt;rchild)))</span><br><span class="line">		&#123;</span><br><span class="line">			Visit(cur-&gt;data);</span><br><span class="line">			S.pop();</span><br><span class="line">			ptr &#x3D; cur;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			if (cur-&gt;rchild!&#x3D;NULL)</span><br><span class="line">			&#123;</span><br><span class="line">				S.push(cur-&gt;rchild);</span><br><span class="line">			&#125;</span><br><span class="line">			if (cur-&gt;lchild!&#x3D;NULL)</span><br><span class="line">			&#123;</span><br><span class="line">				S.push(cur-&gt;lchild);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status LevelOrderTraverse(BiTree T, Status(*Visit)(TElemType e))&#x2F;&#x2F;层序遍历二叉树(借助于队列)</span><br><span class="line">&#123;</span><br><span class="line">	queue&lt;BiTree&gt;Q;</span><br><span class="line">	BiTree P &#x3D; T;</span><br><span class="line">	Q.push(P);</span><br><span class="line">	while (!Q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		BiTree temp &#x3D; Q.front();</span><br><span class="line">		Q.pop();</span><br><span class="line">		Visit(temp-&gt;data);		</span><br><span class="line">		if (temp-&gt;lchild!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Q.push(temp-&gt;lchild);</span><br><span class="line">		&#125;</span><br><span class="line">		if (temp-&gt;rchild!&#x3D;NULL)</span><br><span class="line">		&#123;</span><br><span class="line">			Q.push(temp-&gt;rchild);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status LevelOrderTraverse(BiTree T)&#x2F;&#x2F; 二叉树的层序遍历(数组实现)</span><br><span class="line">&#123;</span><br><span class="line">	if (T &#x3D;&#x3D; NULL) return ERROR;</span><br><span class="line"></span><br><span class="line">	BiTree q[MAXSIZE];&#x2F;&#x2F;树中最大的结点数为10.</span><br><span class="line">	q[0] &#x3D; T;</span><br><span class="line"></span><br><span class="line">	int front &#x3D; 0;</span><br><span class="line">	int rear &#x3D; 1;</span><br><span class="line"></span><br><span class="line">	while (front&lt;rear)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%d &quot;,q[front]-&gt;data);</span><br><span class="line">		if (q[front]-&gt;lchild)</span><br><span class="line">		&#123;</span><br><span class="line">			q[rear] &#x3D; q[front]-&gt;lchild;</span><br><span class="line">			rear++;</span><br><span class="line">		&#125;</span><br><span class="line">		if (q[front]-&gt;rchild)</span><br><span class="line">		&#123;</span><br><span class="line">			q[rear] &#x3D; q[front]-&gt;rchild;</span><br><span class="line">			rear++;</span><br><span class="line">		&#125;</span><br><span class="line">		front++;&#x2F;&#x2F;最后跳出循环的条件为front&#x3D;rear</span><br><span class="line">		&#x2F;&#x2F;rear为除了根节点以外所有结点的总数，front为算上根节点的所有结点总数，遍历所有结点后rear&#x3D;front</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status Deepth(BiTree T)&#x2F;&#x2F;求树的高度</span><br><span class="line">&#123;</span><br><span class="line">	int deepthLeft &#x3D; 0;</span><br><span class="line">	int deepthRight &#x3D; 0;</span><br><span class="line">	int deepCount &#x3D; 0;</span><br><span class="line">	if (T &#x3D;&#x3D; NULL) &#123;</span><br><span class="line">		deepCount &#x3D; 0;</span><br><span class="line">		return deepCount;</span><br><span class="line">	&#125;	</span><br><span class="line">	deepthLeft &#x3D; Deepth(T-&gt;lchild);</span><br><span class="line">	deepthRight &#x3D; Deepth(T-&gt;rchild);</span><br><span class="line">	deepCount &#x3D; 1 + ((deepthLeft &gt; deepthRight) ? deepthLeft : deepthRight);&#x2F;&#x2F;在左子树和右子树中求最高的那棵树，总树高为其加1</span><br><span class="line">	return deepCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status PreorderPrintLeaves(BiTree BT)&#x2F;&#x2F;先序输出树的结点</span><br><span class="line">&#123;</span><br><span class="line">	if (BT &#x3D;&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		return ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		if (BT-&gt;lchild &#x3D;&#x3D; NULL&amp;&amp;BT-&gt;rchild &#x3D;&#x3D; NULL) printf(&quot;%d &quot;, BT-&gt;data);</span><br><span class="line">		PreorderPrintLeaves(BT-&gt;lchild);</span><br><span class="line">		PreorderPrintLeaves(BT-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	return OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>———–随便写了一下主函数，，，都用的非递归的遍历，，，觉得递归的遍历时间复杂度太高了</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	BiTree T;</span><br><span class="line">	printf(&quot;请输入数据先序创建一棵二叉树:(结点为空时输入0)\n&quot;);</span><br><span class="line">	T &#x3D; CreateTree();               &#x2F;&#x2F;先序创建一棵二叉树 </span><br><span class="line">	printf(&quot;先序遍历结果为：\n&quot;);</span><br><span class="line">	PreOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;中序遍历结果为：\n&quot;);</span><br><span class="line">	InOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;后序遍历结果为：\n&quot;);</span><br><span class="line">	PostOrderTraverse2(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;层序遍历结果为：\n&quot;);</span><br><span class="line">	LevelOrderTraverse(T);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	LevelOrderTraverse(T, PrintElement);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	printf(&quot;此树的高度为:\n&quot;);</span><br><span class="line">	printf(&quot;%d\n&quot;, Deepth(T));</span><br><span class="line">	printf(&quot;其树结点为:(先序)\n&quot;);</span><br><span class="line">	PreorderPrintLeaves(T);</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>也算是我对数据结构二叉树这一章的总结吧，记录一下自己的学习历程！冲鸭！</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改hexo博客代码块样式</title>
+    <url>/2020/01/22/%E4%BF%AE%E6%94%B9hexo%E5%8D%9A%E5%AE%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%A0%B7%E5%BC%8F/</url>
+    <content><![CDATA[<p>直接修改编译好的文件。路径为： theme/yilia/source/main.0cf68a.css<br>修改代码背景色，搜索 .article-entry .highlight, 修改background后面的颜色</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pre&#123;background:#272822;</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pre&#123;background:#1a0139;</span><br></pre></td></tr></table></figure>
+<p>修改行号颜色，搜索 .article-entry .highlight .gutter pre .line<br>将</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .gutter pre .line&#123;</span><br><span class="line">    color:#666</span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .gutter pre .line&#123;</span><br><span class="line">      color:#fc0000</span><br></pre></td></tr></table></figure>
+<p>修改代码字体颜色 .article-entry .highlight .line</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .line&#123;</span><br><span class="line">color:#fff;</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.article-entry .highlight .line&#123;</span><br><span class="line">color:#00ff0d;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode-面试题45</title>
+    <url>/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/">https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/</a>  </p>
+<a id="more"></a>
+<img src="/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/1.png" class="" title="[leetcode-面试题45]">  
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    static bool cmp(string a, string b)</span><br><span class="line">    &#123;</span><br><span class="line">        return a + b &lt; b + a;</span><br><span class="line">    &#125;</span><br><span class="line">    string minNumber(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        int len &#x3D; nums.size();</span><br><span class="line">        vector&lt;string&gt; V(len);</span><br><span class="line">        for (int i &#x3D; 0; i &lt; len; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            V[i] &#x3D; to_string(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(V.begin(), V.end(), cmp);</span><br><span class="line">        string str &#x3D; &quot;&quot;;</span><br><span class="line">        for (auto i : V)</span><br><span class="line">        &#123;</span><br><span class="line">            str +&#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>很像179题，思路是一模一样的</p>
+<img src="/2020/02/29/leetcode-%E9%9D%A2%E8%AF%95%E9%A2%9845/2.png" class="" title="[leetcode-面试题45]">  ]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -1094,6 +1049,26 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指 Offer 42. 连续子数组的最大和</title>
+    <url>/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/</url>
+    <content><![CDATA[<img src="/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/1.png" class="" title="[title]">
+<a id="more"></a>
+<p><a href="https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/">题目链接</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想，三种可能性，最大值的区间可能只在左边或只在右边或横跨左边和右边，这种需要分三次情况来讨论，分别</span><br><span class="line">&#x2F;&#x2F;求出这三种情况下的最大值然后取最大的来作为最后结果</span><br><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    int cross_max(vector&lt;int&gt; &amp;nums, int left, int right, int mid)&#x2F;&#x2F;如果区间横跨中间时计算其最大值</span><br><span class="line">    &#123;</span><br><span class="line">        int sum &#x3D; 0;</span><br><span class="line">        int i &#x3D; mid, j &#x3D; mid + 1;</span><br><span class="line">        int max_left&#x3D;-101;</span><br><span class="line">        int max_right&#x3D;-101;</span><br><span class="line">        while (i &gt;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            sum +&#x3D; nums[i];</span><br><span class="line">            if (max_left &lt; sum)</span><br><span class="line">            &#123;</span><br><span class="line">                max_left &#x3D; sum;</span><br><span class="line">            &#125;   </span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        sum &#x3D; 0;</span><br><span class="line">        while (j &lt; nums.size())</span><br><span class="line">        &#123;</span><br><span class="line">            sum +&#x3D; nums[j];</span><br><span class="line">            if (max_right &lt; sum)</span><br><span class="line">            &#123;</span><br><span class="line">                max_right &#x3D; sum;</span><br><span class="line">            &#125;            </span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        return max_left+max_right;</span><br><span class="line">    &#125;</span><br><span class="line">    int helper(vector&lt;int&gt; &amp;nums, int left, int right)</span><br><span class="line">    &#123;</span><br><span class="line">        if (left &gt;&#x3D; right)</span><br><span class="line">        &#123;</span><br><span class="line">            return nums[left];</span><br><span class="line">        &#125;</span><br><span class="line">        int mid &#x3D; (left + right) &#x2F; 2;</span><br><span class="line">        int max_left &#x3D; helper(nums, left, mid);</span><br><span class="line">        int max_right &#x3D; helper(nums, mid + 1, right);</span><br><span class="line">        int corss &#x3D; cross_max(nums, left, right, mid);</span><br><span class="line">        return max(max(max_left, max_right), corss);</span><br><span class="line">    &#125;</span><br><span class="line">    int maxSubArray(vector&lt;int&gt; &amp;nums)</span><br><span class="line">    &#123;</span><br><span class="line">        return helper(nums, 0, nums.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/19/%E5%89%91%E6%8C%87-Offer-42-%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/2.png" class="" title="[title]">  
+<p>不要在意时间。。。主要是思想。。。看时间可以用dp，时间复杂度为O(n)…</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>分治算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>添加总站访问量和文章访问量</title>
     <url>/2020/01/22/%E6%B7%BB%E5%8A%A0%E6%80%BB%E7%AB%99%E8%AE%BF%E9%97%AE%E9%87%8F%E5%92%8C%E6%96%87%E7%AB%A0%E8%AE%BF%E9%97%AE%E9%87%8F/</url>
     <content><![CDATA[<p>1、配置是否开启不蒜子访问量统计功能<br>在<strong>themes/yilia/_config.yml</strong>添加属性</p>
@@ -1185,46 +1160,6 @@
       <tags>
         <tag>算法</tag>
         <tag>最值</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一篇博客-Hexo博客的建立与部署</title>
-    <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
-    <content><![CDATA[<ol>
-<li>首先下载node.js以及git(这两个都是hexo博客框架所需要的)<br>node.js:<a href="https://nodejs.org/en/">官网</a><br>git<a href="https://git-scm.com/downloads/">官网</a>  </li>
-<li>安装Hexo<br>2.1首先，node.js下载并安装后是默认安装npm(项目管理工具)<br>2.2 因为npm是使用国外镜像，所以我们修改并使用淘宝的镜像，这样之后的命令执行速度会变快， 其下载命令是:  </li>
-</ol>
-<a id="more"></a>  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>别忘测试hh，之前测试的命令分别为：  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">cnpm</span><br></pre></td></tr></table></figure>
-<p>完成之后安装Hexo：  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>检验Hexo是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
-<p>3.创建一个目录：(我的是放在了F:/MyBlog)<br>使用命令:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-<p>这步是将框架初始化的内容添加到你刚才创建的文件夹中<br>4.运行测试：<br>常使用的四个命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean #用来清理缓存文件</span><br><span class="line">hexo g      #生成文件</span><br><span class="line">hexo  s     #运行本地服务器</span><br><span class="line">hexo  d   #上传到服务器</span><br></pre></td></tr></table></figure>
-<p>运行时，先使用命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>打开浏览器的<strong>localhost:4000</strong>，即可发现本地登录成功。<br>我是部署到github上，不需要关心服务器租赁费以及域名等等问题，<br>首先在github上面创建一个新的仓库，名字就叫做[github用户名].github.io,然后在自己所创建的目录中[我的是F:/MyBlog]打开<strong>_config.yml文件</strong>，将其中的  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br></pre></td></tr></table></figure>
-<p>字段填补完整为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;MrSunCodes&#x2F;MrSunCodes.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>repo中的地址及你在github上面创建的仓库地址。<br>最后，只需执行一条命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>即可将本地的所有文件push到github仓库中，此时访问<br><a href="https://mrsuncodes.github.io/">blog</a>即你的用户名.github.io即可(可能需要多刷新几下)</p>
-<img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
-
-<p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1436,49 +1371,43 @@
       </tags>
   </entry>
   <entry>
-    <title>算法导论-求解递归式的三种方法</title>
-    <url>/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>大三上学期学过算法课，但是这一部分当时听的时候就迷迷糊糊，感觉似懂非懂，今天看了MIT的算法导论课程（虽然有点老是2005年的）但查尔斯charles教授依然给了我很多的新的思想和帮助。</p>
-<a id="more"></a>
-<p>之前我从来没有仔细研究过分析递归这一类问题的运行时间，只觉得递归肯定是调用系统栈啊，空间复杂度肯定更高，然后时间复杂度你就稍微看看代码几个循环然后随便写写。其实真的大错特错。我学习算法的目的不仅是可以应用自如，更应该是使自己有具备分析和设计算法的能力，并且来比较哪个算法更优，或者对已有算法进行优化。（虽然考研挺忙，但是自己肯定还是每天可以抽出点时间学习学习自己喜欢的科目）<br>首先，分析递归（分治）问题时，最重要的就是写出他的递归式。所谓递归式就是把这个算法在用分治思想解决具体问题时所分的步骤记录下来，写成一个递推式。最常见的就是归并排序的递归式  </p>
-<blockquote>
-<p>T(n) = 2T(n / 2) + cn</p>
-</blockquote>
-<p>显而易见，归并排序首先在devide步骤时将所排序列分成两部分，每部分是原来规模的二分之一，然后分别对这两个进行排序，所以分成了2T(n / 2) ，而后续治理加合并步骤一共是线性时间即cn。<br>其次，我们求出递归式后，就可以通过递归式来分析他的运行时间，或者是时间复杂度。方法有三种</p>
-<ul>
-<li>代入法  （Substitution method）<br>最简单也是最难的一种方法，因为这种方法需要你猜测一个解的形式，然后带入使用归纳法进行求证，之前老师ppt上有个例子<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/1.png" class="" title="[title]">  
-<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/2.png" class="" title="[title]">  
-注意有几点需要注意的地方：<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/3.png" class="" title="[title]">  
-这是什么意思呢，例如我们想求解<blockquote>
-<p>T(n) = 4T(n / 2) + n</p>
-</blockquote>
-</li>
-</ul>
-<p>我们假设T(n)=O(n^2),<br>那么就是T(k)&lt;=ck^2<br>T(n)=4T(n / 2) + n &lt;= 4c(n/2)^2 + n = cn^2 + n = cn^2 - (-n)<br>[我们习惯用最后期望得到的结果==减去余项==，所以改写成了最后一个形式]<br>此时，我们需要-n非负才能保证T(n) &lt;= cn^2 ，即n&lt;=0,此时我们知是不可能的，因为n是很大的数肯定大于0。此时陷入僵局，需要改进思路，这是就可能要在guess中减去一个低阶项看是否可以work。<br>改进策略：假设T(n) &lt;= ck^2  - dk,即减去一个低阶项，这样带入原式得<br>T(n)=4T(n / 2) + n &lt;= 4[c(n/2)^2 - d(n/2)] +n = cn^2 + (1-2d)n=cn^2 - dn - (d-1)n<br>此时，我们还是需要余项非负，即(d-1)n &gt;= 0,即当d &gt;= 1时上述式成立，此时归纳成功。</p>
-<hr>
-<ul>
-<li>递归树法（Iteration method）<br>这个方法比较简单，所以我直接帖另一位博主的帖子里面的图片，解下述递归式 ：  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/61.jpg" class="" title="[title]">  
-<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/62.jpg" class="" title="[title]">  
-<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/63.jpg" class="" title="[title]">  
+    <title>第一篇博客-Hexo博客的建立与部署</title>
+    <url>/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<ol>
+<li>首先下载node.js以及git(这两个都是hexo博客框架所需要的)<br>node.js:<a href="https://nodejs.org/en/">官网</a><br>git<a href="https://git-scm.com/downloads/">官网</a>  </li>
+<li>安装Hexo<br>2.1首先，node.js下载并安装后是默认安装npm(项目管理工具)<br>2.2 因为npm是使用国外镜像，所以我们修改并使用淘宝的镜像，这样之后的命令执行速度会变快， 其下载命令是:  </li>
+</ol>
+<a id="more"></a>  
 
-</li>
-</ul>
-<hr>
-<ul>
-<li>主方法(master method)<br>非常好用的一种方法，强烈推荐，这个方法需要用到Master定理。证明过程在算法导论上大体意思就是使用它的递归树来进行求解，细节没看懂（我还是太菜了，可能等几年再回头看就会看懂吧）。<br>这个方法我就不在多赘述了，既有定理也有现成的例子，很好理解，最根本的就是比较n^logb a和f(n)的大小，有三种情况小于等于大于，每种情况都不一样，特别注意相等时的情况。  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/64.jpg" class="" title="[title]">  
-<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/65.jpg" class="" title="[title]">  
-需要注意的一点是，最后一个例子中，问题出在其并不是多项式意义上的大于。递归式落入了case2和case3的间隙，即下述图  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/66.png" class="" title="[title]">  
-<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/67.png" class="" title="[title]">  
-总体而言，算法导论真的是一本神书，对于提高内功有很大的帮助，也对我有很多启发。有时思维不可以局限到一点，更不能太片面，只想着追求最新的技术，基础往往更重要。然后MIT这个课程配套的作业其实我蛮想写的，看着题可能稍微有点多，但是都有配套答案，但我真的时间不够用。如果等我考上研究生了以后时间充足，可能会反过头再做一遍练习的。</li>
-</ul>
-<p>参考博客：<br><a href="https://blog.csdn.net/spaceyqy/article/details/38819959">1</a><br><a href="https://blog.csdn.net/qq_27123591/article/details/81047497">2</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>别忘测试hh，之前测试的命令分别为：  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br><span class="line">cnpm</span><br></pre></td></tr></table></figure>
+<p>完成之后安装Hexo：  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>检验Hexo是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<p>3.创建一个目录：(我的是放在了F:/MyBlog)<br>使用命令:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>这步是将框架初始化的内容添加到你刚才创建的文件夹中<br>4.运行测试：<br>常使用的四个命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean #用来清理缓存文件</span><br><span class="line">hexo g      #生成文件</span><br><span class="line">hexo  s     #运行本地服务器</span><br><span class="line">hexo  d   #上传到服务器</span><br></pre></td></tr></table></figure>
+<p>运行时，先使用命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>打开浏览器的<strong>localhost:4000</strong>，即可发现本地登录成功。<br>我是部署到github上，不需要关心服务器租赁费以及域名等等问题，<br>首先在github上面创建一个新的仓库，名字就叫做[github用户名].github.io,然后在自己所创建的目录中[我的是F:/MyBlog]打开<strong>_config.yml文件</strong>，将其中的  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br></pre></td></tr></table></figure>
+<p>字段填补完整为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;MrSunCodes&#x2F;MrSunCodes.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>repo中的地址及你在github上面创建的仓库地址。<br>最后，只需执行一条命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>即可将本地的所有文件push到github仓库中，此时访问<br><a href="https://mrsuncodes.github.io/">blog</a>即你的用户名.github.io即可(可能需要多刷新几下)</p>
+<img src="/2020/01/20/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-Hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%83%A8%E7%BD%B2/1.png" class="" title="[第一篇博客-Hexo博客的建立与部署]">  
+
+<p>大功告成！个人博客已经搞起来了！剩下的就是编写博客以及修改主题等样式了，具体可看我的下一篇博客。</p>
 ]]></content>
       <categories>
-        <category>算法导论</category>
+        <category>博客搭建</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-        <tag>分治</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1538,6 +1467,52 @@
       </tags>
   </entry>
   <entry>
+    <title>算法导论-求解递归式的三种方法</title>
+    <url>/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>大三上学期学过算法课，但是这一部分当时听的时候就迷迷糊糊，感觉似懂非懂，今天看了MIT的算法导论课程（虽然有点老是2005年的）但查尔斯charles教授依然给了我很多的新的思想和帮助。</p>
+<a id="more"></a>
+<p>之前我从来没有仔细研究过分析递归这一类问题的运行时间，只觉得递归肯定是调用系统栈啊，空间复杂度肯定更高，然后时间复杂度你就稍微看看代码几个循环然后随便写写。其实真的大错特错。我学习算法的目的不仅是可以应用自如，更应该是使自己有具备分析和设计算法的能力，并且来比较哪个算法更优，或者对已有算法进行优化。（虽然考研挺忙，但是自己肯定还是每天可以抽出点时间学习学习自己喜欢的科目）<br>首先，分析递归（分治）问题时，最重要的就是写出他的递归式。所谓递归式就是把这个算法在用分治思想解决具体问题时所分的步骤记录下来，写成一个递推式。最常见的就是归并排序的递归式  </p>
+<blockquote>
+<p>T(n) = 2T(n / 2) + cn</p>
+</blockquote>
+<p>显而易见，归并排序首先在devide步骤时将所排序列分成两部分，每部分是原来规模的二分之一，然后分别对这两个进行排序，所以分成了2T(n / 2) ，而后续治理加合并步骤一共是线性时间即cn。<br>其次，我们求出递归式后，就可以通过递归式来分析他的运行时间，或者是时间复杂度。方法有三种</p>
+<ul>
+<li>代入法  （Substitution method）<br>最简单也是最难的一种方法，因为这种方法需要你猜测一个解的形式，然后带入使用归纳法进行求证，之前老师ppt上有个例子<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/1.png" class="" title="[title]">  
+<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/2.png" class="" title="[title]">  
+注意有几点需要注意的地方：<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/3.png" class="" title="[title]">  
+这是什么意思呢，例如我们想求解<blockquote>
+<p>T(n) = 4T(n / 2) + n</p>
+</blockquote>
+</li>
+</ul>
+<p>我们假设T(n)=O(n^2),<br>那么就是T(k)&lt;=ck^2<br>T(n)=4T(n / 2) + n &lt;= 4c(n/2)^2 + n = cn^2 + n = cn^2 - (-n)<br>[我们习惯用最后期望得到的结果==减去余项==，所以改写成了最后一个形式]<br>此时，我们需要-n非负才能保证T(n) &lt;= cn^2 ，即n&lt;=0,此时我们知是不可能的，因为n是很大的数肯定大于0。此时陷入僵局，需要改进思路，这是就可能要在guess中减去一个低阶项看是否可以work。<br>改进策略：假设T(n) &lt;= ck^2  - dk,即减去一个低阶项，这样带入原式得<br>T(n)=4T(n / 2) + n &lt;= 4[c(n/2)^2 - d(n/2)] +n = cn^2 + (1-2d)n=cn^2 - dn - (d-1)n<br>此时，我们还是需要余项非负，即(d-1)n &gt;= 0,即当d &gt;= 1时上述式成立，此时归纳成功。</p>
+<hr>
+<ul>
+<li>递归树法（Iteration method）<br>这个方法比较简单，所以我直接帖另一位博主的帖子里面的图片，解下述递归式 ：  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/61.jpg" class="" title="[title]">  
+<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/62.jpg" class="" title="[title]">  
+<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/63.jpg" class="" title="[title]">  
+
+</li>
+</ul>
+<hr>
+<ul>
+<li>主方法(master method)<br>非常好用的一种方法，强烈推荐，这个方法需要用到Master定理。证明过程在算法导论上大体意思就是使用它的递归树来进行求解，细节没看懂（我还是太菜了，可能等几年再回头看就会看懂吧）。<br>这个方法我就不在多赘述了，既有定理也有现成的例子，很好理解，最根本的就是比较n^logb a和f(n)的大小，有三种情况小于等于大于，每种情况都不一样，特别注意相等时的情况。  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/64.jpg" class="" title="[title]">  
+<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/65.jpg" class="" title="[title]">  
+需要注意的一点是，最后一个例子中，问题出在其并不是多项式意义上的大于。递归式落入了case2和case3的间隙，即下述图  <img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/66.png" class="" title="[title]">  
+<img src="/2020/06/26/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E6%B1%82%E8%A7%A3%E9%80%92%E5%BD%92%E5%BC%8F%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/67.png" class="" title="[title]">  
+总体而言，算法导论真的是一本神书，对于提高内功有很大的帮助，也对我有很多启发。有时思维不可以局限到一点，更不能太片面，只想着追求最新的技术，基础往往更重要。然后MIT这个课程配套的作业其实我蛮想写的，看着题可能稍微有点多，但是都有配套答案，但我真的时间不够用。如果等我考上研究生了以后时间充足，可能会反过头再做一遍练习的。</li>
+</ul>
+<p>参考博客：<br><a href="https://blog.csdn.net/spaceyqy/article/details/38819959">1</a><br><a href="https://blog.csdn.net/qq_27123591/article/details/81047497">2</a></p>
+]]></content>
+      <categories>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>分治</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法导论-跳跃表</title>
     <url>/2020/07/08/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E8%B7%B3%E8%B7%83%E8%A1%A8/</url>
     <content><![CDATA[<p>这一部分《导论》这本课本上没有，助教上课时讲的，但感觉确实很重要。<br>我们都知道，对于一个双向链表，搜索操作性能为O(n),如果想改进成O(lgn)[或者是想改进性能],我们可以考虑使用两个链表，一个是只存某一些元素，另一个存所有元素，这样相当于纽约地铁的快线和慢线，慢线包括所有站台，快线只包括一些人流量最大的站台。  </p>
@@ -1570,66 +1545,28 @@
       </tags>
   </entry>
   <entry>
-    <title>算法导论-红黑树</title>
-    <url>/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
-    <content><![CDATA[<p>这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。</p>
+    <title>使用git将本地仓库push到远程仓库上(包括readme.md)</title>
+    <url>/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/</url>
+    <content><![CDATA[<p>1.在本地项目目录文件下右键鼠标点击git bash here，使用git init命令初始化一个新的仓库<br>2.在github上面新建一个项目（不初始化readme.md，最后我们会处理它）<br>3.git remote add origin + 远程仓库url</p>
 <a id="more"></a>
-<ul>
-<li>红黑树的性质<br>一共有四点，即：</li>
-</ul>
-<ol>
-<li>每个结点要么是红色，要么是黑色。</li>
-<li>根节点和叶节点都是黑色[这个叶节点跟二叉树的叶节点定义不一样，这个叶节点是最下层的NIL节点]</li>
-<li>如果一个结点是红色的，那么它的两个子节点都是黑色的，它的父亲结点也是黑色。</li>
-<li>对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点，即其黑高是相同的。</li>
-<li>另外有补充的几点注意事项，就是红黑树的黑高为其根节点的黑高。而红结点也不会连续出现。</li>
-</ol>
-<hr>
-<ul>
-<li>证明引理13.1 一颗有n个内部结点的红黑树的高度至多为2lg(n+1)<br>助教讲的方法和课本上的方法不太一样，是借助2-3-4 tree进行证明的，证明过程我也已经写到附页上了。<br>由这个引理我们也就知道红黑树是一个非常平衡的树，那么关于它的查询操作[search，maximum,minimum等等]都可以在O(lgn)的时间内执行。<br>附上证明过程：  <img src="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" class="" title="[title]">  
+<p>4.git add .<br>   git commit -m “说明”<br>   git push -u origin master<br>5.此时，刷新github上面的内容，发现已经提交到远程仓库上面了。<br>6.在github下面有一个create readme.md选项（如果你项目中没有readme.md的话），创建并编辑。<br>7.使用git pull origin master:master命令，将远程仓库上面的内容pull到本地仓库（因为此时远程仓库比本地仓库多一个readmd.md）<br>8.大功告成，给自己鼓掌，切记以后尽量不要再github上面直接编辑文件，需要在本地仓库改变文件后进行第4步即可。<br>9.若不小心在github上面动了代码也不要紧，使用第7步即可。</p>
+<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/1.jpg" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
 
+<hr>
+<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/2.png" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
 
-</li>
-</ul>
 <hr>
-<ul>
-<li>旋转<br>这个旋转跟AVL树的旋转差不多，但课本上只分了左旋和右旋，没分左右旋和右左旋。</li>
-</ul>
+<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/3.jpg" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]"> 
+
 <hr>
-<ul>
-<li>插入<br>插入步骤非常复杂，可以分为三步，没步对应一个case，关于代码注释部分我写到了课本上。在插入过程中，首先执行的是查找操作[同二叉搜索树]，然后进行具体操作后再看情况进行旋转。只有case2和case3才对应旋转，而case2和case3只能最多执行一次，所以在插入过程中旋转操作最多为2。</li>
-</ul>
-<hr>
-<ul>
-<li>删除<br>这个助教没讲，但是说比插入还要复杂一些，但思路都是类似的。插入已经看得迷迷糊糊了，删除就不再看了。我特地查了查应用，好像除了linux中进程调度使用红黑树，其他条件下应用的很少。这个坑以后等水平到了再填吧。</li>
-</ul>
+<img src="/2020/01/22/%E4%BD%BF%E7%94%A8git%E5%B0%86%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93push%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E4%B8%8A-%E5%8C%85%E6%8B%ACreadme-md/4.png" class="" title="[使用git将本地仓库push到远程仓库上(包括readme.md)]">  
 ]]></content>
       <categories>
-        <category>算法导论</category>
+        <category>git</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决新发布的文章中文乱码</title>
-    <url>/2020/02/20/%E8%A7%A3%E5%86%B3%E6%96%B0%E5%8F%91%E5%B8%83%E7%9A%84%E6%96%87%E7%AB%A0%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p>最近遇到了很麻烦的问题，就是我</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>创建了一个新文章之后，使用有道云笔记打开再编辑完后通过记录本的格式复制回去，发现线上的文章就是中文乱码了，包括标题和分类也是乱码，代码中的中文也会乱码。这里总结一下解决方法</p>
-<blockquote>
-<p>根本问题在于：使用记事本打开新文章后，默认的格式是ANSI,需要改成UTF-8并另存为。</p>
-</blockquote>
-<p>但有的时候另存为选择所有文件格式还是会存成.txt后缀的文件，所以这时要修改一下文件格式，将.md删掉重新输入.md，然后选择所有格式和UTF-8,这样保存时就会有是否替换的提示，替换后就会恢复中文了。</p>
-<img src="/2020/02/20/%E8%A7%A3%E5%86%B3%E6%96%B0%E5%8F%91%E5%B8%83%E7%9A%84%E6%96%87%E7%AB%A0%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/1.png" class="" title="[解决新发布的文章中文乱码]">  
-]]></content>
-      <categories>
-        <category>hexo博客</category>
-      </categories>
-      <tags>
-        <tag>hexo博客</tag>
+        <tag>git</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -1678,6 +1615,45 @@
       </tags>
   </entry>
   <entry>
+    <title>解决新发布的文章中文乱码</title>
+    <url>/2020/02/20/%E8%A7%A3%E5%86%B3%E6%96%B0%E5%8F%91%E5%B8%83%E7%9A%84%E6%96%87%E7%AB%A0%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p>最近遇到了很麻烦的问题，就是我</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new &quot;title&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>创建了一个新文章之后，使用有道云笔记打开再编辑完后通过记录本的格式复制回去，发现线上的文章就是中文乱码了，包括标题和分类也是乱码，代码中的中文也会乱码。这里总结一下解决方法</p>
+<blockquote>
+<p>根本问题在于：使用记事本打开新文章后，默认的格式是ANSI,需要改成UTF-8并另存为。</p>
+</blockquote>
+<p>但有的时候另存为选择所有文件格式还是会存成.txt后缀的文件，所以这时要修改一下文件格式，将.md删掉重新输入.md，然后选择所有格式和UTF-8,这样保存时就会有是否替换的提示，替换后就会恢复中文了。</p>
+<img src="/2020/02/20/%E8%A7%A3%E5%86%B3%E6%96%B0%E5%8F%91%E5%B8%83%E7%9A%84%E6%96%87%E7%AB%A0%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/1.png" class="" title="[解决新发布的文章中文乱码]">  
+]]></content>
+      <categories>
+        <category>hexo博客</category>
+      </categories>
+      <tags>
+        <tag>hexo博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试题25. 合并两个排序的链表</title>
+    <url>/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<img src="/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/1.png" class="" title="[title]">
+<a id="more"></a>
+<p><a href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">题目链接</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想：寻找当前两个链表中最小元素的那个链表，选取他，然后再从剩余两个序列中最小的值连接到他后面组成有序链表</span><br><span class="line">&#x2F;&#x2F;如果有一个链表为空，那么直接返回另外一个链表即可</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (l1&#x3D;&#x3D;NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            return l2;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l2&#x3D;&#x3D;NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            return l1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l1-&gt;val&lt;l2-&gt;val)&#x2F;&#x2F;l1为最小值</span><br><span class="line">        &#123;</span><br><span class="line">            l1-&gt;next&#x3D;mergeTwoLists(l1-&gt;next,l2);</span><br><span class="line">            return l1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            l2-&gt;next&#x3D;mergeTwoLists(l1,l2-&gt;next);</span><br><span class="line">            return l2;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/2.png" class="" title="[title]">
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>数据结构</tag>
+        <tag>算法</tag>
+        <tag>分治算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件实训-博客管理系统</title>
     <url>/2020/07/13/%E8%BD%AF%E4%BB%B6%E5%AE%9E%E8%AE%AD-%E5%8D%9A%E5%AE%A2%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<p>7月伊始我们暑假的小学期多了一门必修课，是达内培训机构的老师负责给我们讲下SpringCloud相关框架的使用，并且最后评分需要我们做出项目并进行答辩。我们组最终确定做一款博客管理系统，然后码云地址如下：<br><a href="https://gitee.com/victorygy/mall01">地址</a>  </p>
@@ -1701,22 +1677,46 @@
       </tags>
   </entry>
   <entry>
-    <title>面试题25. 合并两个排序的链表</title>
-    <url>/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[<img src="/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/1.png" class="" title="[title]">
+    <title>算法导论-红黑树</title>
+    <url>/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <content><![CDATA[<p>这节课助教主要讲的是红黑树，红黑树的重点是性质，旋转，插入，删除，但课上只将了前三部分。</p>
 <a id="more"></a>
-<p><a href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/">题目链接</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;分治算法思想：寻找当前两个链表中最小元素的那个链表，选取他，然后再从剩余两个序列中最小的值连接到他后面组成有序链表</span><br><span class="line">&#x2F;&#x2F;如果有一个链表为空，那么直接返回另外一个链表即可</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (l1&#x3D;&#x3D;NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            return l2;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l2&#x3D;&#x3D;NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            return l1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l1-&gt;val&lt;l2-&gt;val)&#x2F;&#x2F;l1为最小值</span><br><span class="line">        &#123;</span><br><span class="line">            l1-&gt;next&#x3D;mergeTwoLists(l1-&gt;next,l2);</span><br><span class="line">            return l1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            l2-&gt;next&#x3D;mergeTwoLists(l1,l2-&gt;next);</span><br><span class="line">            return l2;</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<img src="/2020/06/19/%E9%9D%A2%E8%AF%95%E9%A2%9825-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%8E%92%E5%BA%8F%E7%9A%84%E9%93%BE%E8%A1%A8/2.png" class="" title="[title]">
+<ul>
+<li>红黑树的性质<br>一共有四点，即：</li>
+</ul>
+<ol>
+<li>每个结点要么是红色，要么是黑色。</li>
+<li>根节点和叶节点都是黑色[这个叶节点跟二叉树的叶节点定义不一样，这个叶节点是最下层的NIL节点]</li>
+<li>如果一个结点是红色的，那么它的两个子节点都是黑色的，它的父亲结点也是黑色。</li>
+<li>对于每个结点，从该结点到其所有后代叶结点的简单路径上，均包含相同数目的黑色结点，即其黑高是相同的。</li>
+<li>另外有补充的几点注意事项，就是红黑树的黑高为其根节点的黑高。而红结点也不会连续出现。</li>
+</ol>
+<hr>
+<ul>
+<li>证明引理13.1 一颗有n个内部结点的红黑树的高度至多为2lg(n+1)<br>助教讲的方法和课本上的方法不太一样，是借助2-3-4 tree进行证明的，证明过程我也已经写到附页上了。<br>由这个引理我们也就知道红黑树是一个非常平衡的树，那么关于它的查询操作[search，maximum,minimum等等]都可以在O(lgn)的时间内执行。<br>附上证明过程：  <img src="/2020/07/05/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA-%E7%BA%A2%E9%BB%91%E6%A0%91/1.jpg" class="" title="[title]">  
+
+
+</li>
+</ul>
+<hr>
+<ul>
+<li>旋转<br>这个旋转跟AVL树的旋转差不多，但课本上只分了左旋和右旋，没分左右旋和右左旋。</li>
+</ul>
+<hr>
+<ul>
+<li>插入<br>插入步骤非常复杂，可以分为三步，没步对应一个case，关于代码注释部分我写到了课本上。在插入过程中，首先执行的是查找操作[同二叉搜索树]，然后进行具体操作后再看情况进行旋转。只有case2和case3才对应旋转，而case2和case3只能最多执行一次，所以在插入过程中旋转操作最多为2。</li>
+</ul>
+<hr>
+<ul>
+<li>删除<br>这个助教没讲，但是说比插入还要复杂一些，但思路都是类似的。插入已经看得迷迷糊糊了，删除就不再看了。我特地查了查应用，好像除了linux中进程调度使用红黑树，其他条件下应用的很少。这个坑以后等水平到了再填吧。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>leetcode</category>
+        <category>算法导论</category>
       </categories>
       <tags>
         <tag>数据结构</tag>
-        <tag>leetcode</tag>
         <tag>算法</tag>
-        <tag>分治算法</tag>
       </tags>
   </entry>
   <entry>

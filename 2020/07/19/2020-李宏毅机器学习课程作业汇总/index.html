@@ -22,7 +22,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"PRXMR01NC1","apiKey":"2821ed1166fb5c3797b2f3c979cdb0b4","indexName":"hexo_search","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="因为添加了评论的提醒功能(就是大家以后评论交流时记得附上自己的邮箱[QQ邮箱最好，其他应该也可以]，这样如果我就会收到信息第一时间回复你，你的邮箱也会收到回复。)，但是在之前的后台数据库怎么配置都不成功，索性换了个新的实例然后成了，但是唯一的坏处就是之前大家的评论都没有了(我正在想办法从原来的实例导出来)，所以给评论过的小伙伴说声抱歉。">
@@ -154,18 +154,17 @@
   <span class="search-icon">
     <i class="fa fa-search"></i>
   </span>
-  <div class="search-input-container"></div>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
   </span>
 </div>
-<div class="algolia-results">
-  <div id="algolia-stats"></div>
-  <div id="algolia-hits"></div>
-  <div id="algolia-pagination" class="algolia-pagination"></div>
-</div>
+<div id="search-result"></div>
 
-  
 </div>
 <div class="search-pop-overlay"></div>
 
@@ -515,10 +514,7 @@
 
 
   
-<script src="//cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
-<script src="//cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script src="/js/algolia-search.js"></script>
-
+<script src="/js/local-search.js"></script>
 
 
 
