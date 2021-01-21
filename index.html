@@ -25,12 +25,12 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+  <meta name="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MrSun Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="MrSun Blog">
-<meta property="og:description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+<meta property="og:description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Chris Paul">
 <meta property="article:tag" content="JAVA">
@@ -214,7 +214,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -232,10 +232,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-18 18:37:52 / 修改时间：19:30:34" itemprop="dateCreated datePublished" datetime="2021-01-18T18:37:52+08:00">2021-01-18</time>
+              <time title="创建时间：2021-01-18 18:37:52" itemprop="dateCreated datePublished" datetime="2021-01-18T18:37:52+08:00">2021-01-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-21 21:32:56" itemprop="dateModified" datetime="2021-01-21T21:32:56+08:00">2021-01-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -272,23 +278,14 @@
 
       
           <p>自己对大数据方向一直很有兴趣，报考厦大计算机系后对厦门大学数据库实验室非常感兴趣，并且看了林子雨老师的教材以及在网易云课堂上面的《大数据技术原理与应用》这门课程，感觉收获很多，现在想把课上所学内容记录下来，方便日后回顾。今天是第一章。  </p>
-<hr>
-<p>第一章的内容主要是简介大数据相关的一些知识框架，为初学者搭建知识体系，属于比较简单的一部分，我只讲重点内容记录下来。  </p>
-<ol>
-<li>大数据的关键技术：主要是分布式存储和分布式处理。自己其实很早以前知道分布式这么一个概念，好像是区块链？但是对于具体的细节还是不太明白，但是以我现在的理解大概就是因为数据量的庞大导致单机肯定无法有效的储存这么多的数据，是要求用一组分布式的服务器或者集群去将庞大的数据存储起来，并方便查询以及存入取出等操作。分布式处理也类似，即单机无法一次性处理这么多的数据量，类比我们的外部排序，肯定是需要很多服务器，集群进行同步的运算进行处理。  </li>
-<li>云计算，主要解决两个问题，即分布式存储与处理问题，其特征是虚拟化和多租户。联想自己之前租的阿里云ECS服务去搭建博客平台的这么一个经历，阿里云就是提供云计算服务的这么一个平台，用户所需的一切环境都已经配置好，只需用户根据自己需要安装软件或者使用服务即可。<br>包括三种云服务：SaaS,PaaS,IaaS。</li>
-</ol>
-<ul>
-<li>SaaS(Software-as-a-Service):面向用户</li>
-<li>PaaS(Platform-as-a-Service):面向应用开发者</li>
-<li>Iaas(Infrastructure as a Service):面向网络架构师<br>感觉阿里云平台应该是属于PaaS，这三个名词老师也强调了是云计算的非常重要的名词。</li>
-</ul>
-<p>3.物联网(IoT The Internet of Things)。记得之前大三上计算机网络课时老师曾说将来的趋势是使用IPv6时将物物之间全部联系起来。林老师在这也说明了物联网的层次架构</p>
-<img src="/2021/01/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8-%E7%AC%AC%E4%B8%80%E7%AB%A0/1.png" class="" title="[title]">  
-<p>这个架构跟我们熟悉的TCP/IP以及OSI参考模型都不一样，主要是因为对于一种新型的网络架构，肯定需要定制特殊的能够满足要求的架构，定义好每层之间的服务、协议等内容以便更好地为我们服务。</p>
-<hr>
-<p>第一章主要讲到这里，期待第二章的学习。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/18/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8-%E7%AC%AC%E4%B8%80%E7%AB%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -312,7 +309,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -401,7 +398,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -496,7 +493,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -585,7 +582,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -674,7 +671,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -763,7 +760,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -852,7 +849,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -946,7 +943,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1035,7 +1032,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pig.jpg">
       <meta itemprop="name" content="Chris Paul">
-      <meta itemprop="description" content="山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
+      <meta itemprop="description" content="山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1180,7 +1177,7 @@
     <img class="site-author-image" itemprop="image" alt="Chris Paul"
       src="/images/pig.jpg">
   <p class="site-author-name" itemprop="name">Chris Paul</p>
-  <div class="site-description" itemprop="description">山东大学(威海)17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。</div>
+  <div class="site-description" itemprop="description">山东大学17级在读计算机科学与技术学生，对计算机各个领域和方向保持热情，此为个人博客。</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -1212,32 +1209,12 @@
       <span class="links-of-author-item">
         <a href="/790567648@qq.com" title="E-Mail → 790567648@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/15052371/chris" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;15052371&#x2F;chris" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+      </span>
   </div>
 
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://leetcode-cn.com/problemset/all/" title="https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problemset&#x2F;all&#x2F;" rel="noopener" target="_blank">leetcode</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://pintia.cn/problem-sets?tab=0/" title="https:&#x2F;&#x2F;pintia.cn&#x2F;problem-sets?tab&#x3D;0&#x2F;" rel="noopener" target="_blank">PAT</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://download.pytorch.org/whl/torch_stable.html/" title="https:&#x2F;&#x2F;download.pytorch.org&#x2F;whl&#x2F;torch_stable.html&#x2F;" rel="noopener" target="_blank">Pytorch version</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://mrsuncodes.github.io/2020/07/19/2020-%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A%E6%B1%87%E6%80%BB/#more" title="https:&#x2F;&#x2F;mrsuncodes.github.io&#x2F;2020&#x2F;07&#x2F;19&#x2F;2020-%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A%E6%B1%87%E6%80%BB&#x2F;#more" rel="noopener" target="_blank">2020李宏毅机器学习课程作业汇总</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://lsx-sneakerprogrammer.github.io/" title="https:&#x2F;&#x2F;lsx-sneakerprogrammer.github.io&#x2F;" rel="noopener" target="_blank">永缘空的博客</a>
-        </li>
-    </ul>
-  </div>
 
       </div>
 
@@ -1265,7 +1242,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共62.6k字</span>
+  <span class="post-count">博客全站共62.5k字</span>
 </div>
 
 <div class="weixin-box">
